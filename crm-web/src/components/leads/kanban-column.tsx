@@ -38,9 +38,9 @@ export function KanbanColumn({ id, leads }: KanbanColumnProps) {
             className="flex-shrink-0 w-[280px] bg-background rounded-xl flex flex-col h-full max-h-[calc(100vh-140px)]"
         >
             {/* Header */}
-            <div className={cn("p-3 border-b-2 flex items-center justify-between mb-2", statusColor)}>
-                <h3 className="text-xs font-bold uppercase tracking-wider">{id}</h3>
-                <span className="text-[10px] font-mono opacity-70 bg-surface px-1.5 py-0.5 rounded">{leads.length}</span>
+            <div className={cn("p-4 flex items-center justify-between mb-2 border-b border-white/[0.02]", statusColor)}>
+                <h3 className="sub-header tracking-[0.2em] opacity-100">{id}</h3>
+                <span className="text-[10px] font-bold text-text-tertiary bg-white/[0.03] px-2 py-0.5 rounded-full">{leads.length}</span>
             </div>
 
             {/* Content */}

@@ -1,29 +1,99 @@
 "use client";
 
-import { Send, Bot, User } from "lucide-react";
-import { useState } from "react";
+import { Send, Bot, User, Loader2, MessageSquare } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 import { ChatConversation } from "@/app/dashboard/chat/page";
+import { createClient } from "@/utils/supabase/client";
+
+interface ChatMessage {
+    id: number;
+    session_id: string;
+    message: {
+        type: "human" | "ai";
+        content: string;
+    };
+    created_at: string;
+}
 
 export function ChatWindow({ chatId, extraChat }: { chatId: string | null, extraChat: ChatConversation | null }) {
-    const [messages, setMessages] = useState([
-        { id: 1, text: "Olá! Gostaria de saber mais sobre o apartamento no Jardins.", sender: "lead", time: "09:30" },
-        { id: 2, text: "Claro! É uma excelente oportunidade. Ele tem 3 suítes.", sender: "me", time: "09:32" },
-        { id: 3, text: "Podemos agendar para amanhã?", sender: "lead", time: "09:41" }
-    ]);
+    const [messages, setMessages] = useState<ChatMessage[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
     const [iaActive, setIaActive] = useState(true);
+    const messagesEndRef = useRef<HTMLDivElement>(null);
 
     // Derived state for display
     const isExtra = chatId === extraChat?.id;
-    const displayTitle = isExtra ? extraChat?.name : "Roberto Justus";
-    const displayInitials = isExtra ? extraChat?.name.substring(0, 2).toUpperCase() : "RJ";
+    const displayTitle = isExtra ? extraChat?.name : "Selecione uma conversa";
+    const displayInitials = isExtra ? extraChat?.name.substring(0, 2).toUpperCase() : "?";
+    const displayPhone = isExtra ? extraChat?.phone : null;
 
-    // Clearer messages for new chat
-    const displayMessages = isExtra ? [] : messages;
+    // Fetch messages when chatId changes
+    useEffect(() => {
+        if (!displayPhone) {
+            setMessages([]);
+            return;
+        }
+
+        const supabase = createClient();
+        setIsLoading(true);
+
+        async function fetchMessages() {
+            const { data, error } = await supabase
+                .from("n8n_historico_mensagens")
+                .select("*")
+                .eq("session_id", displayPhone)
+                .order("created_at", { ascending: true });
+
+            if (!error && data) {
+                // Sanitize: Filter out LangChain system prompts
+                const cleanMessages = data.filter((msg) => {
+                    const content = msg.message?.content || "";
+                    // Skip if it's a massive system prompt or contains LangChain tags
+                    return !content.includes("<papel>") && content.length < 5000;
+                });
+                setMessages(cleanMessages);
+            }
+            setIsLoading(false);
+        }
+
+        fetchMessages();
+
+        // Real-time subscription
+        const channel = supabase
+            .channel(`chat-${displayPhone}`)
+            .on(
+                "postgres_changes",
+                {
+                    event: "INSERT",
+                    schema: "public",
+                    table: "n8n_historico_mensagens",
+                    filter: `session_id=eq.${displayPhone}`,
+                },
+                (payload) => {
+                    const newMsg = payload.new as ChatMessage;
+                    const content = newMsg.message?.content || "";
+                    if (!content.includes("<papel>") && content.length < 5000) {
+                        setMessages((prev) => [...prev, newMsg]);
+                    }
+                }
+            )
+            .subscribe();
+
+        return () => {
+            supabase.removeChannel(channel);
+        };
+    }, [displayPhone]);
+
+    // Auto-scroll to bottom
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, [messages]);
 
     if (!chatId) {
         return (
             <div className="flex-1 flex items-center justify-center bg-background text-text-tertiary">
                 <div className="text-center">
+                    <MessageSquare className="h-12 w-12 mx-auto mb-3 opacity-50" />
                     <p>Selecione uma conversa para iniciar</p>
                 </div>
             </div>
@@ -40,7 +110,7 @@ export function ChatWindow({ chatId, extraChat }: { chatId: string | null, extra
                     </div>
                     <div>
                         <h3 className="text-sm font-medium text-text-primary">{displayTitle}</h3>
-                        <span className="text-xs text-success">Online</span>
+                        <span className="text-xs text-text-tertiary">{displayPhone}</span>
                     </div>
                 </div>
 
@@ -50,8 +120,8 @@ export function ChatWindow({ chatId, extraChat }: { chatId: string | null, extra
                     <button
                         onClick={() => setIaActive(!iaActive)}
                         className={`flex items-center gap-2 px-3 py-1.5 rounded-md border text-xs font-medium transition-all ${iaActive
-                                ? "bg-primary/10 border-primary/30 text-primary"
-                                : "bg-surface border-border text-text-secondary hover:text-text-primary"
+                            ? "bg-primary/10 border-primary/30 text-primary"
+                            : "bg-surface border-border text-text-secondary hover:text-text-primary"
                             }`}
                     >
                         {iaActive ? (
@@ -71,32 +141,55 @@ export function ChatWindow({ chatId, extraChat }: { chatId: string | null, extra
 
             {/* Messages */}
             <div className="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar">
-                {displayMessages.length === 0 ? (
+                {isLoading ? (
+                    <div className="flex items-center justify-center h-full">
+                        <Loader2 className="h-6 w-6 animate-spin text-text-tertiary" />
+                    </div>
+                ) : messages.length === 0 ? (
                     <div className="flex items-center justify-center h-full text-text-tertiary text-sm">
-                        <p>Inicie a conversa com {displayTitle}</p>
+                        <div className="text-center">
+                            <MessageSquare className="h-10 w-10 mx-auto mb-2 opacity-50" />
+                            <p>Nenhuma mensagem</p>
+                            <p className="text-xs mt-1">O histórico aparecerá aqui</p>
+                        </div>
                     </div>
                 ) : (
-                    displayMessages.map((msg) => (
-                        <div key={msg.id} className={`flex ${msg.sender === 'me' ? 'justify-end' : 'justify-start'}`}>
-                            <div className={`max-w-[70%] p-3 rounded-xl text-sm ${msg.sender === 'me' ? 'bg-primary text-primary-foreground rounded-br-none' : 'bg-surface-elevated text-text-primary rounded-bl-none'}`}>
-                                <p>{msg.text}</p>
-                                <span className={`text-[10px] block mt-1 text-right ${msg.sender === 'me' ? 'text-primary-foreground/80' : 'text-text-tertiary'}`}>{msg.time}</span>
-                            </div>
-                        </div>
-                    ))
+                    <>
+                        {messages.map((msg) => {
+                            const isInbound = msg.message.type === "human";
+                            let content = msg.message.content;
+
+                            // Try to parse if it's a JSON string (AI responses often are)
+                            try {
+                                const parsed = JSON.parse(content);
+                                if (parsed.mensagem) content = parsed.mensagem;
+                            } catch {
+                                // Not JSON, use as-is
+                            }
+
+                            return (
+                                <div key={msg.id} className={`flex ${isInbound ? 'justify-start' : 'justify-end'}`}>
+                                    <div className={`max-w-[70%] p-3 rounded-xl text-sm ${isInbound ? 'bg-surface-elevated text-text-primary rounded-bl-none' : 'bg-primary text-primary-foreground rounded-br-none'}`}>
+                                        <p className="whitespace-pre-wrap break-words">{content}</p>
+                                        <span className={`text-[10px] block mt-1 text-right ${isInbound ? 'text-text-tertiary' : 'text-primary-foreground/80'}`}>
+                                            {new Date(msg.created_at).toLocaleTimeString("pt-BR", {
+                                                hour: "2-digit",
+                                                minute: "2-digit",
+                                            })}
+                                        </span>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                        <div ref={messagesEndRef} />
+                    </>
                 )}
             </div>
 
             {/* Input */}
             <div className="p-4 border-t border-border bg-surface">
-                <div className="relative">
-                    <input
-                        className="w-full h-11 bg-surface-elevated border border-border rounded-lg pl-4 pr-12 text-sm text-text-primary focus:outline-none focus:border-primary transition-colors"
-                        placeholder="Digite sua mensagem..."
-                    />
-                    <button className="absolute right-2 top-2 p-1.5 bg-primary rounded-md text-primary-foreground hover:bg-primary-light transition-colors">
-                        <Send className="h-4 w-4" />
-                    </button>
+                <div className="flex items-center gap-2 text-warning text-sm bg-warning/10 p-3 rounded-lg">
+                    <span>Envio de mensagens será implementado na próxima etapa (integração Z-API).</span>
                 </div>
             </div>
         </div>

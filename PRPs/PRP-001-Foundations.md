@@ -6,6 +6,27 @@
 
 ---
 
+### 🧠 Validação (Ricardo's Methodology)
+
+**1. A Gambiarra (Workaround):**
+*Hoje, imobiliárias usam planilhas soltas e WhatsApp web pessoal misturado com profissional.*
+
+**2. O Ódio Tolerado (Pain Point):**
+*Donos de imobiliária toleram não saber o que os corretores conversam, mas odeiam a insegurança jurídica e a perda de leads quando o corretor sai.*
+
+**3. A Customização (Feature Gap):**
+*Corretores salvam contatos como "Cliente Apê Centro" no celular pessoal para tentar organizar.*
+
+---
+
+### ✍️ Copy Insights (Handover para Pamela)
+
+- **Headline Pain:** "Pare de perder leads no WhatsApp pessoal da sua equipe."
+- **Value Prop:** "Seu CRM e seu WhatsApp em um único lugar. Controle total, zero caos."
+- **Feature Hero:** "Login Único: Sua imobiliária, seus dados, suas regras."
+
+---
+
 #### ✅ Checklist de Completude (Validar antes de executar)
 
 **1. Contexto e Escopo**

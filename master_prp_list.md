@@ -7,23 +7,23 @@ Este roadmap define a execução técnica do CRM, priorizando a fundação de da
 
 ---
 
-## 🚀 Mission 01: A Fundação (Tenant & Auth)
+## 🚀 Mission 01: A Fundação (Tenant & Auth) 🟢 CONCLUÍDO
 **Objetivo:** Setup inicial, autenticação multi-tenant e estrutura de perfis.
 - **Tasks:**
-  - Setup Next.js 16 + Drizzle + Tailwind v4.
+  - Setup Next.js 16 + Tailwind v4.
   - Implementar Auth via Supabase.
   - Criar tabelas `organizations` e `profiles` com RLS.
   - Layout Master com Sidebar (PT-BR).
 - **Entrega:** `PRP-001-Foundations`
 
-## 🚀 Mission 02: O Inventário Pro (Imóveis)
+## 🚀 Mission 02: O Inventário Pro (Imóveis) 🟢 CONCLUÍDO
 **Objetivo:** CRUD completo de propriedades com a lógica de Lançamentos.
 - **Tasks:**
-  - Implementar tabela `properties` (v2.1 columns).
-  - Lógica de Hierarquia (Pai/Filho) para Empreendimentos.
-  - Toggles de visibilidade e Sistema de Tarjas.
-  - Upload de imagens para Supabase Storage.
-- **Entrega:** `PRP-002-Inventory`
+  - ✅ Implementar tabela `properties` (v2.1 full columns).
+  - ✅ Lógica de Hierarquia e Visibilidade (Toggles).
+  - ✅ Sistema de Tarjas (Marketing).
+  - ✅ Upload de imagens para Supabase Storage.
+- **Entrega:** `PRP-002-Inventory` (100% Core Funcional)
 
 ## 🚀 Mission 03: Gestão de Leads & Clientes
 **Objetivo:** Funil de vendas e base de contatos sem avatares.

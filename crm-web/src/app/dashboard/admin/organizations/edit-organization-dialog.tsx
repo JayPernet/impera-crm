@@ -87,17 +87,17 @@ export function EditOrganizationDialog({
                 onClick={onClose}
             />
 
-            <div className="relative w-full max-w-2xl bg-[#151A21] border border-[#2D3744] rounded-2xl shadow-[0_32px_64px_-12px_rgba(0,0,0,0.8)] overflow-hidden animate-in zoom-in-95 duration-200">
+            <div className="relative w-full max-w-2xl luxury-card border-none shadow-[0_32px_64px_-12px_rgba(0,0,0,0.8)] overflow-hidden animate-in zoom-in-95 duration-200">
                 <form onSubmit={handleSubmit} className="flex flex-col max-h-[90vh]">
                     {/* Header */}
-                    <div className="p-6 border-b border-[#232A34] bg-[#1A2028] flex items-center justify-between">
+                    <div className="p-6 border-b border-white/[0.05] bg-surface/50 backdrop-blur-md flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                            <div className="h-10 w-10 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center">
+                            <div className="h-10 w-10 rounded-lg bg-white/[0.03] border border-white/5 flex items-center justify-center">
                                 <Pencil className="h-5 w-5 text-primary" />
                             </div>
                             <div>
-                                <h2 className="text-lg font-bold text-[#E6EAF0] tracking-tight">Editar Unidade</h2>
-                                <p className="text-[10px] font-bold text-primary uppercase tracking-[0.15em] mt-0.5 opacity-90">
+                                <h2 className="text-lg font-bold text-primary tracking-tight">Editar Unidade</h2>
+                                <p className="sub-header mt-0.5 opacity-90">
                                     Configurações Administrativas
                                 </p>
                             </div>
@@ -105,7 +105,7 @@ export function EditOrganizationDialog({
                         <button
                             type="button"
                             onClick={onClose}
-                            className="h-9 w-9 rounded-full text-[#9AA4B2] hover:text-[#E6EAF0] hover:bg-[#232A34] transition-all flex items-center justify-center"
+                            className="h-9 w-9 rounded-lg text-text-tertiary hover:text-text-primary hover:bg-white/[0.05] transition-all flex items-center justify-center"
                         >
                             <X className="h-5 w-5" />
                         </button>
@@ -122,20 +122,20 @@ export function EditOrganizationDialog({
 
                             <div className="grid grid-cols-2 gap-6">
                                 <div className="space-y-2">
-                                    <label className="text-[10px] font-black text-[#6B7280] uppercase tracking-widest">Nome da Imobiliária</label>
+                                    <label className="text-[10px] font-black text-text-secondary uppercase tracking-widest">Nome da Imobiliária</label>
                                     <input
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
-                                        className="w-full h-11 bg-[#0E1116] border border-[#232A34] rounded-xl px-4 text-sm font-semibold text-[#E6EAF0] focus:outline-none focus:border-primary transition-all"
+                                        className="w-full h-11 bg-white/[0.03] border border-white/[0.05] rounded-xl px-4 text-sm font-semibold text-text-primary focus:outline-none focus:border-primary/50 transition-all"
                                         placeholder="Nome Comercial"
                                     />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-[10px] font-black text-[#6B7280] uppercase tracking-widest">Identificador (Slug)</label>
+                                    <label className="text-[10px] font-black text-text-secondary uppercase tracking-widest">Identificador (Slug)</label>
                                     <input
                                         value={slug}
                                         onChange={(e) => setSlug(e.target.value)}
-                                        className="w-full h-11 bg-[#0E1116] border border-[#232A34] rounded-xl px-4 text-sm font-mono text-[#E6EAF0] focus:outline-none focus:border-primary transition-all"
+                                        className="w-full h-11 bg-white/[0.03] border border-white/[0.05] rounded-xl px-4 text-sm font-mono text-text-primary focus:outline-none focus:border-primary/50 transition-all"
                                         placeholder="slug-da-unidade"
                                     />
                                 </div>
@@ -151,41 +151,41 @@ export function EditOrganizationDialog({
 
                             <div className="grid grid-cols-2 gap-6">
                                 <div className="space-y-2 col-span-2 md:col-span-1">
-                                    <label className="text-[10px] font-black text-[#6B7280] uppercase tracking-widest">Nome Completo</label>
+                                    <label className="text-[10px] font-black text-text-secondary uppercase tracking-widest">Nome Completo</label>
                                     <input
                                         value={adminName}
                                         onChange={(e) => setAdminName(e.target.value)}
-                                        className="w-full h-11 bg-[#0E1116] border border-[#232A34] rounded-xl px-4 text-sm font-semibold text-[#E6EAF0] focus:outline-none focus:border-primary transition-all"
+                                        className="w-full h-11 bg-white/[0.03] border border-white/[0.05] rounded-xl px-4 text-sm font-semibold text-text-primary focus:outline-none focus:border-primary/50 transition-all"
                                         placeholder="Nome do Admin"
                                     />
                                 </div>
                                 <div className="space-y-2 col-span-2 md:col-span-1">
-                                    <label className="text-[10px] font-black text-[#6B7280] uppercase tracking-widest">E-mail de Acesso</label>
+                                    <label className="text-[10px] font-black text-text-secondary uppercase tracking-widest">E-mail de Acesso</label>
                                     <input
                                         value={adminEmail}
                                         onChange={(e) => setAdminEmail(e.target.value)}
-                                        className="w-full h-11 bg-[#0E1116] border border-[#232A34] rounded-xl px-4 text-sm font-semibold text-[#E6EAF0] focus:outline-none focus:border-primary transition-all"
+                                        className="w-full h-11 bg-white/[0.03] border border-white/[0.05] rounded-xl px-4 text-sm font-semibold text-text-primary focus:outline-none focus:border-primary/50 transition-all"
                                         placeholder="admin@imobiliaria.com"
                                     />
                                 </div>
                                 <div className="space-y-2 col-span-2">
-                                    <label className="text-[10px] font-black text-[#6B7280] uppercase tracking-widest">Nova Senha (deixe vazio para manter)</label>
+                                    <label className="text-[10px] font-black text-text-secondary uppercase tracking-widest">Nova Senha (deixe vazio para manter)</label>
                                     <div className="relative">
                                         <input
                                             type={showPassword ? "text" : "password"}
                                             value={adminPassword}
                                             onChange={(e) => setAdminPassword(e.target.value)}
-                                            className="w-full h-11 bg-[#0E1116] border border-[#232A34] rounded-xl pl-4 pr-12 text-sm font-semibold text-primary focus:outline-none focus:border-primary transition-all"
+                                            className="w-full h-11 bg-white/[0.03] border border-white/[0.05] rounded-xl pl-4 pr-12 text-sm font-semibold text-primary focus:outline-none focus:border-primary/50 transition-all"
                                             placeholder="••••••••"
                                         />
                                         <button
                                             type="button"
                                             onClick={() => setShowPassword(!showPassword)}
-                                            className="absolute right-3 top-1/2 -translate-y-1/2 p-2 text-[#6B7280] hover:text-[#E6EAF0] transition-colors"
+                                            className="absolute right-3 top-1/2 -translate-y-1/2 p-2 text-text-tertiary hover:text-text-primary transition-colors"
                                         >
                                             {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                                         </button>
-                                        <Key className="absolute right-12 top-1/2 -translate-y-1/2 h-4 w-4 text-[#2D3744]" />
+                                        <Key className="absolute right-12 top-1/2 -translate-y-1/2 h-4 w-4 text-text-secondary" />
                                     </div>
                                 </div>
                             </div>
@@ -193,7 +193,7 @@ export function EditOrganizationDialog({
 
                         {/* Section: WhatsApp */}
                         <div className="space-y-6">
-                            <h3 className="text-[11px] font-bold text-[#9AA4B2] uppercase tracking-[0.2em] flex items-center gap-2">
+                            <h3 className="text-[11px] font-bold text-text-secondary uppercase tracking-[0.2em] flex items-center gap-2">
                                 <Sparkles className="h-4 w-4 text-primary" />
                                 Módulo de Inteligência
                             </h3>
@@ -201,8 +201,8 @@ export function EditOrganizationDialog({
                             <div className={cn(
                                 "p-6 rounded-2xl border transition-all duration-300",
                                 whatsappEnabled
-                                    ? "bg-[#1A2028] border-primary/40 shadow-[0_0_30px_rgba(201,162,77,0.08)]"
-                                    : "bg-[#0E1116] border-[#232A34] hover:border-[#2D3744]"
+                                    ? "bg-white/[0.02] border-primary/40 shadow-[0_0_30px_rgba(201,162,77,0.08)]"
+                                    : "bg-surface border-white/[0.05] hover:border-white/10"
                             )}>
                                 <label className="flex items-start gap-5 cursor-pointer">
                                     <div className="mt-1">
@@ -210,9 +210,9 @@ export function EditOrganizationDialog({
                                             "h-6 w-6 rounded-lg border transition-all flex items-center justify-center",
                                             whatsappEnabled
                                                 ? "bg-primary border-primary shadow-[0_0_15px_rgba(201,162,77,0.4)]"
-                                                : "bg-[#1A2028] border-[#2D3744]"
+                                                : "bg-white/[0.05] border-white/10"
                                         )}>
-                                            {whatsappEnabled && <Check className="h-4 w-4 text-[#0E1116] stroke-[3px]" />}
+                                            {whatsappEnabled && <Check className="h-4 w-4 text-background stroke-[3px]" />}
                                             <input
                                                 type="checkbox"
                                                 className="hidden"
@@ -223,46 +223,46 @@ export function EditOrganizationDialog({
                                     </div>
                                     <div className="flex-1">
                                         <div className="flex items-center gap-2">
-                                            <MessageSquare className={cn("h-5 w-5", whatsappEnabled ? "text-primary" : "text-[#6B7280]")} />
-                                            <span className="text-base font-bold text-[#E6EAF0]">Automação de WhatsApp Estendida</span>
+                                            <MessageSquare className={cn("h-5 w-5", whatsappEnabled ? "text-primary" : "text-text-tertiary")} />
+                                            <span className="text-base font-bold text-text-primary">Automação de WhatsApp Estendida</span>
                                         </div>
-                                        <p className="text-sm text-[#9AA4B2] mt-1 line-height-relaxed">
+                                        <p className="text-sm text-text-secondary mt-1 line-height-relaxed">
                                             Habilita o agente de IA para responder leads automaticamente via WhatsApp.
                                         </p>
                                     </div>
                                 </label>
 
                                 {whatsappEnabled && (
-                                    <div className="mt-8 pt-8 border-t border-[#232A34] space-y-6 animate-in slide-in-from-top-4 duration-500">
+                                    <div className="mt-8 pt-8 border-t border-white/[0.05] space-y-6 animate-in slide-in-from-top-4 duration-500">
                                         <div className="grid grid-cols-2 gap-6">
                                             <div className="space-y-2">
-                                                <label className="text-[10px] font-black text-[#6B7280] uppercase tracking-widest">Interface de API</label>
+                                                <label className="text-[10px] font-black text-text-secondary uppercase tracking-widest">Interface de API</label>
                                                 <select
                                                     value={whatsappType}
                                                     onChange={(e) => setWhatsappType(e.target.value)}
-                                                    className="w-full h-11 bg-[#0E1116] border border-[#232A34] rounded-xl px-4 text-sm font-semibold text-[#E6EAF0] focus:outline-none focus:border-primary transition-all"
+                                                    className="w-full h-11 bg-white/[0.03] border border-white/[0.05] rounded-xl px-4 text-sm font-semibold text-text-primary focus:outline-none focus:border-primary/50 transition-all"
                                                 >
                                                     <option value="nao_oficial">API Não Oficial (Socket)</option>
                                                     <option value="oficial">API Oficial (Cloud)</option>
                                                 </select>
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-[10px] font-black text-[#6B7280] uppercase tracking-widest">ID da Instância</label>
+                                                <label className="text-[10px] font-black text-text-secondary uppercase tracking-widest">ID da Instância</label>
                                                 <input
                                                     value={instanceId}
                                                     onChange={(e) => setInstanceId(e.target.value)}
-                                                    className="w-full h-11 bg-[#0E1116] border border-[#232A34] rounded-xl px-4 text-sm font-mono text-[#E6EAF0] placeholder-[#4B5563] focus:outline-none focus:border-primary transition-all text-center"
+                                                    className="w-full h-11 bg-white/[0.03] border border-white/[0.05] rounded-xl px-4 text-sm font-mono text-text-primary placeholder:text-text-disabled focus:outline-none focus:border-primary/50 transition-all text-center"
                                                     placeholder="000-000"
                                                 />
                                             </div>
                                         </div>
                                         <div className="space-y-2">
-                                            <label className="text-[10px] font-black text-[#6B7280] uppercase tracking-widest">Token Secreto da API</label>
+                                            <label className="text-[10px] font-black text-text-secondary uppercase tracking-widest">Token Secreto da API</label>
                                             <input
                                                 type="password"
                                                 value={tokenId}
                                                 onChange={(e) => setTokenId(e.target.value)}
-                                                className="w-full h-11 bg-[#0E1116] border border-[#232A34] rounded-xl px-4 text-sm font-mono text-primary placeholder-[#4B5563] focus:outline-none focus:border-primary transition-all"
+                                                className="w-full h-11 bg-white/[0.03] border border-white/[0.05] rounded-xl px-4 text-sm font-mono text-primary placeholder:text-text-disabled focus:outline-none focus:border-primary/50 transition-all"
                                                 placeholder="••••••••••••••••"
                                             />
                                         </div>
@@ -273,18 +273,18 @@ export function EditOrganizationDialog({
                     </div>
 
                     {/* Footer */}
-                    <div className="p-6 border-t border-[#232A34] bg-[#1A2028] flex items-center justify-end gap-3 sticky bottom-0">
+                    <div className="p-6 border-t border-white/[0.05] bg-surface/30 flex items-center justify-end gap-3 sticky bottom-0">
                         <button
                             type="button"
                             onClick={onClose}
-                            className="h-11 px-8 rounded-xl text-sm font-bold text-[#9AA4B2] hover:text-[#E6EAF0] transition-all"
+                            className="h-11 px-8 rounded-xl text-sm font-bold text-text-tertiary hover:text-text-primary transition-all"
                         >
                             Descartar
                         </button>
                         <button
                             type="submit"
                             disabled={isPending}
-                            className="h-11 px-10 rounded-xl bg-primary hover:bg-primary-light text-[#0E1116] font-black text-sm shadow-[0_10px_20px_-5px_rgba(201,162,77,0.3)] transition-all active:scale-[0.98] disabled:opacity-50"
+                            className="h-11 px-10 rounded-xl bg-primary hover:bg-primary-light text-background font-black text-sm shadow-[0_10px_20px_-5px_rgba(201,162,77,0.3)] transition-all active:scale-[0.98] disabled:opacity-50"
                         >
                             {isPending ? "Salvando..." : "Salvar Alterações"}
                         </button>

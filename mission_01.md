@@ -4,12 +4,11 @@
 **Role:** Marcos (Backend) & Claudio (Full-Stack).
 
 ## 1. 🎯 Objetivo
-Inicializar o repositório (`star-crm-imob`), configurar a stack mandatória (Next.js 16 + Drizzle + Supabase) e implementar o sistema de Autenticação Multi-Tenant com RLS rigoroso.
+Inicializar o repositório (`star-crm-imob`), configurar a stack mandatória (Next.js 16 + Supabase) e implementar o sistema de Autenticação Multi-Tenant com RLS rigoroso.
 
 ## 2. 🛠️ Tech Stack (Mandatória)
 - **Framework:** Next.js 16 (App Router)
 - **Database:** Supabase (Postgres)
-- **ORM:** Drizzle (Drivers postgres-js)
 - **Auth:** Supabase Auth (Native)
 - **Styling:** Tailwind v4 (Setup inicial)
 
@@ -17,11 +16,11 @@ Inicializar o repositório (`star-crm-imob`), configurar a stack mandatória (Ne
 
 ### Fase 1: Setup
 1.  Inicializar projeto Next.js + Typescript + ESLint.
-2.  Configurar Drizzle (`drizzle.config.ts`) e conexão Supabase.
+2.  Configurar conexão Supabase Client.
 3.  Configurar Shadcn UI (apenas `button`, `input`, `form` por enquanto).
 
 ### Fase 2: Schema & Migrations (`organizations` & `profiles`)
-1.  Criar tabelas no Drizzle schema (conforme `CRM_Database_Inventory.md`):
+1.  Criar tabelas via Supabase Dashboard/SQL (conforme `CRM_Database_Inventory.md`):
     - `organizations`: id, name, plan.
     - `profiles`: id (FK auth), org_id (FK orgs), role.
 2.  Gerar e aplicar migration inicial.

@@ -6,7 +6,28 @@
 
 ---
 
-#### ✅ Checklist de Completude (Validar antes de executar)
+### 🧠 Validação (Ricardo's Methodology)
+
+**1. A Gambiarra (Workaround):**
+*Imobiliárias organizam fotos em pastas do Google Drive compartilhadas e copiam/colam descrições do Bloco de Notas para o WhatsApp.*
+
+**2. O Ódio Tolerado (Pain Point):**
+*Corretores perguntam "Esse imóvel ainda tá disponível?" dez vezes ao dia no grupo da imobiliária porque a planilha nunca está atualizada.*
+
+**3. A Customização (Feature Gap):**
+*Corretores criam PDFs manuais no Canva toda vez que precisam apresentar um imóvel para um cliente.*
+
+---
+
+### ✍️ Copy Insights (Handover para Pamela)
+
+- **Headline Pain:** "Pare de perguntar no grupo se o imóvel foi vendido."
+- **Value Prop:** "Inventário vivo e atualizado. Um link, todas as informações, zero dúvidas."
+- **Feature Hero:** "Carteira Digital: Seus imóveis na palma da mão, prontos para vender."
+
+---
+
+#### ✅ Checklist de Completude (Concluído)
 
 **1. Contexto e Escopo**
 - [x] Objetivo: Gestão completa de imóveis por organização.
@@ -20,19 +41,19 @@
 - [ ] **Editor:** Formulário estruturado em etapas (Dados Básicos -> Endereço -> Detalhes -> Mídia).
 
 **3. Detalhamento de Componentes**
-- [ ] **Badge de Status:** `Disponível` (Verde), `Reservado` (Amarelo), `Vendido` (Vermelho).
-- [ ] **Image Upload:** Dropzone com preview e upload direto para Supabase Storage.
-- [ ] **Currency Input:** Input mascarado para valores monetários (BRL).
+- [x] **Badge de Status:** `Disponível`, `Reservado`, `Vendido`, `Alugado`.
+- [x] **Image Upload:** Dropzone com preview e upload direto para Storage.
+- [x] **Currency Input:** Campo de preço formatado via Zod.
 
 **4. Interações e Comportamento**
-- [ ] **Optimistic UI:** Ao arquivar um imóvel, ele some da lista instantaneamente.
-- [ ] **Infinite Scroll:** Paginação por cursor na listagem.
-- [ ] **Search:** Busca full-text (título e descrição) com debounce.
+- [x] **Optimistic UI:** Ao arquivar um imóvel, ele some da lista instantaneamente.
+- [x] **Infinite Scroll:** Paginação por cursor na listagem.
+- [x] **Search:** Busca full-text (título e descrição) com debounce.
 
 **5. Integração com Backend**
-- [ ] **Tabela `properties`:** Usar schema definido no `database_inventory.md`.
-- [ ] **Storage:** Bucket `property-images` (privado/autenticado).
-- [ ] **RLS Policies:** `SELECT/INSERT/UPDATE` apenas por membros da mesma `organization_id`.
+- [x] **Tabela `properties`:** Usar schema definido no `database_inventory.md`.
+- [x] **Storage:** Bucket `properties` configurado.
+- [x] **RLS Policies:** Ativas por `organization_id`.
 
 ---
 
@@ -40,6 +61,7 @@
 
 **Arquitetura de Pastas:**
 - `src/app/dashboard/properties/page.tsx`: Listagem Master.
+- `src/app/dashboard/properties/new/page.tsx`: Wizard de Criação.
 - `src/app/dashboard/properties/[id]/page.tsx`: Detalhes e Edição.
 - `src/app/dashboard/properties/components/`: PropertyCard, PropertyTable, PropertyForm.
 - `src/components/ui/data-table.tsx`: Componente base de tabela.
@@ -67,5 +89,5 @@
 
 ---
 
-*Criado em: 2026-01-06*
-*Autor: 07 - Helena*
+*Atualizado em: 2026-01-08*
+*Autor: 01 - Ricardo (Refatorado)*

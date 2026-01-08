@@ -42,7 +42,7 @@ function ChatPageContent() {
     }, [searchParams]);
 
     return (
-        <div className="h-[calc(100vh-64px)] border border-border rounded-xl overflow-hidden flex shadow-2xl shadow-primary/5">
+        <div className="h-[calc(100vh-64px)] luxury-card overflow-hidden flex">
             <ChatList
                 selectedId={selectedChatId}
                 onSelect={setSelectedChatId}

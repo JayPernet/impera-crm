@@ -8,24 +8,48 @@ import { z } from "zod";
 const propertySchema = z.object({
     title: z.string().min(1, "Título é obrigatório"),
     type: z.string().min(1, "Tipo é obrigatório"),
+    transaction_type: z.enum(["venda", "aluguel"]).optional(),
     price: z.coerce.number().min(0),
     status: z.enum(["disponivel", "reservado", "vendido", "alugado"]).default("disponivel"),
     description: z.string().optional(),
 
     // Address
-    address_street: z.string().optional(),
+    address_logradouro: z.string().optional(),
     address_number: z.string().optional(),
     address_bairro: z.string().optional(),
     address_city: z.string().optional(),
     address_state: z.string().optional(),
-    address_zip: z.string().optional(),
+    address_cep: z.string().optional(),
 
     // Details
     bedrooms: z.coerce.number().optional(),
     suites: z.coerce.number().optional(),
     bathrooms: z.coerce.number().optional(),
     parking_spaces: z.coerce.number().optional(),
+
+    // Areas (all optional text fields as per DB)
     area_m2: z.string().optional(),
+    area_privativa: z.string().optional(),
+    area_construida: z.string().optional(),
+
+    // Financial (optional)
+    iptu: z.string().optional(),
+    condominio_fee: z.string().optional(),
+    aceita_financiamento: z.coerce.boolean().optional(),
+    accept_exchange: z.coerce.boolean().optional(),
+
+    // Visibility Toggles
+    mostrar_endereco: z.coerce.boolean().optional(),
+    mostrar_bairro: z.coerce.boolean().optional(),
+    mostrar_preco: z.coerce.boolean().optional(),
+
+    // Marketing
+    tarja_texto: z.string().optional(),
+    tarja_cor: z.string().optional(),
+
+    // Admin
+    internal_notes: z.string().optional(),
+    tipo_negociacao: z.enum(["publico", "privado"]).optional(),
 });
 
 export async function createProperty(prevState: any, formData: FormData) {
@@ -212,4 +236,12 @@ export async function updateProperty(id: string, prevState: any, formData: FormD
     redirect("/dashboard/properties");
 }
 
+export async function getPropertyLeadInterests(propertyId: string) {
+    const supabase = await createClient();
 
+    // TODO: This requires a join table (lead_property_interests) to track which leads are interested in which properties
+    // For now, returning empty array to prevent errors
+    // Future implementation should query: SELECT leads.* FROM leads JOIN lead_property_interests ON leads.id = lead_property_interests.lead_id WHERE lead_property_interests.property_id = propertyId
+
+    return [];
+}

@@ -33,13 +33,41 @@ export function ChatList({ onSelect, selectedId, extraChat }: ChatListProps) {
 
     // Fetch conversations on mount
     useEffect(() => {
-        setIsLoading(true);
-        getConversations()
-            .then(data => {
-                setLocalConversations(data);
-            })
-            .catch(err => console.error("Failed to load chats", err))
-            .finally(() => setIsLoading(false));
+        async function loadLeads() {
+            setIsLoading(true);
+
+            try {
+                const { createClient } = await import("@/utils/supabase/client");
+                const supabase = createClient();
+
+                const { data, error } = await supabase
+                    .from("leads")
+                    .select("id, full_name, phone, last_contact_at")
+                    .not("phone", "is", null)
+                    .order("last_contact_at", { ascending: false });
+
+                if (!error && data) {
+                    // Transform leads to ChatConversation format
+                    const conversations: ChatConversation[] = data.map(lead => ({
+                        id: `lead-${lead.phone}`,
+                        name: lead.full_name,
+                        phone: lead.phone,
+                        lastMessage: "Clique para ver mensagens",
+                        time: lead.last_contact_at
+                            ? new Date(lead.last_contact_at).toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" })
+                            : "",
+                        unread: 0
+                    }));
+                    setLocalConversations(conversations);
+                }
+            } catch (err) {
+                console.error("Failed to load leads", err);
+            } finally {
+                setIsLoading(false);
+            }
+        }
+
+        loadLeads();
     }, []);
 
     // Sync extraChat if provided via URL/Props

@@ -68,10 +68,10 @@ export function Sidebar({ role, fullName }: { role?: string; fullName?: string }
                             key={item.href}
                             href={item.href}
                             className={cn(
-                                "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 group",
+                                "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 group relative",
                                 isActive
-                                    ? "bg-primary/10 text-primary border border-primary/20 shadow-sm"
-                                    : "text-text-secondary hover:text-text-primary hover:bg-surface-elevated"
+                                    ? "bg-white/[0.02] text-primary border-l-2 border-primary"
+                                    : "text-text-secondary hover:text-text-primary hover:bg-white/[0.01] border-l-2 border-transparent"
                             )}
                         >
                             <item.icon className={cn("h-5 w-5", isActive ? "text-primary" : "group-hover:text-primary")} />
@@ -83,7 +83,7 @@ export function Sidebar({ role, fullName }: { role?: string; fullName?: string }
 
             {/* User / Footer */}
             <div className="p-4 border-t border-border">
-                <div className="flex items-center justify-between p-4 bg-surface-elevated rounded-xl border border-border-strong shadow-inner shadow-primary/5">
+                <div className="flex items-center justify-between p-4 bg-black/40 rounded-xl border border-white/[0.03]">
                     <div className="flex items-center gap-3">
                         <div className="h-9 w-9 rounded-full bg-background border border-primary/40 flex items-center justify-center text-xs font-bold text-primary">
                             {initials}

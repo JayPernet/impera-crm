@@ -110,6 +110,7 @@ Herdamos as tabelas existentes do PO para manter retrocompatibilidade com as aut
 
 ### 💬 WhatsApp Engine
 - `n8n_historico_mensagens`: JSONB logs com trigger de `created_at`.
+  - **⚠️ CRITICAL (Future Official DB):** Esta tabela precisa de uma coluna `organization_id` (uuid, FK `organizations.id`) para permitir filtragem multi-tenant no Chat UI. Atualmente, o DB "VANESSA" (teste) não possui essa coluna, então o filtro é feito via JOIN com `leads.phone`. Na migração para produção, adicionar essa coluna é **MANDATÓRIO** para evitar vazamento de conversas entre imobiliárias.
 - `n8n_fila_mensagens`: Fila de saída.
 - `keepalive`: Tabela técnica para evitar pausa do projeto Supabase.
 

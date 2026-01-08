@@ -7,29 +7,55 @@ import {
     getCoreRowModel,
     useReactTable,
     getPaginationRowModel,
+    getFilteredRowModel,
+    ColumnFiltersState,
 } from "@tanstack/react-table"
 
 import { cn } from "@/lib/utils"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, Search } from "lucide-react"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
+    searchKey?: string
 }
 
 export function DataTable<TData, TValue>({
     columns,
     data,
+    searchKey = "title",
 }: DataTableProps<TData, TValue>) {
+    const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
+    const [globalFilter, setGlobalFilter] = React.useState("")
+
     const table = useReactTable({
         data,
         columns,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
+        onColumnFiltersChange: setColumnFilters,
+        getFilteredRowModel: getFilteredRowModel(),
+        onGlobalFilterChange: setGlobalFilter,
+        state: {
+            columnFilters,
+            globalFilter,
+        },
     })
 
     return (
         <div className="space-y-4">
+            {/* Search Input */}
+            <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-text-tertiary" />
+                <input
+                    type="text"
+                    placeholder="Buscar imóveis..."
+                    value={globalFilter ?? ""}
+                    onChange={(e) => setGlobalFilter(e.target.value)}
+                    className="w-full h-10 pl-10 pr-4 bg-surface-elevated border border-border-strong rounded-lg text-text-primary placeholder:text-text-tertiary focus:outline-none focus:border-primary transition-colors"
+                />
+            </div>
+
             <div className="rounded-md border border-border bg-surface/40 backdrop-blur-sm overflow-hidden">
                 <table className="w-full text-sm text-left">
                     <thead className="bg-surface-elevated text-text-secondary uppercase text-xs font-semibold tracking-wider">

@@ -20,6 +20,7 @@ import { KanbanColumn } from "./kanban-column";
 import { LeadCard } from "./lead-card";
 import { updateLeadStatus } from "@/app/dashboard/leads/actions";
 import { toast } from "sonner"; // Assuming we install sonner or just use console for now if not installed. I'll stick to console for safety in auto-pilot.
+import { triggerConfetti } from "@/components/ui/confetti";
 
 interface KanbanBoardProps {
     initialLeads: Lead[];
@@ -118,6 +119,11 @@ export function KanbanBoard({ initialLeads }: KanbanBoardProps) {
         }
 
         if (newStatus) {
+            // Trigger confetti if moving to "Fechado"
+            if (newStatus === "Fechado") {
+                triggerConfetti();
+            }
+
             // Optimistic update was already done in DragOver for visuals.
             // We just ensure we persist it.
             // We verify if the actual DB update is needed (though DragOver usually settles it).

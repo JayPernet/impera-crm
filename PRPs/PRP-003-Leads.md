@@ -6,32 +6,52 @@
 
 ---
 
+### 🧠 Validação (Ricardo's Methodology)
+
+**1. A Gambiarra (Workaround):**
+*Corretores usam o recurso "Etiquetas" do WhatsApp Business em seus celulares pessoais para tentar simular um funil (Ex: "A - Quente", "B - Visita").*
+
+**2. O Ódio Tolerado (Pain Point):**
+*O dono da imobiliária odeia perguntar "E aquele cliente da cobertura?" e ouvir "Ih, esqueci de responder, esfriou".*
+
+**3. A Customização (Feature Gap):**
+*Gerentes criam grupos de WhatsApp "Mural de Oportunidades" e ficam cobrando status manualmente de cada lead.*
+
+---
+
+### ✍️ Copy Insights (Handover para Pamela)
+
+- **Headline Pain:** "Chega de perder vendas por esquecimento."
+- **Value Prop:** "Visualize cada real na mesa. Arraste, solte e feche."
+- **Feature Hero:** "Pipeline Visual: O mapa do seu dinheiro, do 'Oi' até o 'Assinado'."
+
+---
+
 #### ✅ Checklist de Completude (Validar antes de executar)
 
 **1. Contexto e Escopo**
 - [x] Objetivo: Visualizar e manipular o fluxo de vendas.
 - [x] Dependências: `leads` table (já criada), Auth (já funcional).
-- [ ] Escopo: Kanban Board, Lista de Clientes, Criação Manual de Lead.
+- [x] Escopo: Kanban Board, Lista de Clientes, Criação Manual de Lead.
 
 **2. Especificações de Layout**
-- [ ] **Kanban Board:** Colunas representando `status` ou `pipeline_step`.
+- [x] **Kanban Board:** Colunas representando `status` ou `pipeline_step`.
     - Estágios: `Novo`, `Em Contato`, `Visita Agendada`, `Visita Realizada`, `Em Negociação`, `Fechado`, `Perdido`.
-- [ ] **Drag & Drop:** Usar `@hello-pangea/dnd` ou `dnd-kit` para mover cards.
-- [ ] **Lead Card:** Nome (Negrito), Telefone, Última Interação (Relativa), Badge de Origem.
-- [ ] **Client List:** Tabela simples para busca rápida (Data Grid reutilizado).
+- [x] **Drag & Drop:** Usar `@dnd-kit/core` (já instalado) para mover cards.
+- [x] **Lead Card:** Nome (Negrito), Telefone, Última Interação (Relativa), Badge de Origem.
+- [x] **Client List:** Tabela simples para busca rápida (Data Grid reutilizado).
 
 **3. Detalhamento de Componentes**
-- [ ] **Avatar Placeholder:** Círculo com iniciais coloridas (ex: "JP" em fundo Índigo) para substituir fotos.
-- [ ] **Quick Actions:** Botão de WhatsApp direto no card.
+- [x] **Quick Actions:** Botão de WhatsApp direto no card.
 
 **4. Integração com Backend**
-- [ ] **Tabela `leads`:**
+- [x] **Tabela `leads`:**
     - Campos Chave: `pipeline_step` (int), `status` (text), `source` (text).
-- [ ] **Server Actions:** `moveLead(id, newStep)`, `createLead(data)`.
-- [ ] **Real-time:** (Opcional por enquanto) Atualizar Kanban se outro user mexer.
+- [x] **Server Actions:** `moveLead(id, newStep)`, `createLead(data)`.
+- [x] **Real-time:** (Opcional por enquanto) Atualizar Kanban se outro user mexer.
 
 **5. Automação (Hook)**
-- [ ] Disparar Webhook para N8N apenas na criação (`INSERT`). A movimentação de card é interna por enquanto.
+- [x] Disparar Webhook para N8N apenas na criação (`INSERT`). A movimentação de card é interna por enquanto.
 
 ---
 
@@ -45,7 +65,7 @@
 - `src/components/leads/lead-card.tsx`: Card individual.
 
 **Bibliotecas:**
-- `dnd-kit` (Recomendado pela acessibilidade e modernidade) ou `@hello-pangea/dnd`.
+- `dnd-kit` (Já consta no package.json).
 
 ---
 
@@ -59,5 +79,5 @@
 
 ---
 
-*Criado em: 2026-01-06*
-*Autor: 07 - Helena*
+*Atualizado em: 2026-01-08*
+*Autor: 01 - Ricardo (Refatorado)*

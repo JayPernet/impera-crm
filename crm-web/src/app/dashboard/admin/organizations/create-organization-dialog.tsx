@@ -53,9 +53,9 @@ export function CreateOrganizationDialog() {
         return (
             <button
                 onClick={() => setIsOpen(true)}
-                className="h-10 px-5 rounded-lg bg-primary hover:bg-primary-light text-background font-bold text-sm flex items-center gap-2 transition-all active:scale-[0.98] shadow-lg shadow-primary/20"
+                className="h-9 px-5 rounded-lg bg-primary hover:bg-primary-light text-background font-bold text-xs uppercase tracking-wide flex items-center gap-2 transition-all active:scale-[0.98] shadow-[0_0_20px_rgba(255,205,0,0.3)]"
             >
-                <Plus className="h-4 w-4 stroke-[3px]" />
+                <Plus className="h-3.5 w-3.5 stroke-[3px]" />
                 Nova Unidade
             </button>
         );
@@ -70,16 +70,16 @@ export function CreateOrganizationDialog() {
             />
 
             {/* Modal */}
-            <div className="relative w-full max-w-2xl max-h-[95vh] overflow-y-auto bg-surface-elevated border border-border-strong rounded-xl shadow-[0_24px_48px_-12px_rgba(0,0,0,0.5)] transition-all animate-in fade-in zoom-in duration-200">
+            <div className="relative w-full max-w-2xl max-h-[95vh] overflow-y-auto luxury-card border-none shadow-[0_24px_48px_-12px_rgba(0,0,0,0.5)] transition-all animate-in fade-in zoom-in duration-200">
                 <form onSubmit={handleSubmit} className="p-0 space-y-0">
                     {/* Header */}
                     <div className="p-6 border-b border-border bg-surface/50 backdrop-blur-md rounded-t-xl flex items-center justify-between sticky top-0 z-10">
                         <div>
-                            <h2 className="text-xl font-semibold text-text-primary flex items-center gap-2 tracking-tight">
-                                <Building2 className="h-5 w-5 text-primary" />
+                            <h2 className="text-lg font-bold text-primary flex items-center gap-2 tracking-tight">
+                                <Building2 className="h-5 w-5" />
                                 Cadastrar Nova Unidade
                             </h2>
-                            <p className="text-[10px] font-bold text-text-secondary mt-1 uppercase tracking-widest opacity-70">
+                            <p className="sub-header mt-1 opacity-60">
                                 Expandir Ecossistema Impera
                             </p>
                         </div>
@@ -106,7 +106,7 @@ export function CreateOrganizationDialog() {
                                     <input
                                         name="name"
                                         required
-                                        className="w-full h-10 bg-background border border-border-strong rounded-lg px-3 text-sm text-text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all font-medium"
+                                        className="w-full h-10 bg-white/[0.03] border border-white/[0.05] rounded-lg px-3 text-sm text-text-primary focus:outline-none focus:border-primary/50 focus:bg-white/[0.05] transition-all font-medium placeholder:text-text-disabled"
                                         placeholder="Ex: Prime Realty"
                                     />
                                 </div>
@@ -115,7 +115,7 @@ export function CreateOrganizationDialog() {
                                     <input
                                         name="slug"
                                         required
-                                        className="w-full h-10 bg-background border border-border-strong rounded-lg px-3 text-sm text-text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all font-mono"
+                                        className="w-full h-10 bg-white/[0.03] border border-white/[0.05] rounded-lg px-3 text-sm text-text-primary focus:outline-none focus:border-primary/50 focus:bg-white/[0.05] transition-all font-mono placeholder:text-text-disabled"
                                         placeholder="prime-realty"
                                     />
                                 </div>
@@ -135,7 +135,7 @@ export function CreateOrganizationDialog() {
                                     <input
                                         name="adminName"
                                         required
-                                        className="w-full h-10 bg-background border border-border-strong rounded-lg px-3 text-sm text-text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all font-medium"
+                                        className="w-full h-10 bg-white/[0.03] border border-white/[0.05] rounded-lg px-3 text-sm text-text-primary focus:outline-none focus:border-primary/50 focus:bg-white/[0.05] transition-all font-medium placeholder:text-text-disabled"
                                         placeholder="Diretor Unidade"
                                     />
                                 </div>
@@ -145,7 +145,7 @@ export function CreateOrganizationDialog() {
                                         name="adminEmail"
                                         type="email"
                                         required
-                                        className="w-full h-10 bg-background border border-border-strong rounded-lg px-3 text-sm text-text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all"
+                                        className="w-full h-10 bg-white/[0.03] border border-white/[0.05] rounded-lg px-3 text-sm text-text-primary focus:outline-none focus:border-primary/50 focus:bg-white/[0.05] transition-all placeholder:text-text-disabled"
                                         placeholder="diretoria@unidade.com"
                                     />
                                 </div>
@@ -159,7 +159,7 @@ export function CreateOrganizationDialog() {
                                             type={showPassword ? "text" : "password"}
                                             value={password}
                                             readOnly
-                                            className="w-full h-10 bg-background border border-border-strong rounded-lg pl-3 pr-20 text-sm font-mono text-text-primary focus:outline-none focus:border-primary transition-all"
+                                            className="w-full h-10 bg-white/[0.03] border border-white/[0.05] rounded-lg pl-3 pr-20 text-sm font-mono text-text-primary focus:outline-none focus:border-primary/50 focus:bg-white/[0.05] transition-all"
                                         />
                                         <div className="absolute right-0 top-0 h-full flex items-center gap-0.5 px-1">
                                             <button

@@ -35,8 +35,8 @@ export default async function ClientsPage() {
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-text-primary">Carteira de Clientes</h1>
-                    <p className="text-text-secondary mt-1">Gestão de relacionamento e histórico de compras.</p>
+                    <h1 className="text-xl font-bold tracking-tight text-primary">Carteira de Clientes</h1>
+                    <p className="sub-header mt-1">Relacionamento e compras</p>
                 </div>
                 <Link
                     href="/dashboard/clients/new"
@@ -49,16 +49,16 @@ export default async function ClientsPage() {
 
             {/* Metrics Row */}
             <div className="grid gap-4 md:grid-cols-3">
-                <div className="p-6 rounded-xl border border-border bg-surface/40 backdrop-blur-sm flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                <div className="p-6 luxury-card flex items-center gap-4">
+                    <div className="h-12 w-12 rounded-full bg-white/[0.03] flex items-center justify-center text-primary border border-white/5">
                         <Users className="h-6 w-6" />
                     </div>
                     <div>
-                        <h3 className="text-sm font-medium text-text-secondary">Total de Clientes</h3>
-                        <span className="text-2xl font-bold text-text-primary">{formattedClients.length}</span>
+                        <h3 className="sub-header tracking-[0.2em] mb-1">Total de Clientes</h3>
+                        <span className="text-xl font-bold text-primary">{formattedClients.length}</span>
                     </div>
                 </div>
-                 {/* Placeholder metrics */}
+                {/* Placeholder metrics */}
                 <div className="p-6 rounded-xl border border-border bg-surface/40 backdrop-blur-sm">
                     <h3 className="text-sm font-medium text-text-secondary">LTV Médio</h3>
                     <div className="mt-2 flex items-baseline gap-2">
@@ -66,7 +66,7 @@ export default async function ClientsPage() {
                     </div>
                 </div>
                 <div className="p-6 rounded-xl border border-border bg-surface/40 backdrop-blur-sm">
-                     <h3 className="text-sm font-medium text-text-secondary">Ativos este Mês</h3>
+                    <h3 className="text-sm font-medium text-text-secondary">Ativos este Mês</h3>
                     <div className="mt-2 flex items-baseline gap-2">
                         <span className="text-2xl font-bold text-text-primary">0</span>
                     </div>

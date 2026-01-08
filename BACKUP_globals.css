@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+:root {
+  /* Design System: Impera Luxury (High-End Watch Aesthetic) */
+  --primary: #E0C58F;
+  /* Quicksand Gold */
+  --primary-light: #ece0c5;
+  --primary-dark: #c5a86d;
+  --primary-muted: rgba(224, 181, 143, 0.12);
+  --primary-foreground: #112250;
+  /* Neutral Scale - Sapphire & Royal Blue Hierarchy */
+  --background: #112250;
+  /* Royal Blue (Darkest) */
+  --surface: #3C507D;
+  /* Sapphire */
+  --surface-elevated: #4b6291;
+  /* Elevated Sapphire */
+  --border: #4d608b;
+  --border-subtle: #112250;
+  --border-strong: #E0C58F;
+  /* Text Scale - Ivory & Shellstone */
+  --text-primary: #F5F0E9;
+  /* Swan Wing */
+  --text-secondary: #D9CBC2;
+  /* Shellstone */
+  --text-tertiary: #3C507D;
+  --text-disabled: #4d608b;
+  --text-inverse: #112250;
+  /* Semantic Scale */
+  --success: #2ECC71;
+  --warning: #F1C40F;
+  --danger: #E74C3C;
+  --info: #4A6CF7;
+  /* Spacing Scale (4px base) */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-muted: var(--primary-muted);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-disabled: var(--text-disabled);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+  --border-radius-sm: var(--radius-sm);
+  --border-radius-md: var(--radius-md);
+  --border-radius-lg: var(--radius-lg);
+  --border-radius-xl: var(--radius-xl);
+  --spacing-1: var(--spacing-1);
+  --spacing-2: var(--spacing-2);
+  --spacing-3: var(--spacing-3);
+  --spacing-4: var(--spacing-4);
+  --spacing-5: var(--spacing-5);
+  --spacing-6: var(--spacing-6);
+  --spacing-8: var(--spacing-8);
+  --spacing-10: var(--spacing-10);
+  --spacing-12: var(--spacing-12);
+  --spacing-16: var(--spacing-16);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-jetbrains-mono);
+  /* Animation */
+  --animate-shake: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+
+  @keyframes shake {
+
+    10%,
+    90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+      transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-geist-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+code,
+pre {
+  font-family: var(--font-jetbrains-mono), monospace;
+}
+
+/* Minimal Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(242, 201, 76, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(242, 201, 76, 0.4);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(242, 201, 76, 0.2) transparent;
+}

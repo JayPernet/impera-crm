@@ -55,7 +55,7 @@ export function LeadCard({ lead }: LeadCardProps) {
             <div
                 ref={setNodeRef}
                 style={style}
-                className="opacity-30 bg-surface-elevated border border-primary/50 rounded-lg h-[120px]"
+                className="opacity-30 luxury-card h-[120px]"
             />
         );
     }
@@ -67,13 +67,12 @@ export function LeadCard({ lead }: LeadCardProps) {
             {...attributes}
             {...listeners}
             className={cn(
-                "bg-surface/30 backdrop-blur-xl border border-border rounded-lg p-4 cursor-grab active:cursor-grabbing hover:border-primary/50 transition-all group relative",
-                "shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10"
+                "luxury-card p-4 cursor-grab active:cursor-grabbing hover:border-white/10 transition-all group relative"
             )}
         >
             <div className="flex justify-between items-start mb-2">
                 <div className="flex items-center gap-2">
-                    <div className="h-6 w-6 rounded-full bg-primary/20 text-primary border border-primary/20 flex items-center justify-center text-[10px] font-bold">
+                    <div className="h-6 w-6 rounded-full bg-white/[0.03] text-primary border border-white/5 flex items-center justify-center text-[10px] font-bold">
                         {lead.name.substring(0, 2).toUpperCase()}
                     </div>
                     <span className="text-xs font-medium text-text-secondary">{lead.source}</span>
@@ -81,7 +80,8 @@ export function LeadCard({ lead }: LeadCardProps) {
                 <span className="text-[10px] text-text-disabled font-mono">{lead.lastInteraction}</span>
             </div>
 
-            <h4 className="text-sm font-semibold text-text-primary mb-1">{lead.name}</h4>
+            <h4 className="text-sm font-semibold text-text-primary mb-0.5">{lead.name}</h4>
+            <p className="text-[11px] text-text-tertiary mb-1">{lead.phone}</p>
 
             {lead.value && (
                 <p className="text-xs text-success font-medium mb-3">
@@ -89,7 +89,7 @@ export function LeadCard({ lead }: LeadCardProps) {
                 </p>
             )}
 
-            <div className="flex items-center gap-2 mt-2 pt-2 border-t border-border-subtle">
+            <div className="flex items-center gap-2 mt-2 pt-2 border-t border-white/[0.03]">
                 <Link
                     href={`/dashboard/chat?phone=${encodeURIComponent(lead.phone)}&name=${encodeURIComponent(lead.name)}`}
                     className="p-1.5 rounded-md hover:bg-surface-elevated text-text-tertiary hover:text-success transition-colors"
@@ -97,7 +97,7 @@ export function LeadCard({ lead }: LeadCardProps) {
                 >
                     <MessageCircle className="h-3.5 w-3.5" />
                 </Link>
-                <Link href={`/dashboard/leads/${lead.id}/edit`} className="p-1.5 rounded-md hover:bg-surface-elevated text-text-tertiary hover:text-primary transition-colors" title="Editar">
+                <Link href={`/dashboard/leads/${lead.id}/edit`} className="p-1.5 rounded-md hover:bg-white/[0.05] text-text-tertiary hover:text-primary transition-colors" title="Editar">
                     <Pencil className="h-3.5 w-3.5" />
                 </Link>
                 <button

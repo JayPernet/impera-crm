@@ -19,6 +19,10 @@ export type Property = {
     address_bairro: string
     created_at: string
     images_urls: string[] | null
+    bedrooms?: number
+    bathrooms?: number
+    parking_spaces?: number
+    area_m2?: string
 }
 
 const statusMap = {

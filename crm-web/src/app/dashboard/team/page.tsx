@@ -22,8 +22,8 @@ export default async function TeamPage() {
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-text-primary">Equipe</h1>
-                    <p className="text-text-secondary mt-1">Gerencie os corretores da sua imobiliária.</p>
+                    <h1 className="text-xl font-bold tracking-tight text-primary">Equipe</h1>
+                    <p className="sub-header mt-1">Gestão de corretores</p>
                 </div>
                 <AddMemberButton />
             </div>

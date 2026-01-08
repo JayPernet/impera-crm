@@ -129,6 +129,10 @@ export function LeadForm({ initialData, propertyInterests = [] }: LeadFormProps)
                                 <option value="Novo">Novo</option>
                                 <option value="Em Contato">Em Contato</option>
                                 <option value="Visita Agendada">Visita Agendada</option>
+                                <option value="Visita Realizada">Visita Realizada</option>
+                                <option value="Em Negociação">Em Negociação</option>
+                                <option value="Fechado">Fechado</option>
+                                <option value="Perdido">Perdido</option>
                             </select>
                         </div>
                     </div>

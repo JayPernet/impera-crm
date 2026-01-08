@@ -55,15 +55,15 @@ export default async function AdminOrganizationsPage() {
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-2xl font-semibold text-text-primary">Administração de Imobiliárias</h1>
-                    <p className="text-sm text-text-secondary mt-1">Gerencie todas as imobiliárias do sistema</p>
+                    <h1 className="text-xl font-bold tracking-tight text-primary">Administração de Imobiliárias</h1>
+                    <p className="sub-header mt-1">Gestão de sistema</p>
                 </div>
                 <CreateOrganizationDialog />
             </div>
 
             {/* Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div className="p-4 rounded-lg border border-border bg-surface/40 backdrop-blur-sm">
+                <div className="p-4 luxury-card">
                     <div className="flex items-center gap-3">
                         <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
                             <Building2 className="h-5 w-5 text-primary" />
@@ -75,7 +75,7 @@ export default async function AdminOrganizationsPage() {
                     </div>
                 </div>
 
-                <div className="p-4 rounded-lg border border-border bg-surface/40 backdrop-blur-sm">
+                <div className="p-4 luxury-card">
                     <div className="flex items-center gap-3">
                         <div className="h-10 w-10 rounded-lg bg-success/10 flex items-center justify-center">
                             <Power className="h-5 w-5 text-success" />
@@ -89,7 +89,7 @@ export default async function AdminOrganizationsPage() {
                     </div>
                 </div>
 
-                <div className="p-4 rounded-lg border border-border bg-surface/40 backdrop-blur-sm">
+                <div className="p-4 luxury-card">
                     <div className="flex items-center gap-3">
                         <div className="h-10 w-10 rounded-lg bg-danger/10 flex items-center justify-center">
                             <PowerOff className="h-5 w-5 text-danger" />
@@ -103,7 +103,7 @@ export default async function AdminOrganizationsPage() {
                     </div>
                 </div>
 
-                <div className="p-4 rounded-lg border border-border bg-surface/40 backdrop-blur-sm">
+                <div className="p-4 luxury-card">
                     <div className="flex items-center gap-3">
                         <div className="h-10 w-10 rounded-lg bg-info/10 flex items-center justify-center">
                             <MessageSquare className="h-5 w-5 text-info" />
@@ -119,13 +119,13 @@ export default async function AdminOrganizationsPage() {
             </div>
 
             {/* Organizations Table */}
-            <div className="rounded-lg border border-border bg-surface/30 backdrop-blur-xl overflow-hidden">
-                <div className="p-6 border-b border-border">
+            < div className="luxury-card overflow-hidden" >
+                <div className="p-6 border-b border-white/[0.05]">
                     <h2 className="text-lg font-semibold text-text-primary">Imobiliárias Cadastradas</h2>
                     <p className="text-sm text-text-secondary mt-1">{orgsWithCounts.length} imobiliárias no sistema</p>
                 </div>
                 <OrganizationTable organizations={orgsWithCounts} />
-            </div>
-        </div>
+            </div >
+        </div >
     );
 }

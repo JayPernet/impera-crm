@@ -123,12 +123,24 @@ export async function updateLead(leadId: string, formData: FormData) {
 export async function updateLeadStatus(leadId: string, newStatus: LeadStatus) {
     const supabase = await createClient();
 
-    // Auth check implicitly handled by RLS, but organization check is good practice if we want strictness.
-    // For speed, relying on RLS: user can only update leads in their org.
+    // Map status string to pipeline_step index
+    const statusIndex = [
+        "Novo",
+        "Em Contato",
+        "Visita Agendada",
+        "Visita Realizada",
+        "Em Negociação",
+        "Fechado",
+        "Perdido"
+    ].indexOf(newStatus);
 
     const { error } = await supabase
         .from("leads")
-        .update({ status: newStatus, last_contact_at: new Date().toISOString() })
+        .update({
+            status: newStatus,
+            pipeline_step: statusIndex !== -1 ? statusIndex : 0,
+            last_contact_at: new Date().toISOString()
+        })
         .eq("id", leadId);
 
     if (error) {
@@ -136,7 +148,6 @@ export async function updateLeadStatus(leadId: string, newStatus: LeadStatus) {
         throw new Error("Failed to update status");
     }
 
-    revalidatePath("/dashboard/leads");
     revalidatePath("/dashboard/leads");
 }
 

@@ -76,14 +76,14 @@ export function OrganizationTable({ organizations }: { organizations: Organizati
             <div className="overflow-x-auto">
                 <table className="w-full">
                     <thead>
-                        <tr className="bg-background border-b border-border">
-                            <th className="text-left text-xs font-semibold text-text-secondary uppercase tracking-wider px-6 py-3">Nome</th>
-                            <th className="text-left text-xs font-semibold text-text-secondary uppercase tracking-wider px-6 py-3">Slug</th>
-                            <th className="text-left text-xs font-semibold text-text-secondary uppercase tracking-wider px-6 py-3">Usuários</th>
-                            <th className="text-left text-xs font-semibold text-text-secondary uppercase tracking-wider px-6 py-3">Features</th>
-                            <th className="text-left text-xs font-semibold text-text-secondary uppercase tracking-wider px-6 py-3">Status</th>
-                            <th className="text-left text-xs font-semibold text-text-secondary uppercase tracking-wider px-6 py-3">Criado em</th>
-                            <th className="text-right text-xs font-semibold text-text-secondary uppercase tracking-wider px-6 py-3">Ações</th>
+                        <tr className="border-b border-white/[0.05]">
+                            <th className="text-left py-4 px-6 sub-header">Nome</th>
+                            <th className="text-left py-4 px-6 sub-header">Slug</th>
+                            <th className="text-left py-4 px-6 sub-header">Usuários</th>
+                            <th className="text-left py-4 px-6 sub-header">Features</th>
+                            <th className="text-left py-4 px-6 sub-header">Status</th>
+                            <th className="text-left py-4 px-6 sub-header">Criado em</th>
+                            <th className="text-right py-4 px-6 sub-header">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -95,8 +95,8 @@ export function OrganizationTable({ organizations }: { organizations: Organizati
                             </tr>
                         ) : (
                             organizations.map((org) => (
-                                <tr key={org.id} className="border-b border-border-subtle hover:bg-surface-elevated/50 transition-colors">
-                                    <td className="px-6 py-3 text-sm font-medium text-text-primary">{org.name}</td>
+                                <tr key={org.id} className="border-b border-white/[0.02] hover:bg-white/[0.02] transition-colors group">
+                                    <td className="px-6 py-3 text-sm font-medium text-primary">{org.name}</td>
                                     <td className="px-6 py-3 text-sm text-text-secondary font-mono">{org.slug}</td>
                                     <td className="px-6 py-3 text-sm text-text-secondary tabular-nums">{org.userCount}</td>
                                     <td className="px-6 py-3">
@@ -161,16 +161,17 @@ export function OrganizationTable({ organizations }: { organizations: Organizati
                                 </tr>
                             ))
                         )}
-                    </tbody>
-                </table>
-            </div>
+                    </tbody >
+                </table >
+            </div >
 
             {editingOrg && (
                 <EditOrganizationDialog
                     organization={editingOrg}
                     onClose={() => setEditingOrg(null)}
                 />
-            )}
+            )
+            }
 
             <ConfirmDialog
                 isOpen={showDeleteDialog}
