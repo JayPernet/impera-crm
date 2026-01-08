@@ -1,0 +1,184 @@
+{
+    "_meta": {
+        "project": "CRM Imobiliário",
+        "derivedFrom": "Pamela Master Copywriting Template",
+        "status": "Production Ready"
+    },
+    "voiceArchitecture": {
+        "persona": "The Operational Expert - Fala de igual para igual com gestores de imobiliárias que entendem o dia a dia operacional.",
+        "sophisticationLevel": "4 - Mercado saturado de CRMs genéricos. O lead já testou outras soluções e está cético.",
+        "vocabulary": {
+            "include": [
+                "Carteira",
+                "FUP",
+                "Oportunidade",
+                "Conversão",
+                "Funil",
+                "WhatsApp Oficial/Não-Oficial",
+                "Multi-tenant",
+                "RLS"
+            ],
+            "ban": [
+                "Revolucionário",
+                "Inovador",
+                "O melhor CRM",
+                "Transforme seu negócio",
+                "Solução completa"
+            ]
+        }
+    },
+    "heroDirectResponse": {
+        "anti_fluff_headline": "CRM Imobiliário que centraliza Leads, Imóveis e WhatsApp em uma única fonte de verdade.",
+        "qualifying_subheadline": "Desenhado para imobiliárias que gerenciam +100 imóveis ativos e precisam de automação real via N8N.",
+        "primary_cta_label": "Acessar Dashboard Demo",
+        "trust_anchor": "Integração nativa com WhatsApp Oficial e Não-Oficial. Sem vendor lock-in."
+    },
+    "technicalSuperiority": {
+        "the_gap": "CRMs genéricos tratam imóveis como 'produtos' simples. Eles não entendem a complexidade de Lançamentos (Empreendimentos com dezenas de unidades) nem a necessidade de filtros técnicos avançados (metragem, andar, aceita financiamento).",
+        "our_mechanism": "Inventário Hierárquico Pro: Sistema de parent/child que permite gerenciar Empreendimentos e Unidades com filtros técnicos nativos, sem gambiarras em campos customizados.",
+        "proof_points": [
+            {
+                "label": "Filtros Técnicos",
+                "value": "15+ campos específicos",
+                "context": "Metragem, andar, aceita financiamento, tipo de negociação - tudo nativo, não em 'tags genéricas'."
+            },
+            {
+                "label": "Isolamento de Dados",
+                "value": "RLS (Row Level Security)",
+                "context": "Multi-tenancy real. Cada imobiliária vê apenas seus dados, sem risco de vazamento."
+            },
+            {
+                "label": "Automação WhatsApp",
+                "value": "N8N Ready",
+                "context": "Webhooks bidirecionais. O CRM alimenta a IA, a IA atualiza o CRM."
+            }
+        ]
+    },
+    "preQualification": {
+        "ideal_customer_profile": {
+            "triggers": [
+                "Você tem +100 imóveis ativos e perde tempo procurando 'aquele apartamento de 3 quartos no bairro X'",
+                "Você usa planilhas ou CRMs genéricos que não entendem a diferença entre Lançamento e Revenda",
+                "Você quer automatizar WhatsApp mas precisa que o CRM seja a fonte de verdade, não um sistema paralelo",
+                "Você gerencia múltiplos corretores e precisa de visibilidade total da carteira"
+            ],
+            "infrastructure": [
+                "Já usa N8N ou está disposto a adotar automação low-code",
+                "Tem WhatsApp Business (Oficial ou Não-Oficial) configurado",
+                "Equipe de 3+ corretores"
+            ]
+        },
+        "disqualifiers": {
+            "reasoning": "Este CRM foi desenhado para operações de escala. Se você tem menos de 50 imóveis ativos, uma planilha bem organizada pode ser suficiente.",
+            "minimum_threshold": "Mínimo de 50 imóveis ativos ou 3 corretores na equipe."
+        }
+    },
+    "objectionKiller": {
+        "faqs": [
+            {
+                "objection": "Como vocês garantem que os dados de uma imobiliária não vazam para outra?",
+                "rebuttal": "Usamos Row Level Security (RLS) nativo do PostgreSQL. Cada query ao banco já filtra automaticamente por organization_id. Não é 'lógica de aplicação', é isolamento de infraestrutura."
+            },
+            {
+                "objection": "Minha automação atual de WhatsApp via N8N vai parar de funcionar?",
+                "rebuttal": "Não. O CRM expõe webhooks bidirecionais. Você continua usando seus fluxos N8N, mas agora eles leem e escrevem no CRM como fonte de verdade, eliminando duplicação de dados."
+            },
+            {
+                "objection": "Preciso migrar todos os meus imóveis manualmente?",
+                "rebuttal": "Não. Oferecemos importação via CSV e migração assistida para clientes enterprise. Se você tem dados estruturados, a migração é automatizada."
+            }
+        ]
+    },
+    "conversionLogic": {
+        "final_argument": "Cada lead perdido por falta de follow-up estruturado custa, em média, R$ 15.000 em comissão não realizada. Cada hora gasta procurando imóveis em planilhas é uma hora que seu corretor não está vendendo.",
+        "cta_structure": {
+            "main": "Solicitar Acesso Beta",
+            "alternative": "Baixar Mapa de Funcionalidades (PDF)"
+        }
+    },
+    "microCopyPatterns": {
+        "cta_variants": {
+            "high_intent": {
+                "examples": [
+                    "Acessar Dashboard",
+                    "Começar Teste de 14 Dias",
+                    "Solicitar Demo Personalizada"
+                ]
+            },
+            "low_intent": {
+                "examples": [
+                    "Ver Casos de Uso",
+                    "Explorar Inventário Pro",
+                    "Assistir Walkthrough"
+                ]
+            },
+            "technical": {
+                "examples": [
+                    "Ver Arquitetura de Dados",
+                    "Revisar Políticas RLS",
+                    "Testar API de Webhooks"
+                ]
+            }
+        },
+        "trust_signals": {
+            "security": [
+                "Multi-tenancy com RLS",
+                "LGPD Compliant",
+                "Backup automático diário"
+            ],
+            "performance": [
+                "Busca em <100ms",
+                "Suporte a 10.000+ imóveis",
+                "Uptime 99.5%"
+            ],
+            "support": [
+                "Suporte em PT-BR",
+                "Onboarding assistido",
+                "Documentação completa"
+            ]
+        },
+        "empty_states": {
+            "properties": "Sua primeira oportunidade começa aqui. Cadastre um imóvel para começar a vender.",
+            "leads": "Nenhum lead ainda. Conecte seu WhatsApp para capturar automaticamente.",
+            "conversations": "Histórico de conversas aparecerá aqui após a primeira interação via WhatsApp."
+        },
+        "error_messages": {
+            "save_failed": "Não foi possível salvar o imóvel. Verifique se todos os campos obrigatórios estão preenchidos.",
+            "connection_lost": "Conexão perdida. Suas alterações foram salvas localmente e serão sincronizadas quando a conexão for restaurada.",
+            "unauthorized": "Você não tem permissão para acessar este recurso. Entre em contato com o administrador da sua imobiliária."
+        }
+    },
+    "conversionTriggers": {
+        "scarcity": {
+            "examples": [
+                "Vagas limitadas para onboarding assistido no Q1 2026",
+                "Early access para as primeiras 20 imobiliárias"
+            ]
+        },
+        "authority": {
+            "examples": [
+                "Desenvolvido por especialistas em automação imobiliária",
+                "Arquitetura validada por CTOs de SaaS B2B"
+            ]
+        },
+        "social_proof": {
+            "examples": [
+                "Testado por 5 imobiliárias em operação real",
+                "100% de retenção nos primeiros 3 meses de beta"
+            ]
+        },
+        "urgency": {
+            "examples": [
+                "Cada mês sem follow-up estruturado custa em média 15% de conversão perdida",
+                "Follow-up toma cerca de 40% do tempo diário de seus corretores, considere automatizar esse processo""Imobiliárias concorrentes já estão usando IA para qualificar leads automaticamente"
+            ]
+        },
+        "risk_reversal": {
+            "examples": [
+                "14 dias de teste completo, sem cartão de crédito",
+                "Migração assistida de dados incluída no plano Pro",
+                "Cancele a qualquer momento, sem multa"
+            ]
+        }
+    }
+}

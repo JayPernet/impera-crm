@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ClinicPro Gold/Black Luxury Theme */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    /* Primary Gold */
+    --primary: 43 72% 52%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary Dark */
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 43 72% 52%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Status Colors */
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 10%;
+    
+    --info: 217 91% 60%;
+    --info-foreground: 0 0% 100%;
+
+    /* Temperature Colors */
+    --temp-hot: 0 72% 51%;
+    --temp-warm: 38 92% 50%;
+    --temp-cold: 217 91% 60%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 43 72% 52%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar - Dark Theme */
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 43 72% 52%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 43 72% 52%;
+
+    /* Chart colors */
+    --chart-1: 43 72% 52%;
+    --chart-2: 0 0% 20%;
+    --chart-3: 160 84% 39%;
+    --chart-4: 0 72% 51%;
+    --chart-5: 217 91% 60%;
+  }
+
+  .dark {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 43 72% 52%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 43 72% 52%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 10%;
+    
+    --info: 217 91% 60%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 43 72% 52%;
+
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 43 72% 52%;
+    --sidebar-primary-foreground: 0 0% 10%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 43 72% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+@layer utilities {
+  .gold-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(48 86% 64%) 100%);
+  }
+  
+  .gold-text {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(48 86% 64%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50 shadow-lg;
+  }
+}
+
+/* FullCalendar Custom Styles & Visibility Fixes */
+.fc {
+  --fc-border-color: hsl(var(--border));
+  --fc-daygrid-event-dot-width: 8px;
+  --fc-list-event-dot-width: 10px;
+  --fc-button-text-color: hsl(var(--secondary-foreground));
+  --fc-button-bg-color: hsl(var(--primary));
+  --fc-button-border-color: transparent;
+  --fc-button-hover-bg-color: hsl(var(--primary) / 0.9);
+  --fc-button-active-bg-color: hsl(var(--primary) / 0.8);
+  --fc-event-bg-color: hsl(var(--primary));
+  --fc-event-border-color: transparent;
+  --fc-today-bg-color: hsl(var(--primary) / 0.05);
+  font-family: inherit;
+}
+
+/* Header Row (dom, seg, ter...) Visibility Fix */
+.fc .fc-col-header-cell {
+  @apply py-3 bg-secondary/5 dark:bg-secondary/20 !important;
+  border-bottom: 2px solid hsl(var(--border)) !important;
+}
+
+.fc .fc-col-header-cell-cushion {
+  @apply text-foreground font-bold text-sm tracking-wide no-underline uppercase !important;
+  color: hsl(var(--foreground)) !important;
+  opacity: 1 !important;
+}
+
+/* Background of headers in dark mode was too light in user report */
+.dark .fc .fc-col-header-cell {
+  background-color: hsl(var(--secondary) / 0.8) !important;
+}
+
+.fc .fc-daygrid-day-number {
+  @apply p-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground !important;
+  text-decoration: none !important;
+}
+
+.fc .fc-scrollgrid {
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.fc .fc-toolbar-title {
+  @apply text-xl font-bold text-foreground tracking-tight !important;
+}
+
+/* Button Styling To Match Brand */
+.fc .fc-button {
+  @apply font-semibold py-2 px-4 shadow-sm transition-all active:scale-95 !important;
+  border-radius: var(--radius) !important;
+}
+
+.fc .fc-button-primary {
+  @apply gold-gradient text-secondary border-none !important;
+}
+
+.fc .fc-button-primary:disabled {
+  @apply opacity-50 cursor-not-allowed !important;
+}
+
+.fc .fc-button-active {
+  @apply brightness-75 !important;
+}
+
+.fc .fc-event {
+  @apply rounded-md px-1.5 py-0.5 text-xs font-medium border-none shadow-sm !important;
+}
+
+.fc .fc-day-today {
+  background-color: hsl(var(--primary) / 0.05) !important;
+}
+
+.fc .fc-list-day-text,
+.fc .fc-list-day-side-text {
+  @apply font-bold text-foreground !important;
+}
+
+.fc .fc-timegrid-slot-label-cushion {
+  @apply text-xs font-medium text-muted-foreground !important;
+}
+
+a[href*="lovable.dev"], iframe[src*="lovable.dev"], div[style*="Edit with Lovable"], .lovable-badge {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  z-index: -9999 !important;
+}
