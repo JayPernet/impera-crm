@@ -1,9 +1,9 @@
 # Inventário de Banco de Dados - Impera CRM
 
-**Versão:** 1.0.0
-**Status:** Em Desenvolvimento
+**Versão:** 1.1.0
+**Status:** Atualizado (Epic 06: WhatsApp Integration)
 **Responsável:** Sofia (CTO)
-**Última Atualização:** 2026-01-16 (Data atual)
+**Última Atualização:** 2026-01-16
 
 ---
 
@@ -333,9 +333,9 @@
 
 ---
 
-### Tabela: `messages`
+### Tabela: `messages` (LEGACY - Em migração para `n8n_historico_mensagens`)
 
-**Descrição:** Armazena mensagens de chat (incluindo WhatsApp) associadas a um lead.
+**Descrição:** Armazena mensagens de chat interno ou histórico legado. **Recomenda-se utilizar `n8n_historico_mensagens` para integrações de WhatsApp.**
 **Tipo:** Feature
 
 ### Colunas
@@ -458,9 +458,9 @@
 | (N/A) | (N/A) | (N/A) | (N/A) | (N/A) |
 
 ### RLS (Row Level Security)
-**Status:** A ser habilitado
+**Status:** Habilitado
 
-**Políticas (Planejadas):**
+**Políticas:**
 1. **Nome:** `allow_organization_chat_access`
    - **Tipo:** SELECT
    - **Usando:** `session_id IN (SELECT phone FROM leads WHERE organization_id = (SELECT organization_id FROM profiles WHERE id = auth.uid()))`
@@ -470,6 +470,13 @@
    - **Tipo:** INSERT
    - **Usando:** `session_id IN (SELECT phone FROM leads WHERE organization_id = (SELECT organization_id FROM profiles WHERE id = auth.uid()))`
    - **Descrição:** Permite que usuários enviem mensagens para leads da própria organização.
+
+### Triggers
+**Trigger:** `trigger_notify_new_message`
+- **Tabela:** `n8n_historico_mensagens`
+- **Evento:** AFTER INSERT
+- **Função:** `notify_new_message()`
+- **Descrição:** Cria automaticamente uma notificação para o corretor responsável quando o lead envia uma nova mensagem.
 
 ---
 
