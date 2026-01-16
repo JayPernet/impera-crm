@@ -1,47 +1,41 @@
 'use client';
 
-import { Sparkles, MessageCircle, Database, Zap, BarChart3, Globe } from 'lucide-react';
+import { MessageCircle, Users, Database, LayoutDashboard, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 /**
  * Features Component (Solution Section)
  * 
- * Grid of feature cards highlighting key CRM capabilities based on the new copy.
- * Features luxury card styling with hover micro-interactions.
+ * Grid of feature cards highlighting key CRM capabilities.
+ * Updated with MVP copy.
  * 
  * @component
  */
 
 const features = [
     {
-        title: "Atendimento fulltime com IA",
-        description: "Seu cliente manda mensagem de madrugada? Nosso sistema responde na hora. Qualifica o lead, responde dúvidas sobre imóveis, agenda visitas. Enquanto você dorme, ela trabalha.",
-        icon: Sparkles,
-        badge: "Plano Professional+"
-    },
-    {
-        title: "WhatsApp Integrado",
-        description: "Todas as conversas dos seus corretores em um lugar só. Você vê tudo, controla tudo, não perde nada. Histórico completo de cada cliente.",
+        title: "WhatsApp Nativo",
+        description: "Atenda clientes sem sair do CRM. Histórico completo. Zero apps abertos.",
         icon: MessageCircle
     },
     {
-        title: "Gestão Real de Leads",
-        description: "Follow-up automático. Lembretes. Nenhum lead fica sem resposta. O sistema cobra seus corretores pra você.",
-        icon: Zap
+        title: "Gestão de Leads",
+        description: "Da captura ao fechamento. Funil visual. Nada se perde.",
+        icon: Users
     },
     {
-        title: "Controle da Equipe",
-        description: "Veja quantos leads cada corretor recebeu, quantos atendeu, quantos converteu. Quem tá vendendo e quem tá enrolando fica claro.",
-        icon: BarChart3
-    },
-    {
-        title: "Todos os Imóveis em Um Só Lugar",
-        description: "Fotos, características, disponibilidade. Seu corretor não precisa te ligar pra saber se o AP 302 tá disponível.",
+        title: "Banco de Imóveis",
+        description: "Portfólio organizado. Busca instantânea. Envio direto no chat.",
         icon: Database
     },
     {
-        title: "Plugin Pro Seu Site",
-        description: "Instale em seu site e cada lead de lá, vira lead no crm para você (ou nossa IA) entrar em contato em segundos.",
+        title: "Dashboard Real",
+        description: "Visão geral do negócio. Leads quentes. Vendas do mês. Equipe em ação.",
+        icon: LayoutDashboard
+    },
+    {
+        title: "Integração com seu Site",
+        description: "Leads direto do seu site pro CRM. Automático.",
         icon: Globe
     }
 ];
@@ -64,12 +58,12 @@ export function Features() {
                 >
                     <h2
                         style={{ marginBottom: 'var(--spacing-8)' }}
-                        className="font-display text-[clamp(2.5rem,5vw,3.5rem)] font-bold uppercase leading-[1.1] tracking-[-0.03em] text-white"
+                        className="font-display text-[clamp(2.5rem,5vw,3.5rem)] font-bold uppercase leading-[1.1] tracking-[-0.03em] text-text-primary"
                     >
-                        O Sistema Que Não Deixa <span className="text-gold">Dinheiro Escapar.</span>
+                        Impera CRM: <span className="text-gold">Comando Total</span> em Uma Tela.
                     </h2>
-                    <p className="max-w-2xl text-center text-lg leading-relaxed text-[#9AA5B1]">
-                        Unificamos toda a sua operação, do lead ao contrato, em uma única central de comando de alta performance para que você pare de perder vendas por desorganização.
+                    <p className="max-w-2xl text-center text-lg leading-relaxed text-text-secondary">
+                        Todas as funcionalidades que você precisa para sua imobiliária vender mais.
                     </p>
                 </div>
 
@@ -81,18 +75,24 @@ export function Features() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="group relative overflow-hidden rounded-xl border border-white/5 bg-[#151A21]/80 p-8 backdrop-blur-md transition-all duration-500 hover:border-gold/40 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+                            className="card group"
                         >
-                            {feature.badge && (
-                                <div className="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-widest text-gold/60">
-                                    {feature.badge}
-                                </div>
-                            )}
-                            <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-gold/10 text-gold shadow-[0_0_15px_rgba(255,205,0,0.1)] transition-all duration-300 group-hover:bg-gold/20 group-hover:shadow-[0_0_20px_rgba(255,205,0,0.2)]">
+                            <div
+                                className="inline-flex h-12 w-12 items-center justify-center text-gold bg-gold/10 transition-all duration-300 group-hover:bg-gold/20"
+                                style={{
+                                    marginBottom: 'var(--spacing-6)',
+                                    borderRadius: 'var(--radius-lg)'
+                                }}
+                            >
                                 <feature.icon className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" strokeWidth={1.5} />
                             </div>
-                            <h3 className="mb-3 text-xl font-bold text-white group-hover:text-gold transition-colors">{feature.title}</h3>
-                            <p className="text-[#9AA5B1] leading-relaxed text-sm">
+                            <h3
+                                className="text-xl font-bold text-text-primary group-hover:text-gold transition-colors"
+                                style={{ marginBottom: 'var(--spacing-3)' }}
+                            >
+                                {feature.title}
+                            </h3>
+                            <p className="text-text-secondary leading-relaxed text-sm">
                                 {feature.description}
                             </p>
                         </motion.div>

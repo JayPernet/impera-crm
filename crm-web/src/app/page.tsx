@@ -1,10 +1,10 @@
-import { Navbar, Hero, Features, Pricing, AiSection, UrgencySection, Footer } from '@/components/landing';
+import { Navbar, Hero, ProblemSection, Features, EarlyAdopterSection, FAQSection, Footer } from '@/components/landing';
 
 /**
- * Sales Landing Page
+ * Sales Landing Page (MVP)
  * 
- * Main landing page showcasing the Impera CRM ecosystem.
- * Features viewport animations and stagger effects via Framer Motion.
+ * Main landing page showcasing the Impera CRM.
+ * Structure: Hero → Problem → Solution → Early Adopter → FAQ → Footer
  */
 export default function SalesPage() {
     return (
@@ -12,10 +12,10 @@ export default function SalesPage() {
             <Navbar />
             <main>
                 <Hero />
+                <ProblemSection />
                 <Features />
-                <AiSection />
-                <UrgencySection />
-                <Pricing />
+                <EarlyAdopterSection />
+                <FAQSection />
             </main>
             <Footer />
         </>
