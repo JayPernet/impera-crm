@@ -2,7 +2,7 @@ import { createClient } from "@/utils/supabase/server"
 import Link from "next/link"
 import { DataTable } from "@/components/ui/data-table"
 import { columns, Client } from "./columns"
-import { Plus, Users } from "lucide-react"
+import { Plus, Users, DollarSign, Calendar } from "lucide-react"
 
 export default async function ClientsPage() {
     const supabase = await createClient()
@@ -30,17 +30,25 @@ export default async function ClientsPage() {
         last_contact_at: c.last_contact_at
     }))
 
+    const totalLtv = formattedClients.reduce((acc, c) => acc + (c.ltv || 0), 0);
+    const activeThisMonth = formattedClients.filter(c => {
+        if (!c.last_contact_at) return false;
+        const lastContact = new Date(c.last_contact_at);
+        const now = new Date();
+        return lastContact.getMonth() === now.getMonth() && lastContact.getFullYear() === now.getFullYear();
+    }).length;
+
     return (
         <div className="space-y-8">
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-xl font-bold tracking-tight text-primary">Carteira de Clientes</h1>
-                    <p className="sub-header mt-1">Relacionamento e compras</p>
+                    <h1 className="text-2xl font-bold tracking-tight text-text-primary">Carteira de Clientes</h1>
+                    <p className="text-sm text-text-secondary mt-1">Gestão de relacionamento e histórico de compras</p>
                 </div>
                 <Link
                     href="/dashboard/clients/new"
-                    className="h-10 px-4 rounded-lg bg-primary hover:bg-primary-light text-primary-foreground font-medium text-sm flex items-center gap-2 transition-colors shadow-lg shadow-primary/20"
+                    className="h-10 px-4 rounded-lg bg-primary hover:bg-primary-light text-primary-foreground font-medium text-sm flex items-center gap-2 transition-all shadow-lg shadow-primary/20"
                 >
                     <Plus className="h-4 w-4" />
                     <span>Novo Cliente</span>
@@ -50,31 +58,43 @@ export default async function ClientsPage() {
             {/* Metrics Row */}
             <div className="grid gap-4 md:grid-cols-3">
                 <div className="p-6 luxury-card flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-full bg-white/[0.03] flex items-center justify-center text-primary border border-white/5">
+                    <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/20 shadow-inner">
                         <Users className="h-6 w-6" />
                     </div>
                     <div>
-                        <h3 className="sub-header tracking-[0.2em] mb-1">Total de Clientes</h3>
-                        <span className="text-xl font-bold text-primary">{formattedClients.length}</span>
+                        <h3 className="text-[10px] font-bold text-text-tertiary uppercase tracking-[0.2em] mb-1">Total de Clientes</h3>
+                        <span className="text-2xl font-bold text-text-primary">{formattedClients.length}</span>
                     </div>
                 </div>
-                {/* Placeholder metrics */}
-                <div className="p-6 rounded-xl border border-border bg-surface/40 backdrop-blur-sm">
-                    <h3 className="text-sm font-medium text-text-secondary">LTV Médio</h3>
-                    <div className="mt-2 flex items-baseline gap-2">
-                        <span className="text-2xl font-bold text-text-primary">R$ 0,00</span>
+
+                <div className="p-6 luxury-card flex items-center gap-4">
+                    <div className="h-12 w-12 rounded-full bg-success/10 flex items-center justify-center text-success border border-success/20 shadow-inner">
+                        <DollarSign className="h-6 w-6" />
+                    </div>
+                    <div>
+                        <h3 className="text-[10px] font-bold text-text-tertiary uppercase tracking-[0.2em] mb-1">Total LTV</h3>
+                        <span className="text-2xl font-bold text-success">
+                            {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', notation: 'compact' }).format(totalLtv)}
+                        </span>
                     </div>
                 </div>
-                <div className="p-6 rounded-xl border border-border bg-surface/40 backdrop-blur-sm">
-                    <h3 className="text-sm font-medium text-text-secondary">Ativos este Mês</h3>
-                    <div className="mt-2 flex items-baseline gap-2">
-                        <span className="text-2xl font-bold text-text-primary">0</span>
+
+                <div className="p-6 luxury-card flex items-center gap-4">
+                    <div className="h-12 w-12 rounded-full bg-white/[0.03] flex items-center justify-center text-text-secondary border border-white/5">
+                        <Calendar className="h-6 w-6" />
+                    </div>
+                    <div>
+                        <h3 className="text-[10px] font-bold text-text-tertiary uppercase tracking-[0.2em] mb-1">Ativos este Mês</h3>
+                        <span className="text-2xl font-bold text-text-primary">{activeThisMonth}</span>
                     </div>
                 </div>
             </div>
 
             {/* Data Table */}
-            <DataTable columns={columns} data={formattedClients} />
+            <div className="rounded-xl border border-border bg-surface/30 backdrop-blur-xl shadow-xl shadow-primary/5">
+                <DataTable columns={columns} data={formattedClients} />
+            </div>
         </div>
     )
 }
+

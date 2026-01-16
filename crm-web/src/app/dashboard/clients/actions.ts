@@ -40,11 +40,12 @@ export async function createClientRecord(prevState: any, formData: FormData) {
     // Insert into DB with classification = 'cliente'
     const { error } = await supabase.from("leads").insert({
         organization_id: profile.organization_id,
+        owner_id: user.id, // Auto-assign to creator
         full_name: parse.data.name,
         phone: parse.data.phone,
         email: parse.data.email || null,
-        source: "Manual", // Direct client creation usually is manual
-        status: "Novo", // Or 'Carteira'? Let's keep 'Novo' for now or maybe we need a specific status for clients.
+        source: "Manual",
+        status: "Novo",
         interest_type: parse.data.interest_type,
         budget: parse.data.budget || null,
         summary: parse.data.summary || null,
@@ -54,7 +55,7 @@ export async function createClientRecord(prevState: any, formData: FormData) {
 
     if (error) {
         console.error("Supabase Create Client Error:", error);
-        return { message: "Erro ao criar cliente. Verifique se o telefone já existe." };
+        return { message: "Erro ao criar cliente. Verifique se o telefone já existe na organização." };
     }
 
     revalidatePath("/dashboard/clients");
@@ -90,6 +91,23 @@ export async function updateClientRecord(clientId: string, formData: FormData) {
 
     revalidatePath("/dashboard/clients");
     redirect("/dashboard/clients");
+}
+
+export async function archiveClientRecord(clientId: string) {
+    const supabase = await createClient();
+
+    const { error } = await supabase
+        .from("leads")
+        .update({ classification: 'arquivado' })
+        .eq("id", clientId);
+
+    if (error) {
+        console.error("Error archiving client:", error);
+        return { success: false, message: error.message };
+    }
+
+    revalidatePath("/dashboard/clients");
+    return { success: true };
 }
 
 export async function deleteClientRecord(clientId: string) {

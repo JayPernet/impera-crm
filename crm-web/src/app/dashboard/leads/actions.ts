@@ -165,6 +165,28 @@ export async function deleteLead(leadId: string) {
     return { success: true };
 }
 
+export async function convertLeadToClient(leadId: string) {
+    const supabase = await createClient();
+
+    const { error } = await supabase
+        .from("leads")
+        .update({
+            classification: "cliente",
+            status: "Fechado",
+            converted_at: new Date().toISOString(),
+        })
+        .eq("id", leadId);
+
+    if (error) {
+        console.error("Error converting lead to client:", error);
+        return { success: false, message: "Erro ao converter lead em cliente." };
+    }
+
+    revalidatePath("/dashboard/leads");
+    revalidatePath("/dashboard/clients");
+    return { success: true };
+}
+
 export async function getContactsForChat() {
     const supabase = await createClient();
     const { data, error } = await supabase

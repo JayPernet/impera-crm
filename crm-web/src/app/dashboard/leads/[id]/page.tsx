@@ -5,6 +5,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { PIPELINE_STAGES } from "@/components/leads/types";
 import { getLeadPropertyInterests } from "../actions";
+import { ConvertLeadButton } from "@/components/leads/convert-lead-button";
 
 export default async function LeadDetailsPage({ params }: { params: { id: string } }) {
     const { id } = await params;
@@ -42,6 +43,9 @@ export default async function LeadDetailsPage({ params }: { params: { id: string
                     <p className="text-sm text-text-secondary mt-1">Lead criado em {new Date(lead.created_at).toLocaleDateString('pt-BR')}</p>
                 </div>
                 <div className="flex items-center gap-3">
+                    {lead.classification === 'lead' && (
+                        <ConvertLeadButton leadId={id} leadName={lead.full_name} />
+                    )}
                     <Link
                         href={`/dashboard/chat?phone=${encodeURIComponent(lead.phone)}&name=${encodeURIComponent(lead.full_name)}`}
                         className="h-10 px-4 rounded-lg bg-success/10 hover:bg-success/20 text-success border border-success/20 font-medium text-sm flex items-center gap-2 transition-colors"
