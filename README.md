@@ -9,7 +9,7 @@
 
 **Impera CRM: Luxury Real Estate Operating System**
 
-O CRM onde sua imobiliária **Impera**. Sistema de gestão imobiliária de alta performance, focado em centralizar a operação do corretor em uma única tela. Diferencia-se pelo design "Cyber-Precision Luxury" e integração nativa com WhatsApp (sem gambiarras).
+O CRM onde sua imobiliária **Impera**. Sistema de gestão imobiliária de alta performance, focado em centralizar a operação do corretor em uma única tela. Diferencia-se pelo design "Luxe & Elegant" e integração nativa com WhatsApp (sem gambiarras).
 
 **Status:** Early Adopter Program (MVP)
 
