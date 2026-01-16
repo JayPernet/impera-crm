@@ -1,0 +1,332 @@
+{
+    "_INSTRUÇÃO_MANDATÓRIA": "🚨 NÃO SOBRESCREVA ESTE TEMPLATE! Sempre crie uma cópia deste arquivo para a pasta do seu projeto e edite a cópia. Este é um template base que deve permanecer intacto para reutilização futura.",
+    "_FILOSOFIA": "Este framework rejeita fórmulas prontas como AIDA. Copy efetivo vem de RESEARCH profundo, entendimento do estágio de consciência do prospect, e comunicação autêntica. Baseado nos princípios de Eugene Schwartz, David Ogilvy, Claude Hopkins, Shruti e Bettina Rudolph.",
+    "projectInfo": {
+        "projectName": "[STRING] Nome do projeto/produto/serviço",
+        "projectType": "[STRING] Tipo de asset. Ex: 'Landing Page', 'Email Sequence', 'VSL Script', 'Sales Page'",
+        "conversionGoal": "[STRING] Objetivo específico. Ex: 'Agendar call', 'Compra direta', 'Trial signup', 'Download lead magnet'",
+        "pricePoint": "[STRING] Faixa de preço. Ex: 'Low-ticket (<$100)', 'Mid-ticket ($100-$2000)', 'High-ticket (>$2000)'",
+        "salesCycle": "[STRING] Ciclo de venda. Ex: 'Impulse buy', '3-7 days consideration', '30+ days enterprise sale'"
+    },
+    "audienceResearch": {
+        "_instructions": "Esta seção é a BASE de tudo. Copy ruim vem de research ruim. Dedique 60% do seu tempo aqui.",
+        "awarenessStage": {
+            "_note": "Framework de Eugene Schwartz - 5 estágios de consciência do mercado",
+            "stage": "[SELECT ONE] Unaware | Problem Aware | Solution Aware | Product Aware | Most Aware",
+            "stageDescription": {
+                "Unaware": "Não sabe que tem um problema. Precisa de educação massiva (geralmente não é landing page, é conteúdo top-of-funnel)",
+                "Problem Aware": "Sabe que tem um problema, mas não sabe que existe solução. Precisa apresentar a solução como categoria",
+                "Solution Aware": "Sabe que existem soluções, está comparando alternativas. Precisa de diferenciação clara e proof",
+                "Product Aware": "Conhece seu produto, mas tem objeções/dúvidas. Precisa de social proof, garantias, breakdown de objeções",
+                "Most Aware": "Já decidiu, só precisa de empurrão final. Precisa de urgência legítima e facilitação da compra"
+            },
+            "selectedStage": "[STRING] Copie aqui o estágio selecionado",
+            "copyImplication": "[STRING] Baseado no estágio, o que isso significa para o copy? Ex: 'Como está Solution Aware, preciso mostrar por que ESTE produto vs competidores, não vender a categoria'"
+        },
+        "avatar": {
+            "_note": "Avatar REAL baseado em conversas, reviews, pesquisas - não persona inventada",
+            "demographics": {
+                "age": "[STRING] Faixa etária. Ex: '28-45'",
+                "occupation": "[STRING] Profissão/role. Ex: 'Founder de startup tech', 'Designer freelancer'",
+                "income": "[STRING] Renda aproximada. Ex: '$50k-$120k/ano'",
+                "location": "[STRING] Geografia relevante. Ex: 'Grandes centros urbanos Brasil', 'Remote workers globally'"
+            },
+            "psychographics": {
+                "currentSituation": "[STRING] Onde está agora. Ex: 'Fazendo tudo manual no Excel, perdendo 10h/semana em tarefas repetitivas'",
+                "desiredSituation": "[STRING] Onde quer chegar. Ex: 'Sistema automatizado que roda sozinho, libera tempo pra focar em estratégia'",
+                "painPoints": [
+                    "[ARRAY] Liste 5-8 dores ESPECÍFICAS em linguagem do avatar",
+                    "Ex: 'Acordo 6am pra fazer relatórios que ninguém lê'",
+                    "Ex: 'Perco vendas porque demoro 24h pra responder leads'",
+                    "Ex: 'Meu time não usa as ferramentas que eu compro'"
+                ],
+                "desires": [
+                    "[ARRAY] Liste 5-8 desejos ESPECÍFICOS",
+                    "Ex: 'Quero ter sexta-feira livre pra trabalhar em projetos criativos'",
+                    "Ex: 'Quero impressionar o CEO com dados que eu nunca conseguia capturar'",
+                    "Ex: 'Quero dormir tranquilo sabendo que nada vai quebrar de madrugada'"
+                ],
+                "fears": [
+                    "[ARRAY] Liste 3-5 medos REAIS",
+                    "Ex: 'Medo de implementar e ninguém do time usar (de novo)'",
+                    "Ex: 'Medo de migrar e perder dados críticos'",
+                    "Ex: 'Medo de pagar caro e descobrir que não serve pra meu caso'"
+                ],
+                "frustrations": [
+                    "[ARRAY] Liste 3-5 frustrações com soluções atuais",
+                    "Ex: 'Atual ferramenta é lenta, trava toda hora'",
+                    "Ex: 'Suporte demora 3 dias pra responder ticket'",
+                    "Ex: 'Interface confusa, preciso de treinamento toda vez'"
+                ]
+            },
+            "voiceOfCustomer": {
+                "_note": "CITAÇÕES REAIS de conversas, reviews, pesquisas. Cole exatamente como falaram.",
+                "quotes": [
+                    "[ARRAY] 10-15 frases reais que prospects/clientes disseram",
+                    "Ex: 'Cara, eu tô cansado de ferramenta que promete céu e entrega inferno'",
+                    "Ex: 'Preciso de algo que funcione out of the box, não tenho dev pra customizar'",
+                    "Ex: 'Se isso realmente economizar 5h/semana, eu pago o que for'"
+                ],
+                "languagePatterns": "[STRING] Como eles falam? Formal? Casual? Usam gírias? Emojis? Palavrões? Ex: 'Casual-profissional, usam termos tech mas evitam jargão corporativo'"
+            },
+            "objections": {
+                "_note": "TODAS as objeções reais que impedem a conversão. Não invente, pegue de calls/chats perdidos.",
+                "priceObjections": [
+                    "[ARRAY] Objeções sobre preço",
+                    "Ex: 'Muito caro pro meu estágio de startup'",
+                    "Ex: 'Como sei que vou ter ROI?'",
+                    "Ex: 'Competidor X é metade do preço'"
+                ],
+                "trustObjections": [
+                    "[ARRAY] Objeções sobre confiança",
+                    "Ex: 'Empresa nova, vai estar aqui daqui 2 anos?'",
+                    "Ex: 'Nunca ouvi falar, quem mais usa?'",
+                    "Ex: 'E se não funcionar? Como cancelo?'"
+                ],
+                "technicalObjections": [
+                    "[ARRAY] Objeções técnicas",
+                    "Ex: 'Integra com minha stack atual?'",
+                    "Ex: 'Migração vai ser um inferno'",
+                    "Ex: 'Parece complexo, meu time não vai usar'"
+                ],
+                "timingObjections": [
+                    "[ARRAY] Objeções de timing",
+                    "Ex: 'Agora não é o momento, fim de ano é caótico'",
+                    "Ex: 'Preciso aprovar com o time/chefe primeiro'",
+                    "Ex: 'Quero testar outras opções antes'"
+                ]
+            }
+        },
+        "competitiveContext": {
+            "mainCompetitors": [
+                "[ARRAY] Liste 3-5 competidores principais",
+                "Ex: 'Notion (position: all-in-one workspace)'",
+                "Ex: 'ClickUp (position: tudo que você precisa em um app)'"
+            ],
+            "ourDifferentiators": [
+                "[ARRAY] O que você faz que NINGUÉM mais faz? Não features, MAS resultado único",
+                "Ex: 'Única ferramenta que [resultado específico]'",
+                "Ex: 'Setup em 5min vs 3 semanas do competidor X'"
+            ],
+            "marketPosition": "[STRING] Onde você se posiciona? Ex: 'Premium quality, mid-market price' ou 'Nichado pra [segmento específico]'"
+        }
+    },
+    "messagingStrategy": {
+        "_instructions": "Com base no research, defina a estratégia de mensagem. Não é 'o que você quer dizer', é 'o que eles precisam ouvir'.",
+        "bigIdea": {
+            "_note": "O 'Big Idea' de Eugene Schwartz - conceito único que ninguém comunicou antes. NÃO é tagline.",
+            "bigIdea": "[STRING] A ideia central única. Ex: 'Você não precisa de mais produtividade, precisa de menos desperdício' ou 'Setup rápido não é feature, é respeito pelo seu tempo'",
+            "whyItWorks": "[STRING] Por que essa ideia ressoa com o avatar? Ex: 'Porque eles estão cansados de promessas de produtividade 10x que exigem reestruturar toda a rotina'"
+        },
+        "coreMessage": {
+            "promisePrimaria": "[STRING] Promessa principal em uma frase. RESULTADO, não feature. Ex: 'Recupere 10 horas por semana eliminando trabalho manual'",
+            "mechanism": "[STRING] COMO você entrega isso de forma única? Ex: 'Sistema de automação que aprende seus padrões e sugere otimizações'",
+            "proof": "[STRING] Por que devem acreditar? Ex: '2.847 empresas economizaram média de 12h/semana em 90 dias'"
+        },
+        "emotionalHooks": {
+            "_note": "Copy que converte mistura lógica + emoção. Identifique ganchos emocionais.",
+            "primaryEmotion": "[STRING] Emoção dominante. Ex: 'Alívio', 'Ambição', 'Pertencimento', 'Segurança'",
+            "secondaryEmotions": "[ARRAY] 2-3 emoções de apoio. Ex: ['Orgulho de ser eficiente', 'FOMO de ficar pra trás']",
+            "emotionalNarrative": "[STRING] História emocional. Ex: 'De sobrecarregado e reativo → calmo e no controle'"
+        },
+        "toneAndVoice": {
+            "_note": "Baseado no Voice of Customer. Como você fala com eles?",
+            "tone": "[STRING] Tom geral. Ex: 'Direto e sem enrolação', 'Empático mas confiante', 'Provocativo e ousado'",
+            "vocabulary": {
+                "use": "[ARRAY] Palavras/frases que ressoam. Ex: ['na real', 'chega de', 'funciona de verdade']",
+                "avoid": "[ARRAY] Palavras que afastam. Ex: ['sinergia', 'disruptivo', 'ecossistema', 'jornada']"
+            },
+            "sentenceStructure": "[STRING] Como você estrutura frases? Ex: 'Frases curtas. Diretas. Pontuação pra ênfase.' ou 'Frases mais longas e conversacionais, como se estivéssemos conversando num café'",
+            "personality": "[STRING] Personalidade da marca. Ex: 'Amigo esperto que já passou por isso e quer te ajudar a evitar os erros que eu cometi'"
+        }
+    },
+    "copyStructure": {
+        "_instructions": "Estrutura ESPECÍFICA do asset. NÃO use AIDA. Use frameworks apropriados pro estágio de consciência e tipo de asset.",
+        "headline": {
+            "_note": "David Ogilvy: 80% do sucesso está no headline. Teste 10-20 variações.",
+            "approach": "[STRING] Abordagem do headline. Ex: 'Resultado específico + timeframe', 'Provocação + promessa', 'Pergunta que expõe dor'",
+            "examples": [
+                "[ARRAY] 10+ variações de headline pra testar",
+                "Ex: '[Resultado específico] em [timeframe] sem [objeção comum]'",
+                "Ex: 'O que [avatar] faz quando [situação comum]? (Não é o que você pensa)'",
+                "Ex: '[Número] [avatar tipo] economizaram [resultado] usando [mechanism único]'"
+            ],
+            "subheadline": "[STRING] Elabora/amplifica o headline. Ex: 'Sistema de [solução] feito pra [avatar] que [situação]. Setup em [timeframe].'"
+        },
+        "leadSection": {
+            "_note": "Primeiros 100-200 palavras. Objetivo: prender atenção, estabelecer relevância, criar curiosidade.",
+            "opening": "[STRING] Como você abre? Ex: 'Pergunta que expõe dor', 'Declaração controversa', 'História relatable'",
+            "hookFormula": "[STRING] Fórmula do gancho. Ex: 'Se você [situação comum], então você [consequência negativa]. Mas e se [promessa contraintuitiva]?'",
+            "transitionToBody": "[STRING] Como transiciona pro corpo? Ex: 'Aqui está como funciona:', 'Deixa eu te mostrar:', 'Primeiro, entenda isso:'"
+        },
+        "bodyStructure": {
+            "_note": "Arquitetura do corpo do copy. Varia por tipo de asset e awareness stage.",
+            "sections": [
+                {
+                    "sectionName": "[STRING] Ex: 'The Problem (Amplification)'",
+                    "objective": "[STRING] O que essa seção faz? Ex: 'Amplifica a dor antes de apresentar solução'",
+                    "length": "[STRING] Ex: '150-200 palavras'",
+                    "keyElements": [
+                        "[ARRAY] Elementos dessa seção",
+                        "Ex: 'Específicos da dor que eles sentem diariamente'",
+                        "Ex: 'Consequências de não resolver (custo do status quo)'",
+                        "Ex: 'Validação emocional - você não está sozinho nisso'"
+                    ]
+                },
+                {
+                    "sectionName": "[STRING] Ex: 'The Solution (Unique Mechanism)'",
+                    "objective": "[STRING] Ex: 'Apresenta a solução de forma única, não genérica'",
+                    "length": "[STRING] Ex: '200-300 palavras'",
+                    "keyElements": [
+                        "[ARRAY]",
+                        "Ex: 'Por que soluções convencionais falham'",
+                        "Ex: 'O que faz nossa abordagem diferente (mechanism)'",
+                        "Ex: 'Por que isso funciona (lógica + prova)'"
+                    ]
+                },
+                {
+                    "sectionName": "[STRING] Ex: 'How It Works'",
+                    "objective": "[STRING] Ex: 'Torna concreto e tangível. Remove ambiguidade.'",
+                    "length": "[STRING] Ex: '250-400 palavras'",
+                    "keyElements": [
+                        "[ARRAY]",
+                        "Ex: '3-5 passos simples do processo'",
+                        "Ex: 'Breakdown de cada passo com resultado específico'",
+                        "Ex: 'Timeframe realista de implementação'"
+                    ]
+                },
+                {
+                    "sectionName": "[STRING] Ex: 'Proof & Social Validation'",
+                    "objective": "[STRING] Ex: 'Quebra descrença com prova específica e diversificada'",
+                    "length": "[STRING] Ex: '300-500 palavras'",
+                    "keyElements": [
+                        "[ARRAY]",
+                        "Ex: 'Case studies com números específicos'",
+                        "Ex: 'Testimonials que abordam objeções específicas'",
+                        "Ex: 'Proof points diversificados (lógos, stats, awards, media)'"
+                    ]
+                },
+                {
+                    "sectionName": "[STRING] Ex: 'Objection Handling'",
+                    "objective": "[STRING] Ex: 'Destrói objeções uma por uma antes do CTA'",
+                    "length": "[STRING] Ex: '200-400 palavras'",
+                    "keyElements": [
+                        "[ARRAY]",
+                        "Ex: 'FAQ que antecipa e responde objeções reais'",
+                        "Ex: 'Garantias que removem risco percebido'",
+                        "Ex: 'Comparações diretas com alternativas'"
+                    ]
+                }
+            ],
+            "notes": "[STRING] Notas sobre a estrutura. Ex: 'Ordem das seções muda baseado no awareness stage. Product Aware? Proof vem antes. Solution Aware? Diferenciação vem antes.'"
+        },
+        "callToAction": {
+            "_note": "CTA não é só botão. É toda a seção que conduz à conversão.",
+            "primaryCTA": {
+                "text": "[STRING] Texto do botão. Ex: 'Ver como funciona', 'Começar teste grátis', 'Agendar demo de 15min'",
+                "reasoning": "[STRING] Por que essa copy no botão? Ex: 'Low-commitment language porque estão Solution Aware, ainda comparando opções'",
+                "visualTreatment": "[STRING] Como destacar? Ex: 'Botão grande, cor contrastante, espaço ao redor, micro-copy de apoio abaixo'"
+            },
+            "ctaContext": {
+                "preCtaCopy": "[STRING] O que vem ANTES do CTA pra preparar o clique? Ex: 'Resumo do valor, eliminação da última objeção, criação de urgência legítima'",
+                "microCopy": "[STRING] Texto pequeno abaixo do botão. Ex: 'Sem cartão. Sem instalação. 5 minutos pra testar.' ou 'Junte-se a 2.847 empresas que já economizam 10h/semana'",
+                "postCtaCopy": "[STRING] O que vem DEPOIS se não clicarem? Ex: 'Seção de FAQ final', 'Última testimonial killer', 'Risk reversal statement'"
+            },
+            "urgencyAndScarcity": {
+                "_note": "Urgência/escarcity LEGÍTIMA, não countdown fake. Se não tiver, deixe em branco.",
+                "urgencyType": "[STRING] Ex: 'Seasonal (fim de ano fiscal)', 'Cohort-based (próxima turma só em 3 meses)', 'Price increase real'",
+                "scarcityType": "[STRING] Ex: 'Limite de onboarding capacity', 'Beta pricing (última semana)', 'Limited spots disponíveis'",
+                "messaging": "[STRING] Como comunicar sem parecer manipulativo? Ex: 'Comunicar o motivo real do limite/prazo + dar contexto'"
+            }
+        },
+        "proofElements": {
+            "_note": "Prova é CRÍTICA. Quanto mais high-ticket e mais tempo de consideração, mais proof você precisa.",
+            "testimonials": {
+                "quantity": "[NUMBER] Quantos? Ex: Landing page high-ticket = 8-12, Low-ticket = 3-5",
+                "selectionCriteria": "[STRING] Como selecionar? Ex: 'Testimonials que abordam objeções específicas, com resultado quantificável, de avatars similares ao prospect'",
+                "format": "[STRING] Formato. Ex: 'Nome + foto + empresa + resultado específico em bold'",
+                "placement": "[STRING] Onde colocar? Ex: 'Ao longo do copy, não só no final. Cada objeção tem um testimonial correspondente.'"
+            },
+            "caseStudies": {
+                "quantity": "[NUMBER] Quantos? Ex: 2-3 detalhados",
+                "structure": "[STRING] Como estruturar? Ex: 'Situation → Problem → Solution → Results (números específicos) → Quote do cliente'",
+                "avatarMatch": "[STRING] Como garantir relevância? Ex: 'Cada case representa um segmento diferente do avatar (size, industry, use case)'"
+            },
+            "socialProof": {
+                "types": [
+                    "[ARRAY] Tipos de prova social usados",
+                    "Ex: 'Logos de clientes conhecidos'",
+                    "Ex: 'Número de usuários/clientes (se impressionante)'",
+                    "Ex: 'Awards/certificações relevantes'",
+                    "Ex: 'Media mentions de veículos que o avatar respeita'",
+                    "Ex: 'Integrações/partnerships que dão credibilidade'"
+                ],
+                "placement": "[STRING] Ex: 'Logo bar logo abaixo do hero, stats distribuídos, media mentions no footer'"
+            },
+            "dataAndStats": {
+                "keyMetrics": [
+                    "[ARRAY] Métricas principais que provam resultado",
+                    "Ex: 'Economia média de 12 horas/semana'",
+                    "Ex: '87% dos usuários veem ROI em 30 dias'",
+                    "Ex: '2.847 empresas ativas, 94% retention após 12 meses'"
+                ],
+                "visualTreatment": "[STRING] Como apresentar números? Ex: 'Números grandes em serif bold, context em sans-serif pequeno, visual hierarchy clara'"
+            }
+        },
+        "guaranteesAndRiskReversal": {
+            "_note": "Remove risco percebido. Essencial pra high-ticket e awareness stages mais baixos.",
+            "moneyBackGuarantee": {
+                "hasGuarantee": "[BOOLEAN] true/false",
+                "duration": "[STRING] Ex: '30 dias', '60 dias', '90 dias'",
+                "conditions": "[STRING] Condições (se houver). Ex: 'Sem perguntas', 'Se não economizar 5h/semana, devolve 100%'",
+                "messaging": "[STRING] Como comunicar? Ex: 'Enfatizar que assumimos TODO o risco, não eles'"
+            },
+            "freeTrial": {
+                "hasTrial": "[BOOLEAN] true/false",
+                "duration": "[STRING] Ex: '14 dias', '30 dias'",
+                "limitations": "[STRING] Limitações do trial. Ex: 'Trial completo, sem limite de features' ou 'Trial de X usuários'",
+                "creditCardRequired": "[BOOLEAN] Exige cartão?",
+                "messaging": "[STRING] Ex: 'Sem cartão. Teste tudo. Se gostar, ativa depois. Se não gostar, nada acontece.'"
+            },
+            "otherRiskReversals": [
+                "[ARRAY] Outros elementos que removem risco",
+                "Ex: 'Onboarding white-glove incluído'",
+                "Ex: 'Migration assistance sem custo'",
+                "Ex: 'Cancel anytime, keep your data'",
+                "Ex: 'Dedicated success manager nos primeiros 90 dias'"
+            ]
+        }
+    },
+    "optimizationNotes": {
+        "_instructions": "Checklist pós-escrita e notas de otimização",
+        "copyChecklist": [
+            "[ARRAY] Checklist antes de publicar",
+            "✓ Cada claim tem prova específica?",
+            "✓ Usei linguagem do Voice of Customer, não jargão corporativo?",
+            "✓ Abordei TODAS as objeções identificadas no research?",
+            "✓ Testimonials estão estrategicamente posicionados pra quebrar objeções?",
+            "✓ CTA está claro, low-friction, e bem contextualizado?",
+            "✓ Removi todo fluff/filler desnecessário?",
+            "✓ Copy respira? Tem espaço, não é muralha de texto?",
+            "✓ Headline e primeiras 100 palavras prendem atenção IMEDIATAMENTE?",
+            "✓ Cada seção tem transição suave pra próxima?",
+            "✓ Usei especificidade vs generalização? ('12 horas/semana' vs 'muito tempo')"
+        ],
+        "testingPriorities": [
+            "[ARRAY] O que testar primeiro (ordem de impacto esperado)",
+            "Ex: 'Headline (maior impacto potencial)'",
+            "Ex: 'CTA copy e posicionamento'",
+            "Ex: 'Hero section inteira (headline + subheadline + CTA)'",
+            "Ex: 'Ordem das seções do body'",
+            "Ex: 'Quantidade/tipo de proof elements'"
+        ],
+        "metricsToTrack": [
+            "[ARRAY] Métricas específicas pra acompanhar",
+            "Ex: 'Scroll depth - onde as pessoas param?'",
+            "Ex: 'Time on page - estão lendo ou bouncing?'",
+            "Ex: 'CTA click rate - qual CTA (se múltiplos) converte mais?'",
+            "Ex: 'Form abandonment - onde desistem no form?'",
+            "Ex: 'Heat maps - o que eles realmente leem?'"
+        ]
+    }
+}

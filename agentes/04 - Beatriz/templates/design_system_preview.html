@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System Preview - [BRAND_NAME]</title>
+    <style>
+        /* ==========================================
+           DESIGN TOKENS - <Nome do Projeto> /OBRIGATRÓRIO: CRIE UMA CÓPIA E EDITE A CÓPIA/
+           ========================================== */
+        :root {
+            /* CORES - Semântica obrigatória */
+            --color-background: #FFFFFF;           /* Cor dominante (60-70% da tela) */
+            --color-surface: #F8FAFC;              /* Cards, containers elevados */
+            --color-primary: #3B82F6;              /* Ação principal, CTAs */
+            --color-secondary: #8B5CF6;            /* Ação secundária, highlights */
+            --color-accent: #F59E0B;               /* Destaques, badges, alertas */
+            --color-text-primary: #1E293B;         /* Texto principal */
+            --color-text-secondary: #64748B;       /* Texto secundário, labels */
+            --color-text-muted: #94A3B8;           /* Placeholders, disabled */
+            --color-border: #E2E8F0;               /* Bordas, divisores */
+            --color-success: #10B981;              /* Estados de sucesso */
+            --color-error: #EF4444;                /* Estados de erro */
+            
+            /* TIPOGRAFIA */
+            --font-display: 'Georgia', serif;      /* Títulos, headings */
+            --font-body: 'Inter', sans-serif;      /* Corpo, parágrafos */
+            
+            /* SPACING */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+        }
+
+        /* ==========================================
+           RESET & BASE
+           ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text-primary);
+            background: var(--color-background);
+            line-height: 1.6;
+        }
+
+        /* ==========================================
+           TYPOGRAPHY SCALE
+           ========================================== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            line-height: 1.2;
+            margin-bottom: var(--space-md);
+        }
+
+        h1 { font-size: 3rem; font-weight: 700; }
+        h2 { font-size: 2.25rem; font-weight: 600; }
+        h3 { font-size: 1.875rem; font-weight: 600; }
+        h4 { font-size: 1.5rem; font-weight: 500; }
+        h5 { font-size: 1.25rem; font-weight: 500; }
+        h6 { font-size: 1rem; font-weight: 500; }
+
+        p {
+            margin-bottom: var(--space-md);
+            color: var(--color-text-secondary);
+        }
+
+        /* ==========================================
+           COMPONENTS
+           ========================================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-2xl);
+        }
+
+        .section {
+            margin-bottom: var(--space-2xl);
+            padding: var(--space-xl);
+            background: var(--color-surface);
+            border-radius: 12px;
+        }
+
+        .section-title {
+            color: var(--color-text-primary);
+            border-bottom: 2px solid var(--color-border);
+            padding-bottom: var(--space-sm);
+            margin-bottom: var(--space-lg);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: 8px;
+            border: none;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--color-secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            opacity: 0.9;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: var(--space-lg);
+            margin-bottom: var(--space-md);
+        }
+
+        .card-title {
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .card-text {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-md);
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+
+        label {
+            display: block;
+            margin-bottom: var(--space-xs);
+            color: var(--color-text-primary);
+            font-weight: 500;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-text-primary);
+            background: white;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        input::placeholder {
+            color: var(--color-text-muted);
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .badge-primary { background: var(--color-primary); color: white; }
+        .badge-accent { background: var(--color-accent); color: white; }
+        .badge-success { background: var(--color-success); color: white; }
+        .badge-error { background: var(--color-error); color: white; }
+
+        /* Alerts */
+        .alert {
+            padding: var(--space-md);
+            border-radius: 8px;
+            margin-bottom: var(--space-md);
+            border-left: 4px solid;
+        }
+
+        .alert-success {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: var(--color-success);
+            color: var(--color-success);
+        }
+
+        .alert-error {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: var(--color-error);
+            color: var(--color-error);
+        }
+
+        /* Color Palette Display */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .color-swatch {
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .color-preview {
+            height: 100px;
+            width: 100%;
+        }
+
+        .color-info {
+            padding: var(--space-md);
+            background: white;
+        }
+
+        .color-name {
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-xs);
+        }
+
+        .color-hex {
+            font-family: monospace;
+            color: var(--color-text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: var(--space-xs);
+        }
+
+        .color-usage {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            font-style: italic;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: var(--space-2xl) 0;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .hero h1 {
+            color: white;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.25rem;
+            margin-bottom: var(--space-xl);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>[BRAND_NAME] Design System</h1>
+            <p>Demonstração da hierarquia cromática e semântica</p>
+            <div class="btn-group" style="justify-content: center;">
+                <button class="btn btn-primary">Primary Action</button>
+                <button class="btn btn-outline" style="border-color: white; color: white;">Secondary Action</button>
+            </div>
+        </div>
+
+        <!-- Typography Section -->
+        <div class="section">
+            <h2 class="section-title">Tipografia</h2>
+            <h1>Heading 1 - Display Font</h1>
+            <h2>Heading 2 - Display Font</h2>
+            <h3>Heading 3 - Display Font</h3>
+            <p>Este é um parágrafo usando a fonte Body. Lorem ipsum dolor sit amet, consectetur adipiscing elit. A tipografia é a base de toda comunicação visual e precisa ser legível em diferentes tamanhos.</p>
+            <p style="color: var(--color-text-muted); font-size: 0.875rem;">Texto secundário em tamanho menor para labels e metadados.</p>
+        </div>
+
+        <!-- Buttons Section -->
+        <div class="section">
+            <h2 class="section-title">Botões & Ações</h2>
+            <div class="btn-group">
+                <button class="btn btn-primary">Primary Button</button>
+                <button class="btn btn-secondary">Secondary Button</button>
+                <button class="btn btn-outline">Outline Button</button>
+            </div>
+        </div>
+
+        <!-- Cards Section -->
+        <div class="section">
+            <h2 class="section-title">Cards & Containers</h2>
+            <div class="card">
+                <h3 class="card-title">Card Title</h3>
+                <p class="card-text">Este card demonstra como o conteúdo fica organizado em containers elevados. A cor de surface contrasta sutilmente com o background.</p>
+                <div style="display: flex; gap: var(--space-sm);">
+                    <span class="badge badge-primary">Primary</span>
+                    <span class="badge badge-accent">Accent</span>
+                    <span class="badge badge-success">Success</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forms Section -->
+        <div class="section">
+            <h2 class="section-title">Formulários</h2>
+            <div class="form-group">
+                <label for="name">Nome Completo</label>
+                <input type="text" id="name" placeholder="Digite seu nome">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="seu@email.com">
+            </div>
+            <div class="form-group">
+                <label for="message">Mensagem</label>
+                <textarea id="message" rows="4" placeholder="Escreva sua mensagem aqui..."></textarea>
+            </div>
+            <button class="btn btn-primary">Enviar</button>
+        </div>
+
+        <!-- Alerts Section -->
+        <div class="section">
+            <h2 class="section-title">Alertas & Estados</h2>
+            <div class="alert alert-success">
+                ✓ Operação concluída com sucesso! Seus dados foram salvos.
+            </div>
+            <div class="alert alert-error">
+                ✕ Erro ao processar solicitação. Por favor, tente novamente.
+            </div>
+        </div>
+
+        <!-- Color Palette Section -->
+        <div class="section">
+            <h2 class="section-title">Paleta de Cores - Hierarquia Cromática</h2>
+            <p style="margin-bottom: var(--space-lg);">Abaixo está a justificativa semântica de cada cor escolhida:</p>
+            
+            <div class="color-grid">
+                <div class="color-swatch">
+                    <div class="color-preview" style="background: var(--color-background);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Background</div>
+                        <div class="color-hex">#FFFFFF</div>
+                        <div class="color-usage">Cor dominante (60-70% da interface). Base neutra para todo conteúdo.</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="color-preview" style="background: var(--color-surface);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Surface</div>
+                        <div class="color-hex">#F8FAFC</div>
+                        <div class="color-usage">Cards e containers elevados. Contraste sutil com background.</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="color-preview" style="background: var(--color-primary);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Primary Action</div>
+                        <div class="color-hex">#3B82F6</div>
+                        <div class="color-usage">CTAs principais, links, estados ativos. Contraste 4.5:1 com background.</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="color-preview" style="background: var(--color-secondary);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Secondary Action</div>
+                        <div class="color-hex">#8B5CF6</div>
+                        <div class="color-usage">Ações secundárias, highlights, elementos decorativos.</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="color-preview" style="background: var(--color-accent);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Accent</div>
+                        <div class="color-hex">#F59E0B</div>
+                        <div class="color-usage">Destaques, badges, alertas importantes, call-to-attention.</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="color-preview" style="background: var(--color-text-primary);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Text Primary</div>
+                        <div class="color-hex">#1E293B</div>
+                        <div class="color-usage">Texto principal, headings. Contraste máximo para legibilidade.</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="color-preview" style="background: var(--color-text-secondary);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Text Secondary</div>
+                        <div class="color-hex">#64748B</div>
+                        <div class="color-usage">Texto secundário, labels, metadados. Contraste WCAG AA.</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="color-preview" style="background: var(--color-border);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Border</div>
+                        <div class="color-hex">#E2E8F0</div>
+                        <div class="color-usage">Bordas, divisores, separadores visuais sutis.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Font Pairing Section -->
+        <div class="section">
+            <h2 class="section-title">Font Pairing</h2>
+            <div style="display: grid; gap: var(--space-lg);">
+                <div>
+                    <h4>Display Font (Títulos)</h4>
+                    <p style="font-family: var(--font-display); font-size: 2rem; color: var(--color-text-primary);">
+                        The quick brown fox jumps over the lazy dog
+                    </p>
+                    <p style="color: var(--color-text-muted); font-size: 0.875rem;">
+                        Usado para: H1, H2, H3, títulos de seções, chamadas principais
+                    </p>
+                </div>
+                <div>
+                    <h4>Body Font (Textos)</h4>
+                    <p style="font-family: var(--font-body); font-size: 1rem; color: var(--color-text-secondary);">
+                        The quick brown fox jumps over the lazy dog. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Esta fonte foi escolhida para garantir legibilidade em blocos longos de texto.
+                    </p>
+                    <p style="color: var(--color-text-muted); font-size: 0.875rem;">
+                        Usado para: Parágrafos, labels, botões, inputs, textos gerais
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

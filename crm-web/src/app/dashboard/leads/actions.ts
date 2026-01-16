@@ -43,6 +43,7 @@ export async function createLead(prevState: any, formData: FormData) {
     // Insert into DB
     const { error } = await supabase.from("leads").insert({
         organization_id: profile.organization_id,
+        owner_id: user.id, // Auto-assign to creator
         full_name: parse.data.name,
         phone: parse.data.phone,
         email: parse.data.email || null,
@@ -123,22 +124,14 @@ export async function updateLead(leadId: string, formData: FormData) {
 export async function updateLeadStatus(leadId: string, newStatus: LeadStatus) {
     const supabase = await createClient();
 
-    // Map status string to pipeline_step index
-    const statusIndex = [
-        "Novo",
-        "Em Contato",
-        "Visita Agendada",
-        "Visita Realizada",
-        "Em Negociação",
-        "Fechado",
-        "Perdido"
-    ].indexOf(newStatus);
+    // Import the mapping from types
+    const { STATUS_TO_STEP } = await import("@/components/leads/types");
 
     const { error } = await supabase
         .from("leads")
         .update({
             status: newStatus,
-            pipeline_step: statusIndex !== -1 ? statusIndex : 0,
+            pipeline_step: STATUS_TO_STEP[newStatus],
             last_contact_at: new Date().toISOString()
         })
         .eq("id", leadId);

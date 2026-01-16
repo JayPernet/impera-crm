@@ -61,13 +61,14 @@ export function LeadCard({ lead }: LeadCardProps) {
     }
 
     return (
-        <div
+        <Link
+            href={`/dashboard/leads/${lead.id}`}
             ref={setNodeRef}
             style={style}
             {...attributes}
             {...listeners}
             className={cn(
-                "luxury-card p-4 cursor-grab active:cursor-grabbing hover:border-white/10 transition-all group relative"
+                "luxury-card p-4 cursor-grab active:cursor-grabbing hover:border-white/10 transition-all group relative block"
             )}
         >
             <div className="flex justify-between items-start mb-2">
@@ -94,10 +95,18 @@ export function LeadCard({ lead }: LeadCardProps) {
                     href={`/dashboard/chat?phone=${encodeURIComponent(lead.phone)}&name=${encodeURIComponent(lead.name)}`}
                     className="p-1.5 rounded-md hover:bg-surface-elevated text-text-tertiary hover:text-success transition-colors"
                     title="WhatsApp"
+                    onClick={(e) => e.stopPropagation()}
+                    onPointerDown={(e) => e.stopPropagation()}
                 >
                     <MessageCircle className="h-3.5 w-3.5" />
                 </Link>
-                <Link href={`/dashboard/leads/${lead.id}/edit`} className="p-1.5 rounded-md hover:bg-white/[0.05] text-text-tertiary hover:text-primary transition-colors" title="Editar">
+                <Link
+                    href={`/dashboard/leads/${lead.id}/edit`}
+                    className="p-1.5 rounded-md hover:bg-white/[0.05] text-text-tertiary hover:text-primary transition-colors"
+                    title="Editar"
+                    onClick={(e) => e.stopPropagation()}
+                    onPointerDown={(e) => e.stopPropagation()}
+                >
                     <Pencil className="h-3.5 w-3.5" />
                 </Link>
                 <button
@@ -109,6 +118,7 @@ export function LeadCard({ lead }: LeadCardProps) {
                     }}
                     onClick={(e) => {
                         e.stopPropagation(); // Prevent card click/drag
+                        e.preventDefault(); // Prevent Link navigation
                         setShowDeleteDialog(true);
                     }}
                 >
@@ -126,6 +136,6 @@ export function LeadCard({ lead }: LeadCardProps) {
                 variant="danger"
                 isLoading={isDeleting}
             />
-        </div>
+        </Link>
     );
 }
