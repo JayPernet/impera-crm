@@ -106,7 +106,7 @@ export function CreateOrganizationDialog() {
                                     <input
                                         name="name"
                                         required
-                                        className="w-full h-10 bg-white/[0.03] border border-white/[0.05] rounded-lg px-3 text-sm text-text-primary focus:outline-none focus:border-primary/50 focus:bg-white/[0.05] transition-all font-medium placeholder:text-text-disabled"
+                                        className="w-full h-10 bg-surface-elevated border border-border rounded-lg px-3 text-sm text-text-primary focus:outline-none focus:border-primary/50 focus:bg-surface-hover transition-all font-medium placeholder:text-text-disabled"
                                         placeholder="Ex: Prime Realty"
                                     />
                                 </div>
@@ -115,7 +115,7 @@ export function CreateOrganizationDialog() {
                                     <input
                                         name="slug"
                                         required
-                                        className="w-full h-10 bg-white/[0.03] border border-white/[0.05] rounded-lg px-3 text-sm text-text-primary focus:outline-none focus:border-primary/50 focus:bg-white/[0.05] transition-all font-mono placeholder:text-text-disabled"
+                                        className="w-full h-10 bg-surface-elevated border border-border rounded-lg px-3 text-sm text-text-primary focus:outline-none focus:border-primary/50 focus:bg-surface-hover transition-all font-mono placeholder:text-text-disabled"
                                         placeholder="prime-realty"
                                     />
                                 </div>
@@ -135,7 +135,7 @@ export function CreateOrganizationDialog() {
                                     <input
                                         name="adminName"
                                         required
-                                        className="w-full h-10 bg-white/[0.03] border border-white/[0.05] rounded-lg px-3 text-sm text-text-primary focus:outline-none focus:border-primary/50 focus:bg-white/[0.05] transition-all font-medium placeholder:text-text-disabled"
+                                        className="w-full h-10 bg-surface-elevated border border-border rounded-lg px-3 text-sm text-text-primary focus:outline-none focus:border-primary/50 focus:bg-surface-hover transition-all font-medium placeholder:text-text-disabled"
                                         placeholder="Diretor Unidade"
                                     />
                                 </div>
@@ -145,7 +145,7 @@ export function CreateOrganizationDialog() {
                                         name="adminEmail"
                                         type="email"
                                         required
-                                        className="w-full h-10 bg-white/[0.03] border border-white/[0.05] rounded-lg px-3 text-sm text-text-primary focus:outline-none focus:border-primary/50 focus:bg-white/[0.05] transition-all placeholder:text-text-disabled"
+                                        className="w-full h-10 bg-surface-elevated border border-border rounded-lg px-3 text-sm text-text-primary focus:outline-none focus:border-primary/50 focus:bg-surface-hover transition-all placeholder:text-text-disabled"
                                         placeholder="diretoria@unidade.com"
                                     />
                                 </div>
@@ -159,7 +159,7 @@ export function CreateOrganizationDialog() {
                                             type={showPassword ? "text" : "password"}
                                             value={password}
                                             readOnly
-                                            className="w-full h-10 bg-white/[0.03] border border-white/[0.05] rounded-lg pl-3 pr-20 text-sm font-mono text-text-primary focus:outline-none focus:border-primary/50 focus:bg-white/[0.05] transition-all"
+                                            className="w-full h-10 bg-surface-elevated border border-border rounded-lg pl-3 pr-20 text-sm font-mono text-text-primary focus:outline-none focus:border-primary/50 focus:bg-surface-hover transition-all"
                                         />
                                         <div className="absolute right-0 top-0 h-full flex items-center gap-0.5 px-1">
                                             <button

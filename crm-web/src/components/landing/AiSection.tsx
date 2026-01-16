@@ -80,10 +80,9 @@ export function AiSection() {
                                 href={whatsappLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group inline-flex cursor-pointer items-center justify-center gap-2 rounded-md bg-gradient-to-r from-[#C9A24D] to-[#E6C685] px-9 py-[18px] text-base font-bold !text-[#060A0C] transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-0.5 hover:bg-gradient-to-r hover:from-[#E6C685] hover:to-[#F5DCAF] hover:shadow-[0_10px_30px_rgba(201,162,77,0.3)]"
+                                className="group inline-flex cursor-pointer items-center justify-center rounded-md bg-gradient-to-r from-[#C9A24D] to-[#E6C685] px-9 py-[18px] text-base font-bold !text-[#060A0C] transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-0.5 hover:bg-gradient-to-r hover:from-[#E6C685] hover:to-[#F5DCAF] hover:shadow-[0_10px_30px_rgba(201,162,77,0.3)]"
                             >
                                 Agendar demonstrativo
-                                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                             </a>
                         </div>
                     </div>

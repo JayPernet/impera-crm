@@ -48,8 +48,8 @@ export function Sidebar({ role, fullName }: { role?: string; fullName?: string }
             {/* Brand */}
             <div className="h-16 flex items-center justify-between px-6 border-b border-border">
                 <div className="flex items-center gap-3">
-                    <div className="h-9 w-9 rounded-lg bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
-                        <ShieldCheck className="h-6 w-6 text-primary-foreground" />
+                    <div className="h-9 w-9 rounded-lg bg-surface-elevated border border-border flex items-center justify-center">
+                        <ShieldCheck className="h-6 w-6 text-primary" />
                     </div>
                     <div>
                         <span className="text-xl font-bold tracking-tight text-text-primary block leading-none">IMPERA</span>
@@ -85,7 +85,7 @@ export function Sidebar({ role, fullName }: { role?: string; fullName?: string }
 
             {/* User / Footer */}
             <div className="p-4 border-t border-border">
-                <div className="flex items-center justify-between p-4 bg-black/40 rounded-xl border border-white/[0.03]">
+                <div className="flex items-center justify-between p-4 bg-surface-elevated rounded-xl border border-border">
                     <div className="flex items-center gap-3">
                         <div className="h-9 w-9 rounded-full bg-background border border-primary/40 flex items-center justify-center text-xs font-bold text-primary">
                             {initials}

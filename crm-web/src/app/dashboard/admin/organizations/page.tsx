@@ -120,7 +120,7 @@ export default async function AdminOrganizationsPage() {
 
             {/* Organizations Table */}
             < div className="luxury-card overflow-hidden" >
-                <div className="p-6 border-b border-white/[0.05]">
+                <div className="p-6 border-b border-border">
                     <h2 className="text-lg font-semibold text-text-primary">Imobiliárias Cadastradas</h2>
                     <p className="text-sm text-text-secondary mt-1">{orgsWithCounts.length} imobiliárias no sistema</p>
                 </div>

@@ -76,7 +76,7 @@ export function OrganizationTable({ organizations }: { organizations: Organizati
             <div className="overflow-x-auto">
                 <table className="w-full">
                     <thead>
-                        <tr className="border-b border-white/[0.05]">
+                        <tr className="border-b border-border">
                             <th className="text-left py-4 px-6 sub-header">Nome</th>
                             <th className="text-left py-4 px-6 sub-header">Slug</th>
                             <th className="text-left py-4 px-6 sub-header">Usuários</th>
@@ -95,7 +95,7 @@ export function OrganizationTable({ organizations }: { organizations: Organizati
                             </tr>
                         ) : (
                             organizations.map((org) => (
-                                <tr key={org.id} className="border-b border-white/[0.02] hover:bg-white/[0.02] transition-colors group">
+                                <tr key={org.id} className="border-b border-white/[0.02] hover:bg-surface transition-colors group">
                                     <td className="px-6 py-3 text-sm font-medium text-primary">{org.name}</td>
                                     <td className="px-6 py-3 text-sm text-text-secondary font-mono">{org.slug}</td>
                                     <td className="px-6 py-3 text-sm text-text-secondary tabular-nums">{org.userCount}</td>

@@ -80,7 +80,7 @@ export default async function ClientsPage() {
                 </div>
 
                 <div className="p-6 luxury-card flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-full bg-white/[0.03] flex items-center justify-center text-text-secondary border border-white/5">
+                    <div className="h-12 w-12 rounded-full bg-surface-elevated flex items-center justify-center text-text-secondary border border-border">
                         <Calendar className="h-6 w-6" />
                     </div>
                     <div>

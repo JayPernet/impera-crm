@@ -76,7 +76,7 @@ export default function PropertiesPage() {
                 </div>
                 <div className="flex items-center gap-3">
                     {/* View Toggle */}
-                    <div className="flex items-center gap-1 p-1 bg-white/[0.02] border border-white/[0.05] rounded-lg backdrop-blur-sm">
+                    <div className="flex items-center gap-1 p-1 bg-surface border border-border rounded-lg backdrop-blur-sm">
                         <button
                             onClick={() => setViewMode("table")}
                             className={cn(

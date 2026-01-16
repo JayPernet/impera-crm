@@ -57,7 +57,7 @@ export default function ForgotPasswordPage() {
                         </div>
                         <div className="flex items-center gap-4 pt-4 border-t border-white/5">
                             <div className="text-xs text-text-tertiary font-mono opacity-50">
-                                v2.6.0 stable
+                                v3.6.0 stable
                             </div>
                         </div>
                     </div>

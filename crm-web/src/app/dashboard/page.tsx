@@ -138,7 +138,7 @@ export default async function DashboardPage() {
                     <h1 className="text-lg font-semibold tracking-tight text-primary">{greeting}, {firstName}!</h1>
                     <p className="text-[10px] text-text-secondary mt-1 uppercase tracking-[0.4em] font-bold opacity-60">Visão geral</p>
                 </div>
-                <div className="flex items-center gap-3 bg-white/[0.03] border border-white/[0.05] rounded-full px-4 py-1.5 backdrop-blur-sm shadow-sm">
+                <div className="flex items-center gap-3 bg-surface-elevated border border-border rounded-full px-4 py-1.5 backdrop-blur-sm shadow-sm">
                     <Clock className="h-3.5 w-3.5 text-primary" />
                     <span className="text-[10px] font-bold text-text-secondary font-mono uppercase tracking-widest">
                         {new Date().toLocaleDateString('pt-BR', { weekday: 'short', day: '2-digit', month: 'short' }).replace('.', '')}
@@ -164,7 +164,7 @@ export default async function DashboardPage() {
                     </>
                 ) : (
                     <>
-                        <div className="luxury-card p-6 group hover:bg-white/[0.02]">
+                        <div className="luxury-card p-6 group hover:bg-surface">
                             <div className="flex items-start justify-between">
                                 <div>
                                     <p className="text-[10px] font-bold text-text-tertiary uppercase tracking-[0.2em] mb-1 group-hover:text-primary transition-colors">Leads</p>
@@ -175,7 +175,7 @@ export default async function DashboardPage() {
                                 </div>
                             </div>
                         </div>
-                        <div className="luxury-card p-6 group hover:bg-white/[0.02]">
+                        <div className="luxury-card p-6 group hover:bg-surface">
                             <div className="flex items-start justify-between">
                                 <div>
                                     <p className="text-[10px] font-bold text-text-tertiary uppercase tracking-[0.2em] mb-1 group-hover:text-info transition-colors">Novos</p>
@@ -186,7 +186,7 @@ export default async function DashboardPage() {
                                 </div>
                             </div>
                         </div>
-                        <div className="luxury-card p-6 group hover:bg-white/[0.02]">
+                        <div className="luxury-card p-6 group hover:bg-surface">
                             <div className="flex items-start justify-between">
                                 <div>
                                     <p className="text-[10px] font-bold text-text-tertiary uppercase tracking-[0.2em] mb-1 group-hover:text-warning transition-colors">Em Negócio</p>
@@ -197,7 +197,7 @@ export default async function DashboardPage() {
                                 </div>
                             </div>
                         </div>
-                        <div className="luxury-card p-6 group hover:bg-white/[0.02]">
+                        <div className="luxury-card p-6 group hover:bg-surface">
                             <div className="flex items-start justify-between">
                                 <div>
                                     <p className="text-[10px] font-bold text-text-tertiary uppercase tracking-[0.2em] mb-1 group-hover:text-success transition-colors">Clientes</p>
@@ -237,7 +237,7 @@ export default async function DashboardPage() {
                         {isSuperAdmin ? (
                             recentOrganizations.length > 0 ? (
                                 recentOrganizations.map((org: any) => (
-                                    <Link key={org.id} href="/dashboard/admin/organizations" className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/[0.03] transition-all border border-transparent hover:border-border group">
+                                    <Link key={org.id} href="/dashboard/admin/organizations" className="flex items-center gap-4 p-3 rounded-xl hover:bg-surface-elevated transition-all border border-transparent hover:border-border group">
                                         <div className="h-10 w-10 rounded-full bg-surface-elevated flex items-center justify-center text-xs font-bold text-text-tertiary group-hover:text-primary">
                                             {org.name.substring(0, 2).toUpperCase()}
                                         </div>
@@ -270,22 +270,22 @@ export default async function DashboardPage() {
                         <h2 className="sub-header mb-6">Acesso Rápido</h2>
                         <div className="grid gap-2">
                             {isSuperAdmin ? (
-                                <Link href="/dashboard/admin/organizations" className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/[0.03] transition-all border border-transparent hover:border-white/5 group">
-                                    <div className="h-8 w-8 rounded-lg bg-white/[0.03] flex items-center justify-center text-text-tertiary group-hover:text-primary transition-colors border border-white/5">
+                                <Link href="/dashboard/admin/organizations" className="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-elevated transition-all border border-transparent hover:border-border group">
+                                    <div className="h-8 w-8 rounded-lg bg-surface-elevated flex items-center justify-center text-text-tertiary group-hover:text-primary transition-colors border border-border">
                                         <Users className="h-4 w-4" />
                                     </div>
                                     <span className="text-sm font-medium text-text-secondary group-hover:text-text-primary">Gerenciar Unidades</span>
                                 </Link>
                             ) : (
                                 <>
-                                    <Link href="/dashboard/leads/new" className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/[0.03] transition-all border border-transparent hover:border-white/5 group">
-                                        <div className="h-8 w-8 rounded-lg bg-white/[0.03] flex items-center justify-center text-text-tertiary group-hover:text-primary transition-colors border border-white/5">
+                                    <Link href="/dashboard/leads/new" className="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-elevated transition-all border border-transparent hover:border-border group">
+                                        <div className="h-8 w-8 rounded-lg bg-surface-elevated flex items-center justify-center text-text-tertiary group-hover:text-primary transition-colors border border-border">
                                             <Users className="h-4 w-4" />
                                         </div>
                                         <span className="text-sm font-medium text-text-secondary group-hover:text-text-primary">Adicionar Lead</span>
                                     </Link>
-                                    <Link href="/dashboard/properties/new" className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/[0.03] transition-all border border-transparent hover:border-white/5 group">
-                                        <div className="h-8 w-8 rounded-lg bg-white/[0.03] flex items-center justify-center text-text-tertiary group-hover:text-primary transition-colors border border-white/5">
+                                    <Link href="/dashboard/properties/new" className="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-elevated transition-all border border-transparent hover:border-border group">
+                                        <div className="h-8 w-8 rounded-lg bg-surface-elevated flex items-center justify-center text-text-tertiary group-hover:text-primary transition-colors border border-border">
                                             <CheckCircle2 className="h-4 w-4" />
                                         </div>
                                         <span className="text-sm font-medium text-text-secondary group-hover:text-text-primary">Cadastrar Imóvel</span>

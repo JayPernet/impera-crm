@@ -226,10 +226,9 @@ export function EarlyAdopterSection() {
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className="btn btn-gold w-full justify-center"
+                                        className="w-full h-12 px-8 rounded-lg bg-primary hover:bg-primary-hover text-primary-foreground font-semibold text-sm uppercase tracking-wide transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
                                     >
                                         {isSubmitting ? 'Enviando...' : 'Enviar Candidatura'}
-                                        {!isSubmitting && <ArrowRight className="h-5 w-5" />}
                                     </button>
 
                                     <p className="text-xs text-text-muted text-center">

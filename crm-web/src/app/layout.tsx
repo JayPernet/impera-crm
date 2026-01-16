@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, JetBrains_Mono } from "next/font/google";
+import { Playfair_Display, Manrope } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
+const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-geist-sans",
+  variable: "--font-playfair-display",
   display: "swap",
+  weight: ["400", "600"],
+  style: ["normal", "italic"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
+  variable: "--font-manrope",
   display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -26,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${geistSans.variable} ${jetbrainsMono.variable} antialiased bg-background text-text-primary`}>
+      <body className={`${playfairDisplay.variable} ${manrope.variable} antialiased bg-background text-text-body`}>
         {children}
       </body>
     </html>

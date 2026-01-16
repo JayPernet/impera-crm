@@ -63,10 +63,9 @@ export function Hero() {
                         <div className="flex flex-col items-center gap-4 sm:flex-row lg:items-start">
                             <a
                                 href="#candidatura"
-                                className="btn btn-gold group inline-flex cursor-pointer items-center justify-center gap-2"
+                                className="btn btn-gold group inline-flex cursor-pointer items-center justify-center"
                             >
                                 Quero ser um dos 5 primeiros
-                                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                             </a>
 
                             <Link

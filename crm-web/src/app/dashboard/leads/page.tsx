@@ -67,12 +67,12 @@ export default function LeadsPage() {
               placeholder="Buscar leads..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-9 pl-9 pr-4 bg-white/[0.03] border border-white/[0.05] rounded-lg text-xs transition-all focus:outline-none focus:border-primary/30 focus:bg-white/[0.05] placeholder:text-text-tertiary/70"
+              className="w-full h-9 pl-9 pr-4 bg-surface-elevated border border-border rounded-lg text-xs transition-all focus:outline-none focus:border-primary/30 focus:bg-surface-hover placeholder:text-text-tertiary/70"
             />
           </div>
 
           {/* View Toggle */}
-          <div className="flex items-center gap-1 p-1 bg-white/[0.02] border border-white/[0.05] rounded-lg backdrop-blur-sm">
+          <div className="flex items-center gap-1 p-1 bg-surface border border-border rounded-lg backdrop-blur-sm">
             <button
               onClick={() => setViewMode("table")}
               className={cn(

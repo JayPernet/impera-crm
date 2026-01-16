@@ -110,7 +110,7 @@ export default async function ClientDetailsPage({ params }: { params: { id: stri
                         {client.summary && (
                             <div className="space-y-2 pt-4 border-t border-border">
                                 <h3 className="text-sm font-medium text-text-secondary uppercase tracking-wider">Histórico e Notas</h3>
-                                <p className="text-sm text-text-primary leading-relaxed bg-white/[0.02] p-4 rounded-lg border border-white/5 italic">
+                                <p className="text-sm text-text-primary leading-relaxed bg-surface p-4 rounded-lg border border-border italic">
                                     "{client.summary}"
                                 </p>
                             </div>
@@ -143,7 +143,7 @@ export default async function ClientDetailsPage({ params }: { params: { id: stri
                                 ))}
                             </div>
                         ) : (
-                            <div className="text-center py-8 border-2 border-dashed border-white/5 rounded-lg flex flex-col items-center gap-2">
+                            <div className="text-center py-8 border-2 border-dashed border-border rounded-lg flex flex-col items-center gap-2">
                                 <p className="text-sm text-text-tertiary">Nenhum imóvel vinculado a este cliente.</p>
                                 <Link href="/dashboard/properties" className="text-xs text-primary hover:underline">Explorar portfólio</Link>
                             </div>
@@ -179,7 +179,7 @@ export default async function ClientDetailsPage({ params }: { params: { id: stri
                     <div className="p-6 rounded-xl border border-border bg-surface/30 backdrop-blur-xl shadow-xl shadow-primary/5">
                         <h3 className="text-sm font-medium text-text-secondary uppercase tracking-wider mb-4 border-b border-border pb-2">Atendimento</h3>
                         <div className="flex items-center gap-3">
-                            <div className="h-10 w-10 rounded-full bg-white/[0.03] border border-white/5 flex items-center justify-center text-primary font-bold">
+                            <div className="h-10 w-10 rounded-full bg-surface-elevated border border-border flex items-center justify-center text-primary font-bold">
                                 {client.full_name.charAt(0)}
                             </div>
                             <div>
