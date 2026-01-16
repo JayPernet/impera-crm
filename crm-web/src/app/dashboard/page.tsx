@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import { LeadsOverTime } from "@/components/dashboard/leads-over-time";
 import { LeadsBySource } from "@/components/dashboard/leads-by-source";
 import { RecentSales } from "@/components/dashboard/recent-sales";
+import { PropertyStats } from "@/components/dashboard/property-stats";
+import { ActivityFeed } from "@/components/dashboard/activity-feed";
 
 export default async function DashboardPage() {
     const supabase = await createClient();
@@ -80,6 +82,48 @@ export default async function DashboardPage() {
             });
             leadsOverTime = Object.entries(dateCount).map(([date, count]) => ({ date, count }));
         }
+    }
+
+    // Fetch property stats and activities for non-super-admin users
+    let totalProperties = 0;
+    let recentProperties = 0;
+    let activities: any[] = [];
+
+    if (!isSuperAdmin) {
+        // Property stats
+        const { count: propertiesCount } = await supabase
+            .from("properties")
+            .select("*", { count: "exact", head: true })
+            .in("status", ["disponivel", "reservado"]);
+        totalProperties = propertiesCount || 0;
+
+        const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
+        const { count: recentCount } = await supabase
+            .from("properties")
+            .select("*", { count: "exact", head: true })
+            .gte("created_at", sevenDaysAgo);
+        recentProperties = recentCount || 0;
+
+        // Fetch activities with user names
+        const { data: activitiesData } = await supabase
+            .from("activities")
+            .select(`
+                id,
+                created_at,
+                user_id,
+                entity_type,
+                entity_id,
+                action_type,
+                description,
+                profiles:user_id (full_name)
+            `)
+            .order("created_at", { ascending: false })
+            .limit(10);
+
+        activities = (activitiesData || []).map((activity: any) => ({
+            ...activity,
+            user_name: activity.profiles?.full_name || "Sistema"
+        }));
     }
 
     const hour = new Date().getHours();
@@ -168,27 +212,33 @@ export default async function DashboardPage() {
                 )}
             </div>
 
+            {/* Property Stats - Only for non-super-admin */}
+            {!isSuperAdmin && (
+                <div className="space-y-4">
+                    <h2 className="sub-header">Imóveis</h2>
+                    <PropertyStats
+                        totalProperties={totalProperties}
+                        recentProperties={recentProperties}
+                    />
+                </div>
+            )}
+
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Recent Activity */}
+                {/* Activity Feed */}
                 <div className="lg:col-span-2 luxury-card flex flex-col">
-                    <div className="p-6 border-b border-white/[0.05] flex items-center justify-between">
+                    <div className="p-6 border-b border-border flex items-center justify-between">
                         <h3 className="sub-header flex items-center gap-2">
                             <Clock className="h-4 w-4 text-primary" />
                             Atividade Recente
                         </h3>
-                        {!isSuperAdmin && (
-                            <Link href="/dashboard/leads" className="text-[10px] text-text-tertiary hover:text-primary transition-colors font-bold uppercase tracking-widest">
-                                Ver todos
-                            </Link>
-                        )}
                     </div>
 
                     <div className="flex-1 p-4">
                         {isSuperAdmin ? (
                             recentOrganizations.length > 0 ? (
                                 recentOrganizations.map((org: any) => (
-                                    <Link key={org.id} href="/dashboard/admin/organizations" className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/[0.03] transition-all border border-transparent hover:border-white/5">
-                                        <div className="h-10 w-10 rounded-full bg-white/[0.03] flex items-center justify-center text-xs font-bold text-text-tertiary group-hover:text-primary">
+                                    <Link key={org.id} href="/dashboard/admin/organizations" className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/[0.03] transition-all border border-transparent hover:border-border group">
+                                        <div className="h-10 w-10 rounded-full bg-surface-elevated flex items-center justify-center text-xs font-bold text-text-tertiary group-hover:text-primary">
                                             {org.name.substring(0, 2).toUpperCase()}
                                         </div>
                                         <div className="flex-1 min-w-0">
@@ -203,34 +253,12 @@ export default async function DashboardPage() {
                                     </Link>
                                 ))
                             ) : (
-                                <div className="h-40 flex flex-col items-center justify-center text-text-muted text-xs border border-dashed border-white/5 rounded-xl">
+                                <div className="h-40 flex flex-col items-center justify-center text-text-muted text-xs border border-dashed border-border rounded-xl">
                                     Nenhuma unidade cadastrada.
                                 </div>
                             )
                         ) : (
-                            recentLeads.length > 0 ? (
-                                recentLeads.map((lead: any) => (
-                                    <Link key={lead.id} href={`/dashboard/leads/${lead.id}/edit`} className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/[0.03] transition-all border border-transparent hover:border-white/5">
-                                        <div className="h-10 w-10 rounded-full bg-white/[0.03] flex items-center justify-center text-xs font-bold text-text-tertiary">
-                                            {lead.full_name.substring(0, 2).toUpperCase()}
-                                        </div>
-                                        <div className="flex-1 min-w-0">
-                                            <p className="text-sm font-medium text-text-primary truncate">{lead.full_name}</p>
-                                            <p className="text-xs text-text-muted">{lead.source}</p>
-                                        </div>
-                                        <div className="text-right">
-                                            <span className={cn(
-                                                "text-[9px] font-bold uppercase tracking-wider",
-                                                lead.status === 'Novo' ? 'text-info' : lead.status === 'Fechado' ? 'text-success' : 'text-warning'
-                                            )}>{lead.status}</span>
-                                        </div>
-                                    </Link>
-                                ))
-                            ) : (
-                                <div className="h-40 flex flex-col items-center justify-center text-text-muted text-xs border border-dashed border-white/5 rounded-xl">
-                                    Nenhuma atividade recente.
-                                </div>
-                            )
+                            <ActivityFeed activities={activities} />
                         )}
                     </div>
                 </div>
