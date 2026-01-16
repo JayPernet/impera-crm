@@ -10,7 +10,7 @@ const propertySchema = z.object({
     type: z.string().min(1, "Tipo é obrigatório"),
     transaction_type: z.enum(["venda", "aluguel"]).optional(),
     price: z.coerce.number().min(0),
-    status: z.enum(["disponivel", "reservado", "vendido", "alugado"]).default("disponivel"),
+    status: z.enum(["disponivel", "reservado", "vendido", "alugado", "arquivado"]).default("disponivel"),
     description: z.string().optional(),
 
     // Address
@@ -144,6 +144,26 @@ export async function deleteProperty(id: string) {
     return { success: true };
 }
 
+export async function archiveProperty(id: string) {
+    const supabase = await createClient();
+
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return { success: false, message: "Unauthorized" };
+
+    const { error } = await supabase
+        .from("properties")
+        .update({ status: 'arquivado' })
+        .eq("id", id);
+
+    if (error) {
+        console.error("Error archiving property:", error);
+        return { success: false, message: error.message };
+    }
+
+    revalidatePath("/dashboard/properties");
+    return { success: true };
+}
+
 export async function updateProperty(id: string, prevState: any, formData: FormData) {
     const supabase = await createClient();
 
@@ -239,9 +259,33 @@ export async function updateProperty(id: string, prevState: any, formData: FormD
 export async function getPropertyLeadInterests(propertyId: string) {
     const supabase = await createClient();
 
-    // TODO: This requires a join table (lead_property_interests) to track which leads are interested in which properties
-    // For now, returning empty array to prevent errors
-    // Future implementation should query: SELECT leads.* FROM leads JOIN lead_property_interests ON leads.id = lead_property_interests.lead_id WHERE lead_property_interests.property_id = propertyId
+    const { data, error } = await supabase
+        .from("lead_property_interest")
+        .select(`
+            id,
+            created_at,
+            interest_level,
+            leads (
+                id,
+                full_name,
+                email,
+                phone,
+                status,
+                classification
+            )
+        `)
+        .eq("property_id", propertyId)
+        .order("created_at", { ascending: false });
 
-    return [];
+    if (error) {
+        console.error("Error fetching property lead interests:", error);
+        return [];
+    }
+
+    // Flatten logic to return a clean Lead object structure if needed, or return as is with joined data
+    return data.map((item: any) => ({
+        ...item.leads,
+        interest_at: item.created_at,
+        interest_level: item.interest_level
+    }));
 }

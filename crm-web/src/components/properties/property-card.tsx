@@ -13,7 +13,7 @@ type PropertyCardProps = {
         id: string;
         title: string;
         type: string;
-        status: "disponivel" | "reservado" | "vendido" | "alugado";
+        status: "disponivel" | "reservado" | "vendido" | "alugado" | "arquivado";
         price: number;
         address_bairro: string;
         images_urls: string[] | null;
@@ -29,6 +29,7 @@ const statusMap = {
     reservado: { label: "Reservado", color: "bg-warning/20 text-warning border-warning/30" },
     vendido: { label: "Vendido", color: "bg-danger/20 text-danger border-danger/30" },
     alugado: { label: "Alugado", color: "bg-info/20 text-info border-info/30" },
+    arquivado: { label: "Arquivado", color: "bg-surface-elevated text-text-tertiary border-border" },
 };
 
 export function PropertyCard({ property }: PropertyCardProps) {

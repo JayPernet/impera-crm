@@ -13,7 +13,7 @@ export default function PropertiesPage() {
     const [properties, setProperties] = useState<Property[]>([]);
     const [qualifiedLeadCount, setQualifiedLeadCount] = useState(0);
     const [viewMode, setViewMode] = useState<"table" | "grid">("table");
-    const [statusFilter, setStatusFilter] = useState<"ativos" | "historico" | "todos">("ativos");
+    const [statusFilter, setStatusFilter] = useState<"ativos" | "historico" | "arquivados" | "todos">("ativos");
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -60,6 +60,8 @@ export default function PropertiesPage() {
             return p.status === "disponivel" || p.status === "reservado";
         } else if (statusFilter === "historico") {
             return p.status === "vendido" || p.status === "alugado";
+        } else if (statusFilter === "arquivados") {
+            return p.status === "arquivado";
         }
         return true; // "todos"
     });
@@ -135,6 +137,20 @@ export default function PropertiesPage() {
                     Histórico
                     <span className="ml-2 px-1.5 py-0.5 rounded-full text-xs bg-surface-elevated text-text-tertiary">
                         {properties.filter(p => p.status === "vendido" || p.status === "alugado").length}
+                    </span>
+                </button>
+                <button
+                    onClick={() => setStatusFilter("arquivados")}
+                    className={cn(
+                        "px-4 py-2 text-sm font-medium transition-colors relative",
+                        statusFilter === "arquivados"
+                            ? "text-primary border-b-2 border-primary"
+                            : "text-text-tertiary hover:text-text-primary"
+                    )}
+                >
+                    Arquivados
+                    <span className="ml-2 px-1.5 py-0.5 rounded-full text-xs bg-surface-elevated text-text-tertiary">
+                        {properties.filter(p => p.status === "arquivado").length}
                     </span>
                 </button>
                 <button

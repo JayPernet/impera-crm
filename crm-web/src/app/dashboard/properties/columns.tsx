@@ -1,9 +1,9 @@
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
-import { MoreHorizontal, Pencil, Trash2, Eye } from "lucide-react"
+import { MoreHorizontal, Pencil, Trash2, Eye, Archive } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { deleteProperty } from "./actions"
+import { deleteProperty, archiveProperty } from "./actions"
 import Link from "next/link"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
@@ -14,7 +14,7 @@ export type Property = {
     id: string
     title: string
     type: string
-    status: "disponivel" | "reservado" | "vendido" | "alugado"
+    status: "disponivel" | "reservado" | "vendido" | "alugado" | "arquivado"
     price: number
     address_bairro: string
     created_at: string
@@ -30,6 +30,7 @@ const statusMap = {
     reservado: { label: "Reservado", color: "text-warning bg-warning/10 border-warning/20 ring-1 ring-warning/20" },
     vendido: { label: "Vendido", color: "text-danger bg-danger/10 border-danger/20 ring-1 ring-danger/20" },
     alugado: { label: "Alugado", color: "text-info bg-info/10 border-info/20 ring-1 ring-info/20" },
+    arquivado: { label: "Arquivado", color: "text-text-tertiary bg-surface-elevated border-border ring-1 ring-border" },
 }
 
 export const columns: ColumnDef<Property>[] = [
@@ -117,7 +118,9 @@ import { useState } from "react"
 function ActionsCell({ property }: { property: Property }) {
     const router = useRouter()
     const [showDeleteDialog, setShowDeleteDialog] = useState(false)
+    const [showArchiveDialog, setShowArchiveDialog] = useState(false)
     const [isDeleting, setIsDeleting] = useState(false)
+    const [isArchiving, setIsArchiving] = useState(false)
 
     const handleDelete = async () => {
         setIsDeleting(true)
@@ -131,6 +134,18 @@ function ActionsCell({ property }: { property: Property }) {
         setIsDeleting(false)
     }
 
+    const handleArchive = async () => {
+        setIsArchiving(true)
+        const result = await archiveProperty(property.id)
+        if (result.success) {
+            toast.success("Imóvel arquivado com sucesso")
+            setShowArchiveDialog(false)
+        } else {
+            toast.error("Erro ao arquivar imóvel: " + result.message)
+        }
+        setIsArchiving(false)
+    }
+
     return (
         <>
             <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -141,6 +156,15 @@ function ActionsCell({ property }: { property: Property }) {
                 >
                     <Pencil className="h-4 w-4" />
                 </Link>
+                {property.status !== 'arquivado' && (
+                    <button
+                        onClick={() => setShowArchiveDialog(true)}
+                        className="p-2 hover:bg-warning/10 rounded-md text-text-tertiary hover:text-warning transition-colors"
+                        title="Arquivar"
+                    >
+                        <Archive className="h-4 w-4" />
+                    </button>
+                )}
                 <button
                     onClick={() => setShowDeleteDialog(true)}
                     className="p-2 hover:bg-danger/10 rounded-md text-text-tertiary hover:text-danger transition-colors"
@@ -149,6 +173,17 @@ function ActionsCell({ property }: { property: Property }) {
                     <Trash2 className="h-4 w-4" />
                 </button>
             </div>
+
+            <ConfirmDialog
+                isOpen={showArchiveDialog}
+                onClose={() => setShowArchiveDialog(false)}
+                onConfirm={handleArchive}
+                title="Arquivar Imóvel"
+                description={`Tem certeza que deseja arquivar o imóvel "${property.title}"? Ele sairá da lista de ativos.`}
+                confirmText="Sim, arquivar"
+                variant="info"
+                isLoading={isArchiving}
+            />
 
             <ConfirmDialog
                 isOpen={showDeleteDialog}
@@ -163,3 +198,4 @@ function ActionsCell({ property }: { property: Property }) {
         </>
     )
 }
+

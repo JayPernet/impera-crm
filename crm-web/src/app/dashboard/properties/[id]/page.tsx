@@ -2,6 +2,7 @@ import { createClient } from "@/utils/supabase/server";
 import { notFound } from "next/navigation";
 import { getPropertyLeadInterests } from "../actions";
 import { InterestedLeadsList } from "@/components/properties/interested-leads-list";
+import { PropertyHeaderActions } from "@/components/properties/property-header-actions";
 import Link from "next/link";
 import { ArrowLeft, Building2, MapPin, DollarSign, Bed, Bath, Car, EyeOff } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -80,12 +81,7 @@ export default async function PropertyDetailsPage({ params }: { params: Promise<
                         )}
                     </div>
                 </div>
-                <Link
-                    href={`/dashboard/properties/${id}/edit`}
-                    className="px-4 py-2 bg-primary hover:bg-primary-light text-primary-foreground rounded-lg text-sm font-medium transition-colors"
-                >
-                    Editar
-                </Link>
+                <PropertyHeaderActions id={id} title={property.title} status={property.status} />
             </div>
 
             {/* Property Details */}
