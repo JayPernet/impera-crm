@@ -432,3 +432,89 @@
 - **Descrição:** Registra automaticamente atividades de criação de imóveis e mudanças de status.
 
 ---
+
+### Tabela: `n8n_historico_mensagens`
+
+**Descrição:** Armazena o histórico completo de mensagens do WhatsApp (recebidas e enviadas), mantendo o contexto para a IA e permitindo que corretores visualizem e enviem mensagens através do CRM.
+**Tipo:** Feature
+
+### Colunas
+| Nome | Tipo | Constraints | Default | Descrição |
+|------|------|-------------|---------|-----------|
+| id | integer | PRIMARY KEY | auto-increment | Identificador único da mensagem |
+| created_at | timestamptz | NOT NULL | now() | Data de criação do registro |
+| session_id | text | NOT NULL | - | Identificador da sessão (número de telefone do contato) |
+| message | jsonb | NOT NULL | - | Objeto da mensagem contendo `type` ('human' ou 'ai') e `content` (texto) |
+
+### Índices
+| Nome | Colunas | Tipo | Justificativa |
+|------|---------|------|---------------|
+| idx_n8n_messages_session | session_id | btree | Otimizar buscas de mensagens por sessão/contato |
+| idx_n8n_messages_created | created_at | btree (DESC) | Otimizar ordenação cronológica |
+
+### Foreign Keys
+| Coluna Local | Tabela Referenciada | Coluna Referenciada | On Delete | On Update |
+|--------------|---------------------|---------------------|-----------|-----------|
+| (N/A) | (N/A) | (N/A) | (N/A) | (N/A) |
+
+### RLS (Row Level Security)
+**Status:** A ser habilitado
+
+**Políticas (Planejadas):**
+1. **Nome:** `allow_organization_chat_access`
+   - **Tipo:** SELECT
+   - **Usando:** `session_id IN (SELECT phone FROM leads WHERE organization_id = (SELECT organization_id FROM profiles WHERE id = auth.uid()))`
+   - **Descrição:** Permite que usuários vejam mensagens de leads da própria organização.
+
+2. **Nome:** `allow_chat_insert`
+   - **Tipo:** INSERT
+   - **Usando:** `session_id IN (SELECT phone FROM leads WHERE organization_id = (SELECT organization_id FROM profiles WHERE id = auth.uid()))`
+   - **Descrição:** Permite que usuários enviem mensagens para leads da própria organização.
+
+---
+
+### Tabela: `notifications`
+
+**Descrição:** Armazena notificações para alertar usuários sobre eventos importantes (novas mensagens, mudanças de status, etc.).
+**Tipo:** Feature
+
+### Colunas
+| Nome | Tipo | Constraints | Default | Descrição |
+|------|------|-------------|---------|-----------|
+| id | uuid | PRIMARY KEY | gen_random_uuid() | Identificador único da notificação |
+| created_at | timestamptz | NOT NULL | now() | Data de criação do registro |
+| user_id | uuid | NOT NULL | - | ID do usuário destinatário |
+| type | text | NOT NULL | - | Tipo de notificação (new_message, status_change, etc.) |
+| title | text | NOT NULL | - | Título da notificação |
+| message | text | - | - | Mensagem detalhada |
+| is_read | boolean | NOT NULL | false | Indica se a notificação foi lida |
+| entity_type | text | - | - | Tipo de entidade relacionada (lead, property, etc.) |
+| entity_id | uuid | - | - | ID da entidade relacionada |
+
+### Índices
+| Nome | Colunas | Tipo | Justificativa |
+|------|---------|------|---------------|
+| idx_notifications_user_id | user_id | btree | Otimizar buscas de notificações por usuário |
+| idx_notifications_is_read | is_read | btree | Otimizar filtros por status de leitura |
+| idx_notifications_created_at | created_at | btree (DESC) | Otimizar ordenação cronológica |
+
+### Foreign Keys
+| Coluna Local | Tabela Referenciada | Coluna Referenciada | On Delete | On Update |
+|--------------|---------------------|---------------------|-----------|-----------|
+| user_id | profiles | id | CASCADE | CASCADE |
+
+### RLS (Row Level Security)
+**Status:** Habilitado
+
+**Políticas:**
+1. **Nome:** `allow_own_notifications_access`
+   - **Tipo:** SELECT
+   - **Usando:** `user_id = auth.uid()`
+   - **Descrição:** Permite que usuários vejam apenas suas próprias notificações.
+
+2. **Nome:** `allow_own_notifications_update`
+   - **Tipo:** UPDATE
+   - **Usando:** `user_id = auth.uid()`
+   - **Descrição:** Permite que usuários marquem suas próprias notificações como lidas.
+
+---

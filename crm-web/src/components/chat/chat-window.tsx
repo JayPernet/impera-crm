@@ -188,9 +188,61 @@ export function ChatWindow({ chatId, extraChat }: { chatId: string | null, extra
 
             {/* Input */}
             <div className="p-4 border-t border-border bg-surface">
-                <div className="flex items-center gap-2 text-warning text-sm bg-warning/10 p-3 rounded-lg">
-                    <span>Envio de mensagens será implementado na próxima etapa (integração Z-API).</span>
-                </div>
+                <form onSubmit={async (e) => {
+                    e.preventDefault();
+                    const form = e.currentTarget;
+                    const input = form.elements.namedItem('message') as HTMLInputElement;
+                    const content = input.value.trim();
+
+                    if (!content || !displayPhone) return;
+
+                    // Optimistic UI: Add message immediately
+                    const optimisticMessage: ChatMessage = {
+                        id: Date.now(), // Temporary ID
+                        session_id: displayPhone,
+                        message: {
+                            type: 'ai',
+                            content: content
+                        },
+                        created_at: new Date().toISOString()
+                    };
+                    setMessages(prev => [...prev, optimisticMessage]);
+                    input.value = '';
+
+                    // Insert into database
+                    const supabase = createClient();
+                    const { error } = await supabase
+                        .from('n8n_historico_mensagens')
+                        .insert({
+                            session_id: displayPhone,
+                            message: {
+                                type: 'ai',
+                                content: content
+                            }
+                        });
+
+                    if (error) {
+                        console.error('Error sending message:', error);
+                        // Remove optimistic message on error
+                        setMessages(prev => prev.filter(m => m.id !== optimisticMessage.id));
+                        alert('Erro ao enviar mensagem. Tente novamente.');
+                    }
+                }} className="flex items-center gap-2">
+                    <input
+                        name="message"
+                        type="text"
+                        placeholder={iaActive ? "IA está ativa - mensagens manuais serão enviadas como IA" : "Digite sua mensagem..."}
+                        className="flex-1 h-10 px-4 bg-surface-elevated border border-border rounded-lg text-sm text-text-primary placeholder:text-text-tertiary focus:outline-none focus:border-primary transition-all"
+                        disabled={!displayPhone}
+                    />
+                    <button
+                        type="submit"
+                        disabled={!displayPhone}
+                        className="h-10 w-10 rounded-lg bg-primary text-primary-foreground flex items-center justify-center hover:bg-primary-light transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        <Send className="h-4 w-4" />
+                    </button>
+                </form>
             </div>
         </div>
     );

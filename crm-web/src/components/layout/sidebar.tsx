@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Home, Building2, Users, MessageSquare, Settings, LogOut, ShieldCheck, Shield, UsersRound } from "lucide-react";
+import { NotificationBadge } from "@/components/notifications/notification-badge";
 
 const getMenuItems = (role?: string) => {
     // If super_admin, they ONLY see the Admin/Organizations management
@@ -45,7 +46,7 @@ export function Sidebar({ role, fullName }: { role?: string; fullName?: string }
     return (
         <aside className="w-64 h-screen bg-background border-r border-border flex flex-col fixed left-0 top-0">
             {/* Brand */}
-            <div className="h-16 flex items-center px-6 border-b border-border">
+            <div className="h-16 flex items-center justify-between px-6 border-b border-border">
                 <div className="flex items-center gap-3">
                     <div className="h-9 w-9 rounded-lg bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
                         <ShieldCheck className="h-6 w-6 text-primary-foreground" />
@@ -55,6 +56,7 @@ export function Sidebar({ role, fullName }: { role?: string; fullName?: string }
                         <span className="text-[10px] uppercase tracking-[0.2em] text-primary font-semibold">CRM</span>
                     </div>
                 </div>
+                <NotificationBadge />
             </div>
 
             {/* Navigation */}
