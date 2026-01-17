@@ -119,11 +119,7 @@ export function Hero() {
                                 className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent"
                             />
 
-                            {/* Accent Detail */}
-                            <div className="absolute bottom-10 left-10 right-10 p-8 border border-white/10 backdrop-blur-md bg-white/5 rounded-sm">
-                                <div className="text-gold text-[10px] uppercase tracking-[0.3em] font-bold mb-2">Impera Insights</div>
-                                <div className="text-white font-display text-xl leading-snug">A precisão que o <br />alto padrão exige.</div>
-                            </div>
+
                         </div>
                     </motion.div>
                 </div>
