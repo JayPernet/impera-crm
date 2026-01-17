@@ -15,7 +15,7 @@ import { motion } from 'framer-motion';
 
 const benefits = [
     { icon: Percent, title: "Preço fundador", description: "60% off permanente" },
-    { icon: Sparkles, title: "Acesso vitalício", description: "Mesmo com aumento futuro" },
+    { icon: Sparkles, title: "Acesso vitalício", description: "Mesmo com aumento futuro de preço" },
     { icon: MessageSquare, title: "Influência no produto", description: "Suas necessidades viram features" },
     { icon: Headphones, title: "Suporte direto", description: "Linha direta com os fundadores" },
     { icon: Users, title: "Co-criação", description: "Seu feedback molda o Impera" }
@@ -127,8 +127,8 @@ export function EarlyAdopterSection() {
                                     marginTop: 'var(--spacing-8)'
                                 }}
                             >
-                                <p className="font-bold text-text-primary mb-2">Em troca, pedimos:</p>
-                                <p>Feedback honesto e disponibilidade para 1 call semanal de 30min nas primeiras 4 semanas.</p>
+                                <p className="font-bold text-text-primary mb-2">Compromisso:</p>
+                                <p>Em troca, pedimos feedback honesto e disponibilidade para 1 call semanal de 30min nas primeiras 4 semanas.</p>
                             </div>
                         </div>
 

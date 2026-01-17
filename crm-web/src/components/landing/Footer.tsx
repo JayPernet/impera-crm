@@ -14,92 +14,88 @@ export function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="border-t border-luxury bg-abyss/50 backdrop-blur-md">
-            <div className="mx-auto max-w-[1280px] px-6 py-12">
-                <div className="grid gap-8 md:grid-cols-3">
-                    {/* Brand Column */}
-                    <div className="space-y-4">
-                        <div className="flex items-center gap-2">
-                            <Building2 className="h-6 w-6 text-gold" strokeWidth={1.5} />
-                            <span className="text-xl font-semibold tracking-tight text-white uppercase">
-                                Impera
+        <footer className="bg-navy border-t border-white/5 pt-24 pb-12">
+            <div className="mx-auto max-w-[1400px] px-8">
+                <div className="grid gap-16 md:grid-cols-4 lg:grid-cols-5 mb-24">
+                    {/* Brand Column - Sovereign Pillar */}
+                    <div className="md:col-span-2 lg:col-span-2 space-y-8">
+                        <div className="flex items-center gap-3">
+                            <div className="h-10 w-10 border border-gold/30 flex items-center justify-center">
+                                <Building2 className="h-5 w-5 text-gold" strokeWidth={1} />
+                            </div>
+                            <span className="text-2xl font-display font-medium tracking-tight text-white uppercase">
+                                Impera<span className="italic font-serif text-gold">.</span>
                             </span>
                         </div>
-                        <p className="text-sm leading-relaxed text-neutral-400">
-                            IMPERA.<br />
-                            O CRM que transforma sua imobiliária.
+                        <p className="text-lg font-light leading-relaxed text-white/40 max-w-sm italic font-serif">
+                            Elevando a mediação imobiliária ao patamar de arte e precisão cibernética.
                         </p>
                     </div>
 
-                    {/* Links Column */}
-                    <div className="space-y-4">
-                        <h3 className="text-sm font-semibold uppercase tracking-wider text-neutral-300">
-                            Navegação
+                    {/* Navigation - Architectural Structure */}
+                    <div className="space-y-8">
+                        <h3 className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold">
+                            Ecossistema
                         </h3>
-                        <ul className="space-y-2">
-                            <li>
-                                <Link
-                                    href="#features"
-                                    className="text-sm text-neutral-400 transition-colors hover:text-gold"
-                                >
-                                    Solução
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="#pricing"
-                                    className="text-sm text-neutral-400 transition-colors hover:text-gold"
-                                >
-                                    Planos
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/login"
-                                    className="text-sm text-neutral-400 transition-colors hover:text-gold"
-                                >
-                                    Painel
-                                </Link>
-                            </li>
+                        <ul className="space-y-4">
+                            {['Solução', 'Planos', 'Metodologia', 'Painel de Controle'].map((item) => (
+                                <li key={item}>
+                                    <Link
+                                        href={`#${item.toLowerCase()}`}
+                                        className="text-white/50 text-[11px] font-bold uppercase tracking-[1.5px] hover:text-white transition-colors"
+                                    >
+                                        {item}
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 
-                    {/* Contact Column */}
-                    <div className="space-y-4">
-                        <h3 className="text-sm font-semibold uppercase tracking-wider text-neutral-300">
-                            Contato
+                    {/* Support - Specialized Service */}
+                    <div className="space-y-8">
+                        <h3 className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold">
+                            Suporte
                         </h3>
-                        <ul className="space-y-3">
-                            <li className="flex items-start gap-2 text-sm text-neutral-400">
-                                <Mail className="mt-0.5 h-4 w-4 text-gold" strokeWidth={1.5} />
-                                <span>contato@impera.com</span>
+                        <ul className="space-y-4">
+                            {['Privacidade', 'Termos de Uso', 'Compliance', 'Segurança'].map((item) => (
+                                <li key={item}>
+                                    <Link
+                                        href={`#${item.toLowerCase()}`}
+                                        className="text-white/50 text-[11px] font-bold uppercase tracking-[1.5px] hover:text-white transition-colors"
+                                    >
+                                        {item}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Contact - Direct Line */}
+                    <div className="space-y-8">
+                        <h3 className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold">
+                            Global
+                        </h3>
+                        <ul className="space-y-4 text-[11px] font-bold uppercase tracking-[1.5px]">
+                            <li className="flex items-center gap-3 text-white/50 group cursor-pointer hover:text-white transition-colors">
+                                <Mail className="h-4 w-4 text-gold/60" strokeWidth={1} />
+                                <span>contato@impera.ai</span>
                             </li>
-                            <li className="flex items-start gap-2 text-sm text-neutral-400">
-                                <MapPin className="mt-0.5 h-4 w-4 text-gold" strokeWidth={1.5} />
-                                <span>Salvador, BA - Brasil</span>
+                            <li className="flex items-center gap-3 text-white/50 group cursor-pointer hover:text-white transition-colors">
+                                <MapPin className="h-4 w-4 text-gold/60" strokeWidth={1} />
+                                <span>Salvador • Brasil</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                {/* Bottom Bar */}
-                <div className="mt-12 border-t border-luxury pt-8">
-                    <div className="flex flex-col items-center justify-between gap-4 text-sm text-neutral-500 md:flex-row">
-                        <p>© {currentYear} Impera — Alta Performance Imobiliária.</p>
-                        <div className="flex gap-6">
-                            <Link
-                                href="/privacy"
-                                className="transition-colors hover:text-gold"
-                            >
-                                Privacidade
-                            </Link>
-                            <Link
-                                href="/terms"
-                                className="transition-colors hover:text-gold"
-                            >
-                                Termos
-                            </Link>
-                        </div>
+                {/* Bottom Bar - Final Seal */}
+                <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8">
+                    <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-white/20">
+                        © {currentYear} Impera Corporation — SOBERANIA TECNOLÓGICA.
+                    </p>
+                    <div className="flex gap-12 text-[9px] font-bold uppercase tracking-[0.3em] text-white/20">
+                        <span>MADE WITH PRECISION</span>
+                        <span>v2.0.0 LUXE EDITION</span>
                     </div>
                 </div>
             </div>

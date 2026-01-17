@@ -15,15 +15,15 @@ import { useState } from 'react';
 const faqs = [
     {
         question: "Por que tão poucas vagas?",
-        answer: "Estamos em estágio inicial. Queremos atender bem e desenvolver o melhor produto possível com feedback real de quem usa."
+        answer: "Estamos em estágio inicial. Queremos atender bem e desenvolver o melhor produto possível."
     },
     {
         question: "Quanto custa?",
-        answer: "Depende do tamanho da sua equipe. O preço fundador será revelado na call de apresentação."
+        answer: "Vai depender da quantidade de colaboradores que você tem. O preço fundador será revelado na call de apresentação."
     },
     {
         question: "E se eu não gostar?",
-        answer: "O produto está em desenvolvimento, algumas coisas podem não funcionar como esperado. Se mesmo assim você não gostar, agradeceremos seu tempo e você receberá reembolso 100%."
+        answer: "O produto está em desenvolvimento, algumas coisas podem não funcionar como esperado. Se mesmo assim você não gostar, agradeceremos seu tempo e colaboração e você receberá um reembolso 100% do valor pago."
     },
     {
         question: "Preciso de treinamento?",
@@ -96,7 +96,7 @@ export function FAQSection() {
                         href="#candidatura"
                         className="btn btn-outline-gold"
                     >
-                        Quero me candidatar
+                        Candidate-se para ser um dos 5 primeiros
                     </a>
                 </div>
             </div>

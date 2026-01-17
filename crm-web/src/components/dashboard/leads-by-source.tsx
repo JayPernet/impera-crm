@@ -10,18 +10,18 @@ interface LeadsBySourceProps {
 }
 
 const COLORS = [
-    'hsl(var(--primary))',
-    'hsl(var(--success))',
-    'hsl(var(--warning))',
-    'hsl(var(--info))',
-    'hsl(var(--danger))',
+    'var(--velvet-main)',
+    'var(--champagne-main)',
+    'var(--slate)',
+    'var(--silk)',
+    'var(--velvet-light)',
 ];
 
 export function LeadsBySource({ data }: LeadsBySourceProps) {
     return (
-        <div className="luxury-card h-full">
-            <div className="p-6 border-b border-white/[0.05]">
-                <h3 className="sub-header">Leads por Origem</h3>
+        <div className="bg-white border border-marble shadow-sm h-full" style={{ borderRadius: 'var(--radius-sm)' }}>
+            <div className="p-6 border-b border-marble">
+                <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-gold">Leads por Origem</h3>
             </div>
             <div className="p-4">
                 <ResponsiveContainer width="100%" height={300}>
@@ -42,26 +42,29 @@ export function LeadsBySource({ data }: LeadsBySourceProps) {
                         </Pie>
                         <Tooltip
                             contentStyle={{
-                                backgroundColor: '#1A2028',
-                                border: '1px solid rgba(255,255,255,0.05)',
-                                borderRadius: '12px',
-                                fontSize: '12px',
-                                color: '#E6EAF0',
-                                boxShadow: '0 8px 16px -4px rgba(0,0,0,0.5)'
+                                backgroundColor: 'var(--white)',
+                                border: '1px solid var(--marble)',
+                                borderRadius: 'var(--radius-sm)',
+                                fontSize: '11px',
+                                fontWeight: '600',
+                                color: 'var(--velvet-main)',
+                                boxShadow: 'var(--shadow-level2)'
                             }}
-                            itemStyle={{ color: '#E6EAF0' }}
+                            itemStyle={{ color: 'var(--velvet-main)', textTransform: 'uppercase', letterSpacing: '0.05em' }}
                         />
                         <Legend
-                            layout="vertical"
-                            verticalAlign="middle"
-                            align="right"
-                            iconType="circle"
-                            iconSize={8}
+                            layout="horizontal"
+                            verticalAlign="bottom"
+                            align="center"
+                            iconType="rect"
+                            iconSize={10}
                             wrapperStyle={{
-                                fontSize: '11px',
-                                fontFamily: 'var(--font-mono)',
+                                paddingTop: '20px',
+                                fontSize: '9px',
+                                fontWeight: '700',
                                 textTransform: 'uppercase',
-                                letterSpacing: '0.05em'
+                                letterSpacing: '0.1em',
+                                color: 'var(--slate)'
                             }}
                         />
                     </PieChart>

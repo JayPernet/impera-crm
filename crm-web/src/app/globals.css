@@ -7,88 +7,134 @@ html {
 
 :root {
   /* ========================================
-     IMPERA CRM - LUXE & ELEGANT
-     Design System v6.0 - Editorial Authority
+     IMPERA CRM - LUXE EDITION v2.0.0
+     Design System - Cyber-Precision Luxury
+     Source: docs/04-design/design_system.json
      ======================================== */
 
-  /* === PRIMITIVE COLORS === */
-  /* Brand - Velvet Navy */
-  --brand-50: #EBEBF5;
-  --brand-100: #C3C8D6;
-  --brand-500: #222D52;
-  --brand-900: #0F1426;
+  /* ===================================
+     PRIMITIVE COLORS (Base Palette)
+     =================================== */
 
-  /* Neutral - Pearl & Marble */
-  --neutral-0: #FFFFFF;
-  --neutral-50: #F5F2F0;
-  --neutral-100: #EEE5D9;
-  --neutral-200: #E8E4E0;
-  --neutral-400: #94A3B8;
-  --neutral-800: #4A5568;
-  --neutral-900: #0A0A0A;
+  /* Velvet Navy - Primary Brand */
+  --velvet-main: #222D52;
+  --velvet-dark: #1A223E;
+  --velvet-light: #2E3B64;
+  --velvet-overlay: rgba(34, 45, 82, 0.8);
 
-  /* Accent - Champagne Gold */
-  --accent-main: #D2B68A;
-  --accent-contrast: #8F7041;
+  /* Champagne Gold - Accent */
+  --champagne-main: #D2B68A;
+  --champagne-gold: #C6A675;
+  --champagne-light: rgba(210, 182, 138, 0.1);
 
-  /* === SEMANTIC COLORS === */
+  /* Neutral Palette */
+  --white: #FFFFFF;
+  --pearl: #F5F2F0;
+  --silk: #EEE5D9;
+  --marble: #E8E4E0;
+  --slate: #4A5568;
+  --muted: #94A3B8;
+
+  /* Semantic Status */
+  --semantic-success: #059669;
+  --semantic-error: #991B1B;
+
+  /* ===================================
+     USAGE-BASED COLOR TOKENS
+     =================================== */
+
   /* Backgrounds */
-  --background: var(--neutral-50);
-  --surface: var(--neutral-0);
-  --surface-elevated: var(--neutral-100);
-  --surface-highlight: var(--neutral-100);
-  --overlay: rgba(15, 20, 38, 0.8);
+  --bg-app: var(--pearl);
+  --bg-sidebar: var(--velvet-main);
+  --bg-card: var(--white);
+  --bg-input: transparent;
+  --background: var(--bg-app);
+  --surface: var(--bg-card);
 
-  /* Primary Action (Velvet) */
-  --primary: var(--brand-500);
-  --primary-hover: var(--brand-900);
-  --primary-disabled: var(--neutral-200);
-  --primary-foreground: var(--neutral-0);
+  /* Text */
+  --text-heading: var(--velvet-main);
+  --text-body: var(--slate);
+  --text-label: var(--muted);
+  --text-inverse: var(--white);
+  --text-muted: var(--muted);
 
-  /* Accent (Champagne) */
-  --accent: var(--accent-main);
-  --accent-hover: var(--accent-contrast);
+  /* Borders */
+  --border-subtle: var(--marble);
+  --border-active: var(--champagne-main);
+  --border: var(--border-subtle);
+  --border-focus: var(--border-active);
 
-  /* Text Colors */
-  --text-heading: var(--brand-500);
-  --text-body: var(--neutral-800);
-  --text-muted: var(--neutral-400);
-  --text-on-primary: var(--neutral-0);
-  --text-primary: var(--text-heading);
-  --text-secondary: var(--text-body);
-  --text-tertiary: var(--text-muted);
+  /* Primary Actions */
+  --primary: var(--velvet-main);
+  --primary-hover: var(--velvet-dark);
+  --primary-foreground: var(--white);
 
-  /* Border Colors */
-  --border: var(--neutral-200);
-  --border-subtle: var(--neutral-200);
-  --border-strong: var(--neutral-200);
-  --border-focus: var(--accent-main);
+  /* Accent */
+  --accent: var(--champagne-main);
+  --accent-hover: var(--champagne-gold);
 
   /* Status Colors */
-  --success: #059669;
-  --success-muted: rgba(5, 150, 105, 0.12);
-  --success-border: rgba(5, 150, 105, 0.3);
-
-  --error: #991B1B;
+  --success: var(--semantic-success);
+  --error: var(--semantic-error);
   --danger: var(--error);
-  --error-muted: rgba(153, 27, 27, 0.12);
-  --danger-muted: var(--error-muted);
-  --error-border: rgba(153, 27, 27, 0.3);
-  --danger-border: var(--error-border);
 
-  --warning: var(--accent-main);
-  --warning-muted: rgba(210, 182, 138, 0.12);
+  /* ===================================
+     TYPOGRAPHY SYSTEM
+     =================================== */
 
-  --info: var(--brand-500);
-  --info-muted: rgba(34, 45, 82, 0.12);
-
-  /* === TYPOGRAPHY === */
+  /* Font Families */
   --font-display: 'Playfair Display', serif;
   --font-body: 'Manrope', sans-serif;
   --font-sans: var(--font-body);
   --font-serif: var(--font-display);
 
-  /* === SPACING SCALE (8px base for luxury spacing) === */
+  /* Font Weights */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Typography Scale */
+  --text-h1-size: 3.5rem;
+  --text-h1-height: 1.1;
+  --text-h1-tracking: -0.02em;
+
+  --text-h2-size: 2.5rem;
+  --text-h2-height: 1.2;
+  --text-h2-tracking: -0.01em;
+
+  --text-h3-size: 1.25rem;
+  --text-h3-height: 1.3;
+  --text-h3-weight: var(--weight-regular);
+
+  --text-body-size: 1rem;
+  --text-body-height: 1.6;
+
+  --text-small-size: 0.85rem;
+  --text-small-height: 1.5;
+  --text-small-tracking: 0.01em;
+
+  --text-label-size: 0.75rem;
+  --text-label-weight: var(--weight-bold);
+  --text-label-case: uppercase;
+  --text-label-tracking: 0.1em;
+
+  /* Number Typography */
+  --font-number: var(--font-display);
+  --font-number-features: 'lnum', 'pnum';
+
+  /* ===================================
+     SPACING SYSTEM
+     =================================== */
+
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 40px;
+  --spacing-xxl: 60px;
+
+  /* Legacy spacing scale for compatibility */
   --spacing-0: 0;
   --spacing-1: 0.25rem;
   --spacing-2: 0.5rem;
@@ -102,31 +148,123 @@ html {
   --spacing-16: 4rem;
   --spacing-20: 5rem;
   --spacing-24: 6rem;
-  --spacing-32: 8rem;
-  --spacing-40: 10rem;
-  --spacing-48: 12rem;
-  --spacing-64: 16rem;
 
-  /* === RADIUS (Sharp/Professional) === */
-  --radius-sm: 2px;
-  --radius-md: 4px;
-  --radius-lg: 4px;
-  --radius-xl: 4px;
-  --radius-2xl: 4px;
+  /* Layout Spacing */
+  --layout-page-padding: 80px;
+  --layout-sidebar-width: 280px;
+
+  /* ===================================
+     SHAPES & BORDERS
+     =================================== */
+
+  /* Border Radius */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
   --radius-full: 9999px;
 
-  /* === SHADOWS (Subtle Paper-like) === */
-  --shadow-sm: 0 2px 4px -1px rgba(34, 45, 82, 0.03);
-  --shadow-md: 0 4px 20px -2px rgba(34, 45, 82, 0.05);
-  --shadow-lg: 0 10px 30px -4px rgba(34, 45, 82, 0.1);
+  /* Border Widths */
+  --border-thin: 1px;
+  --border-thick: 2px;
+
+  /* ===================================
+     EFFECTS
+     =================================== */
+
+  /* Shadows - Paper-like Elevation */
+  --shadow-level1: 0 2px 8px -2px rgba(34, 45, 82, 0.04), 0 1px 4px -1px rgba(34, 45, 82, 0.02);
+  --shadow-level2: 0 8px 24px -4px rgba(34, 45, 82, 0.08);
+  --shadow-level3: 0 20px 48px -8px rgba(34, 45, 82, 0.12);
+
+  /* Legacy shadow names for compatibility */
+  --shadow-sm: var(--shadow-level1);
+  --shadow-md: var(--shadow-level2);
+  --shadow-lg: var(--shadow-level3);
   --shadow-xl: 0 20px 40px -4px rgba(34, 45, 82, 0.12);
 
-  /* Champagne Glow Shadows */
+  /* Champagne Glows */
   --shadow-gold: 0 8px 24px rgba(210, 182, 138, 0.25);
   --shadow-gold-strong: 0 12px 32px rgba(210, 182, 138, 0.4);
   --glow-gold: 0 0 20px rgba(210, 182, 138, 0.3);
 
-  /* === Z-INDEX SCALE === */
+  /* Transitions - Slow Luxury */
+  --transition-default: 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ===================================
+     COMPONENT TOKENS
+     =================================== */
+
+  /* Buttons */
+  --button-radius: var(--radius-xs);
+  --button-font: var(--font-body);
+  --button-case: uppercase;
+  --button-tracking: 0.05em;
+  --button-height: 48px;
+
+  --button-primary-bg: var(--velvet-main);
+  --button-primary-text: var(--white);
+  --button-primary-hover-bg: var(--velvet-dark);
+  --button-primary-hover-shadow: 0 8px 25px rgba(34, 45, 82, 0.3);
+  --button-primary-hover-transform: translateY(-2px);
+
+  --button-secondary-bg: transparent;
+  --button-secondary-border: var(--border-thin) solid var(--marble);
+  --button-secondary-text: var(--velvet-main);
+  --button-secondary-hover-bg: var(--white);
+  --button-secondary-hover-border: var(--border-thin) solid var(--velvet-main);
+
+  /* Inputs - Architectural Style */
+  --input-bg: var(--bg-input);
+  --input-border: none;
+  --input-border-bottom: var(--border-thin) solid var(--marble);
+  --input-font: var(--font-display);
+  --input-size: 1.25rem;
+  --input-padding: 12px 0;
+
+  --input-focus-border-bottom: var(--border-thin) solid var(--champagne-main);
+  --input-focus-bg: linear-gradient(to right, rgba(210, 182, 138, 0.05), transparent);
+  --input-focus-padding-left: 8px;
+
+  --input-label-position: top;
+  --input-label-case: var(--text-label-case);
+  --input-label-color: var(--muted);
+  --input-label-active-color: var(--champagne-main);
+
+  /* Cards */
+  --card-bg: var(--white);
+  --card-padding: 40px;
+  --card-radius: var(--radius-sm);
+  --card-border: var(--border-thin) solid rgba(0, 0, 0, 0.02);
+  --card-shadow: var(--shadow-level1);
+
+  --card-hover-transform: translateY(-4px);
+  --card-hover-shadow: var(--shadow-level2);
+
+  /* Badges */
+  --badge-padding: 6px 10px;
+  --badge-radius: var(--radius-xs);
+  --badge-font: var(--font-body);
+  --badge-weight: var(--weight-bold);
+  --badge-case: uppercase;
+
+  --badge-gold-bg: var(--silk);
+  --badge-gold-color: #8F7041;
+  --badge-dark-bg: var(--velvet-main);
+  --badge-dark-color: var(--white);
+
+  /* Sidebar */
+  --sidebar-width: 280px;
+  --sidebar-bg: var(--velvet-main);
+  --sidebar-item-color: rgba(255, 255, 255, 0.6);
+  --sidebar-item-hover-color: var(--white);
+  --sidebar-item-active-color: var(--champagne-main);
+  --sidebar-item-active-bg: linear-gradient(90deg, rgba(210, 182, 138, 0.1) 0%, transparent 100%);
+
+  /* ===================================
+     Z-INDEX SCALE
+     =================================== */
+
   --z-base: 0;
   --z-dropdown: 1000;
   --z-sticky: 1020;
@@ -141,66 +279,135 @@ html {
    TAILWIND THEME MAPPING
    ======================================== */
 @theme inline {
-  /* Colors */
-  --color-background: var(--background);
-  --color-surface: var(--surface);
-  --color-surface-elevated: var(--surface-elevated);
-  --color-surface-highlight: var(--surface-highlight);
+  /* ===================================
+     TAILWIND COLOR MAPPINGS
+     Exposing design system to Tailwind utilities
+     =================================== */
 
-  --color-primary: var(--primary);
-  --color-primary-hover: var(--primary-hover);
-  --color-primary-foreground: var(--primary-foreground);
+  /* Brand Aliases for easier migration */
+  --color-gold: var(--champagne-main);
+  --color-gold-light: var(--champagne-light);
+  --color-navy: var(--velvet-main);
+  --color-navy-dark: var(--velvet-dark);
 
-  --color-accent: var(--accent);
-  --color-accent-hover: var(--accent-hover);
+  /* Primary Colors - Velvet Navy */
+  --color-primary: var(--velvet-main);
+  --color-primary-hover: var(--velvet-dark);
+  --color-primary-light: var(--velvet-light);
+  --color-primary-foreground: var(--white);
 
-  --color-text-heading: var(--text-heading);
-  --color-text-body: var(--text-body);
-  --color-text-muted: var(--text-muted);
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-text-tertiary: var(--text-tertiary);
+  /* Accent Colors - Champagne Gold */
+  --color-accent: var(--champagne-main);
+  --color-accent-hover: var(--champagne-gold);
+  --color-accent-foreground: var(--velvet-main);
 
-  --color-border: var(--border);
-  --color-border-subtle: var(--border-subtle);
-  --color-border-focus: var(--border-focus);
+  /* Background Colors */
+  --color-background: var(--pearl);
+  --color-foreground: var(--slate);
+  --color-card: var(--white);
+  --color-card-foreground: var(--slate);
+  --color-popover: var(--white);
+  --color-popover-foreground: var(--slate);
 
-  --color-success: var(--success);
-  --color-warning: var(--warning);
-  --color-danger: var(--danger);
-  --color-error: var(--error);
-  --color-info: var(--info);
+  /* Muted/Secondary */
+  --color-muted: var(--silk);
+  --color-muted-foreground: var(--muted);
+  --color-secondary: var(--marble);
+  --color-secondary-foreground: var(--velvet-main);
 
-  /* Spacing */
-  --spacing-0: var(--spacing-0);
-  --spacing-1: var(--spacing-1);
-  --spacing-2: var(--spacing-2);
-  --spacing-3: var(--spacing-3);
-  --spacing-4: var(--spacing-4);
-  --spacing-5: var(--spacing-5);
-  --spacing-6: var(--spacing-6);
-  --spacing-8: var(--spacing-8);
-  --spacing-10: var(--spacing-10);
-  --spacing-12: var(--spacing-12);
-  --spacing-16: var(--spacing-16);
-  --spacing-20: var(--spacing-20);
-  --spacing-24: var(--spacing-24);
-  --spacing-32: var(--spacing-32);
-  --spacing-40: var(--spacing-40);
-  --spacing-48: var(--spacing-48);
-  --spacing-64: var(--spacing-64);
+  /* Surface Aliases (Used in some components) */
+  --color-surface: var(--white);
+  --color-surface-elevated: var(--silk);
+  --color-surface-highlight: var(--pearl);
+
+  /* Text Aliases */
+  --color-text-primary: var(--velvet-main);
+  --color-text-secondary: var(--slate);
+  --color-text-tertiary: var(--muted);
+  --color-text-heading: var(--velvet-main);
+  --color-text-body: var(--slate);
+  --color-text-muted: var(--muted);
+
+  /* Borders */
+  --color-border: var(--marble);
+  --color-input: var(--marble);
+  --color-ring: var(--champagne-main);
+
+  /* Status Colors */
+  --color-destructive: var(--semantic-error);
+  --color-destructive-foreground: var(--white);
+  --color-success: var(--semantic-success);
+  --color-warning: var(--champagne-main);
+  --color-info: var(--velvet-main);
+
+  /* Primitive Color Palette for direct use */
+  --color-velvet: var(--velvet-main);
+  --color-velvet-dark: var(--velvet-dark);
+  --color-velvet-light: var(--velvet-light);
+  --color-champagne: var(--champagne-main);
+  --color-champagne-gold: var(--champagne-gold);
+  --color-pearl: var(--pearl);
+  --color-silk: var(--silk);
+  --color-marble: var(--marble);
+  --color-slate: var(--slate);
+  --color-white: var(--white);
 
   /* Border Radius */
-  --border-radius-sm: var(--radius-sm);
-  --border-radius-md: var(--radius-md);
-  --border-radius-lg: var(--radius-lg);
-  --border-radius-xl: var(--radius-xl);
-  --border-radius-2xl: var(--radius-2xl);
-  --border-radius-full: var(--radius-full);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-md);
+  --radius-xl: var(--radius-md);
+  --radius-2xl: var(--radius-md);
+  --radius-full: var(--radius-full);
 
   /* Fonts */
   --font-sans: var(--font-body);
   --font-serif: var(--font-display);
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Spacing (Tailwind will use these) */
+  --spacing-0: 0;
+  --spacing-px: 1px;
+  --spacing-0\.5: 0.125rem;
+  --spacing-1: 0.25rem;
+  --spacing-1\.5: 0.375rem;
+  --spacing-2: 0.5rem;
+  --spacing-2\.5: 0.625rem;
+  --spacing-3: 0.75rem;
+  --spacing-3\.5: 0.875rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-7: 1.75rem;
+  --spacing-8: 2rem;
+  --spacing-9: 2.25rem;
+  --spacing-10: 2.5rem;
+  --spacing-11: 2.75rem;
+  --spacing-12: 3rem;
+  --spacing-14: 3.5rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  --spacing-28: 7rem;
+  --spacing-32: 8rem;
+  --spacing-36: 9rem;
+  --spacing-40: 10rem;
+  --spacing-44: 11rem;
+  --spacing-48: 12rem;
+  --spacing-52: 13rem;
+  --spacing-56: 14rem;
+  --spacing-60: 15rem;
+  --spacing-64: 16rem;
+  --spacing-72: 18rem;
+  --spacing-80: 20rem;
+  --spacing-96: 24rem;
+
+  /* Shadows */
+  --shadow-sm: var(--shadow-level1);
+  --shadow-md: var(--shadow-level2);
+  --shadow-lg: var(--shadow-level3);
+  --shadow-xl: var(--shadow-level3);
+  --shadow-2xl: var(--shadow-level3);
 
   /* Animations */
   --animate-fade-in: fadeIn 0.8s ease-in;
@@ -243,156 +450,158 @@ html {
 /* ========================================
    BASE STYLES
    ======================================== */
-* {
-  box-sizing: border-box;
-}
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
 
-body {
-  background: var(--background);
-  color: var(--text-body);
-  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
-  min-height: 100vh;
-  position: relative;
-}
+  body {
+    background: var(--background);
+    color: var(--text-body);
+    font-family: var(--font-body), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+  }
 
-/* Paper Texture (Noise) - Luxury Stationery Feel */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.35;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
-}
+  /* Paper Texture (Noise) - Luxury Stationery Feel */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
 
-/* ========================================
-   TYPOGRAPHY
-   ======================================== */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-display);
-  color: var(--text-heading);
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-}
+  /* ========================================
+     TYPOGRAPHY
+     ======================================== */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    color: var(--text-heading);
+    font-weight: var(--weight-regular);
+    line-height: var(--text-body-height);
+    letter-spacing: var(--text-h1-tracking);
+  }
 
-h1 {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
+  h1 {
+    font-size: clamp(2.5rem, 5vw, var(--text-h1-size));
+    line-height: var(--text-h1-height);
+    letter-spacing: var(--text-h1-tracking);
+  }
 
-h2 {
-  font-size: clamp(1.75rem, 3vw, 2rem);
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-}
+  h2 {
+    font-size: clamp(1.75rem, 3vw, var(--text-h2-size));
+    line-height: var(--text-h2-height);
+    letter-spacing: var(--text-h2-tracking);
+  }
 
-h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.3;
-}
+  h3 {
+    font-size: var(--text-h3-size);
+    font-weight: var(--text-h3-weight);
+    line-height: var(--text-h3-height);
+  }
 
-h4 {
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.4;
-}
+  h4 {
+    font-size: var(--text-body-size);
+    font-weight: var(--weight-semibold);
+    line-height: var(--text-body-height);
+  }
 
-h5,
-h6 {
-  font-size: 0.875rem;
-  font-weight: 600;
-  line-height: 1.5;
-}
+  h5,
+  h6 {
+    font-size: var(--text-small-size);
+    font-weight: var(--weight-semibold);
+    line-height: var(--text-small-height);
+  }
 
-p {
-  margin: 0;
-  color: var(--text-body);
-  line-height: 1.7;
-  font-family: var(--font-body);
-}
+  p {
+    margin: 0;
+    color: var(--text-body);
+    line-height: var(--text-body-height);
+    font-family: var(--font-body);
+  }
 
-.lead {
-  font-size: 1.25rem;
-  color: var(--text-heading);
-  line-height: 1.6;
-}
+  .lead {
+    font-size: var(--text-h3-size);
+    color: var(--text-heading);
+    line-height: var(--text-body-height);
+  }
 
-/* Luxury Utilities */
-.sub-header {
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--text-muted);
-  font-family: var(--font-body);
-}
+  /* Luxury Utilities */
+  .sub-header {
+    font-size: var(--text-label-size);
+    font-weight: var(--text-label-weight);
+    text-transform: var(--text-label-case);
+    letter-spacing: var(--text-label-tracking);
+    color: var(--text-label);
+    font-family: var(--font-body);
+  }
 
-code,
-pre {
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  padding: 0.125rem 0.375rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.875em;
-  color: var(--text-body);
-}
+  code,
+  pre {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    background: var(--surface);
+    border: var(--border-thin) solid var(--border);
+    padding: var(--spacing-1) var(--spacing-3);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-small-size);
+    color: var(--text-body);
+  }
 
-pre {
-  padding: var(--spacing-4);
-  overflow-x: auto;
-  line-height: 1.5;
-}
+  pre {
+    padding: var(--spacing-4);
+    overflow-x: auto;
+    line-height: var(--text-small-height);
+  }
 
-pre code {
-  border: none;
-  padding: 0;
-  background: transparent;
-}
+  pre code {
+    border: none;
+    padding: 0;
+    background: transparent;
+  }
 
-a {
-  color: var(--accent);
-  text-decoration: none;
-  transition: all 0.2s ease;
-  position: relative;
-}
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: all var(--transition-default);
+    position: relative;
+  }
 
-a:hover {
-  color: var(--accent-hover);
-}
+  a:hover {
+    color: var(--accent-hover);
+  }
 
-a.underline-gold {
-  text-decoration: underline;
-  text-decoration-color: var(--accent);
-  text-underline-offset: 4px;
-}
+  a.underline-gold {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-underline-offset: var(--spacing-xs);
+  }
 
-a.underline-gold:hover {
-  text-decoration-color: var(--accent-hover);
+  a.underline-gold:hover {
+    text-decoration-color: var(--accent-hover);
+  }
 }
 
 /* ========================================
    SCROLLBAR STYLES
    ======================================== */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: var(--spacing-xs);
+  height: var(--spacing-xs);
 }
 
 ::-webkit-scrollbar-track {
@@ -400,10 +609,10 @@ a.underline-gold:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--neutral-400);
-  border-radius: 5px;
-  border: 2px solid var(--background);
-  transition: background 0.2s ease;
+  background: var(--muted);
+  border-radius: var(--radius-full);
+  border: var(--border-thick) solid var(--background);
+  transition: background var(--transition-default);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -413,19 +622,19 @@ a.underline-gold:hover {
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--neutral-400) var(--background);
+  scrollbar-color: var(--muted) var(--background);
 }
 
 /* ========================================
    SELECTION
    ======================================== */
 ::selection {
-  background: rgba(210, 182, 138, 0.3);
+  background: var(--champagne-light);
   color: var(--text-heading);
 }
 
 ::-moz-selection {
-  background: rgba(210, 182, 138, 0.3);
+  background: var(--champagne-light);
   color: var(--text-heading);
 }
 
@@ -433,8 +642,8 @@ a.underline-gold:hover {
    FOCUS VISIBLE
    ======================================== */
 :focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  outline: var(--border-thick) solid var(--accent);
+  outline-offset: var(--border-thick);
   border-radius: var(--radius-sm);
 }
 
@@ -442,8 +651,8 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  outline: var(--border-thick) solid var(--accent);
+  outline-offset: var(--border-thick);
 }
 
 /* ========================================
@@ -512,12 +721,12 @@ textarea:focus-visible {
 
 /* Card Pattern - Paper-like with Gold Accent */
 .card {
-  background: var(--surface);
-  border: 1px solid rgba(0, 0, 0, 0.02);
-  border-radius: var(--radius-md);
-  padding: 40px;
-  transition: all 0.4s ease;
-  box-shadow: var(--shadow-md);
+  background: var(--card-bg);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+  transition: all var(--transition-slow);
+  box-shadow: var(--card-shadow);
   position: relative;
 }
 
@@ -528,16 +737,16 @@ textarea:focus-visible {
   top: 0;
   left: 0;
   width: 100%;
-  height: 3px;
+  height: var(--spacing-xs);
   background: var(--accent);
   transform: scaleX(0);
-  transition: transform 0.4s ease;
+  transition: transform var(--transition-slow);
   transform-origin: left;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  transform: var(--card-hover-transform);
+  box-shadow: var(--card-hover-shadow);
 }
 
 .card:hover::after {
@@ -554,80 +763,80 @@ textarea:focus-visible {
 
 /* Button Pattern - Velvet & Champagne */
 .btn {
-  padding: 16px 32px;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  padding: var(--spacing-md) var(--spacing-8);
+  border-radius: var(--button-radius);
+  font-family: var(--button-font);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-small-size);
+  text-transform: var(--button-case);
+  letter-spacing: var(--button-tracking);
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all var(--transition-default);
   border: none;
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-2);
+  gap: var(--spacing-sm);
   position: relative;
   overflow: hidden;
 }
 
 .btn-primary {
-  background: var(--primary);
-  color: var(--primary-foreground);
-  box-shadow: 0 4px 15px rgba(34, 45, 82, 0.2);
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-primary:hover {
-  background: var(--primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(34, 45, 82, 0.3);
+  background: var(--button-primary-hover-bg);
+  transform: var(--button-primary-hover-transform);
+  box-shadow: var(--button-primary-hover-shadow);
 }
 
 .btn-secondary {
-  background: transparent;
-  color: var(--primary);
-  border: 1px solid var(--border);
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
+  border: var(--button-secondary-border);
 }
 
 .btn-secondary:hover {
-  border-color: var(--primary);
-  background: var(--surface);
+  border: var(--button-secondary-hover-border);
+  background: var(--button-secondary-hover-bg);
 }
 
 /* Gold Button - Landing Page Primary CTA */
 .btn-gold {
   background: var(--accent);
   color: var(--primary);
-  padding: 16px 40px;
-  font-size: 0.875rem;
-  font-weight: 700;
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--text-small-size);
+  font-weight: var(--weight-bold);
   border-radius: var(--radius-md);
-  box-shadow: 0 4px 16px rgba(210, 182, 138, 0.4);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-gold);
+  transition: all var(--transition-default);
   text-decoration: none;
 }
 
 .btn-gold:hover {
-  background: #E0C89E;
+  background: var(--accent-hover);
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 24px rgba(210, 182, 138, 0.5);
+  box-shadow: var(--shadow-gold-strong);
 }
 
 .btn-gold:active {
   transform: translateY(0);
-  box-shadow: 0 2px 12px rgba(210, 182, 138, 0.3);
+  box-shadow: var(--shadow-md);
 }
 
 /* Outline Gold Button - Landing Page Secondary CTA */
 .btn-outline-gold {
   background: var(--surface);
   color: var(--primary);
-  border: 2px solid var(--primary);
-  padding: 14px 40px;
-  font-size: 0.875rem;
-  font-weight: 700;
+  border: var(--border-thick) solid var(--primary);
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--text-small-size);
+  font-weight: var(--weight-bold);
   border-radius: var(--radius-md);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all var(--transition-default);
   text-decoration: none;
 }
 
@@ -636,7 +845,7 @@ textarea:focus-visible {
   color: var(--primary-foreground);
   border-color: var(--primary);
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(34, 45, 82, 0.25);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-outline-gold:active {
@@ -646,19 +855,21 @@ textarea:focus-visible {
 /* Input Pattern - Architectural Lines */
 .input {
   width: 100%;
-  padding: 12px 0;
-  border: none;
-  border-bottom: 2px solid var(--border);
-  background: transparent;
-  font-family: var(--font-display);
-  font-size: 1.25rem;
+  padding: var(--input-padding);
+  border: var(--input-border);
+  border-bottom: var(--input-border-bottom);
+  background: var(--input-bg);
+  font-family: var(--input-font);
+  font-size: var(--input-size);
   color: var(--text-heading);
-  transition: all 0.3s ease;
+  transition: all var(--transition-default);
 }
 
 .input:focus {
   outline: none;
-  border-color: var(--accent);
+  border-bottom: var(--input-focus-border-bottom);
+  background: var(--input-focus-bg);
+  padding-left: var(--input-focus-padding-left);
 }
 
 .input::placeholder {
@@ -670,23 +881,23 @@ textarea:focus-visible {
 
 /* Badge Pattern */
 .badge {
-  padding: 6px 12px;
-  border-radius: var(--radius-sm);
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  font-family: var(--font-body);
+  padding: var(--badge-padding);
+  border-radius: var(--badge-radius);
+  font-size: var(--text-label-size);
+  text-transform: var(--badge-case);
+  font-weight: var(--badge-weight);
+  letter-spacing: var(--button-tracking);
+  font-family: var(--badge-font);
 }
 
 .badge-gold {
-  background: var(--surface-elevated);
-  color: var(--accent-contrast);
+  background: var(--badge-gold-bg);
+  color: var(--badge-gold-color);
 }
 
 .badge-dark {
-  background: var(--primary);
-  color: var(--primary-foreground);
+  background: var(--badge-dark-bg);
+  color: var(--badge-dark-color);
 }
 
 /* Data Display */
@@ -694,26 +905,28 @@ textarea:focus-visible {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--border);
+  padding: var(--spacing-5) 0;
+  border-bottom: var(--border-thin) solid var(--border);
 }
 
 .data-label {
-  font-size: 0.9rem;
+  font-size: var(--text-small-size);
   color: var(--text-body);
   font-family: var(--font-body);
 }
 
 .data-value {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-family: var(--font-number);
+  font-size: var(--text-h3-size);
   color: var(--text-heading);
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
+  font-feature-settings: var(--font-number-features);
 }
 
 /* Sidebar Pattern */
 .sidebar {
-  background: var(--primary);
-  color: var(--primary-foreground);
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--sidebar-bg);
+  color: var(--text-inverse);
+  width: var(--sidebar-width);
+  border-right: var(--border-thin) solid rgba(255, 255, 255, 0.05);
 }

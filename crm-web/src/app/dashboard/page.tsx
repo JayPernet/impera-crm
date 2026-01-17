@@ -135,12 +135,12 @@ export default async function DashboardPage() {
             {/* Header */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-lg font-semibold tracking-tight text-primary">{greeting}, {firstName}!</h1>
-                    <p className="text-[10px] text-text-secondary mt-1 uppercase tracking-[0.4em] font-bold opacity-60">Visão geral</p>
+                    <h1 className="text-xl font-display font-medium tracking-tight text-navy">{greeting}, {firstName}!</h1>
+                    <p className="text-[10px] text-slate/40 mt-1 uppercase tracking-[0.4em] font-bold">Resumo Estratégico</p>
                 </div>
-                <div className="flex items-center gap-3 bg-surface-elevated border border-border rounded-full px-4 py-1.5 backdrop-blur-sm shadow-sm">
-                    <Clock className="h-3.5 w-3.5 text-primary" />
-                    <span className="text-[10px] font-bold text-text-secondary font-mono uppercase tracking-widest">
+                <div className="flex items-center gap-3 bg-white border border-marble rounded-full px-5 py-2 shadow-sm">
+                    <Clock3 className="h-3.5 w-3.5 text-gold" />
+                    <span className="text-[10px] font-bold text-navy font-mono uppercase tracking-widest">
                         {new Date().toLocaleDateString('pt-BR', { weekday: 'short', day: '2-digit', month: 'short' }).replace('.', '')}
                     </span>
                 </div>
@@ -150,13 +150,16 @@ export default async function DashboardPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {isSuperAdmin ? (
                     <>
-                        <div className="luxury-card p-6 group">
+                        <div
+                            className="bg-white border border-marble p-6 group hover:shadow-md transition-all relative overflow-hidden"
+                            style={{ borderRadius: 'var(--radius-sm)' }}
+                        >
                             <div className="flex items-start justify-between">
                                 <div>
-                                    <p className="text-[10px] font-bold text-text-tertiary uppercase tracking-[0.2em] mb-1 group-hover:text-primary transition-colors">Total de Unidades</p>
-                                    <h3 className="text-4xl font-extrabold text-primary tabular-nums">{totalOrgs}</h3>
+                                    <p className="text-[10px] font-bold text-slate/50 uppercase tracking-[0.2em] mb-1 group-hover:text-navy transition-colors">Total de Unidades</p>
+                                    <h3 className="text-4xl font-display font-medium text-navy tabular-nums">{totalOrgs}</h3>
                                 </div>
-                                <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
+                                <div className="h-10 w-10 rounded-sm bg-navy flex items-center justify-center text-gold border border-gold/20">
                                     <Users className="h-5 w-5" />
                                 </div>
                             </div>
@@ -164,46 +167,58 @@ export default async function DashboardPage() {
                     </>
                 ) : (
                     <>
-                        <div className="luxury-card p-6 group hover:bg-surface">
+                        <div
+                            className="bg-white border border-marble p-6 group hover:shadow-md transition-all relative overflow-hidden"
+                            style={{ borderRadius: 'var(--radius-sm)' }}
+                        >
                             <div className="flex items-start justify-between">
                                 <div>
-                                    <p className="text-[10px] font-bold text-text-tertiary uppercase tracking-[0.2em] mb-1 group-hover:text-primary transition-colors">Leads</p>
-                                    <h3 className="text-4xl font-extrabold text-primary tabular-nums">{totalLeads}</h3>
+                                    <p className="text-[10px] font-bold text-slate/50 uppercase tracking-[0.2em] mb-1 group-hover:text-navy transition-colors">Leads</p>
+                                    <h3 className="text-4xl font-display font-medium text-navy tabular-nums">{totalLeads}</h3>
                                 </div>
-                                <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
+                                <div className="h-10 w-10 rounded-sm bg-navy flex items-center justify-center text-gold border border-gold/20">
                                     <Users className="h-5 w-5" />
                                 </div>
                             </div>
                         </div>
-                        <div className="luxury-card p-6 group hover:bg-surface">
+                        <div
+                            className="bg-white border border-marble p-6 group hover:shadow-md transition-all relative overflow-hidden"
+                            style={{ borderRadius: 'var(--radius-sm)' }}
+                        >
                             <div className="flex items-start justify-between">
                                 <div>
-                                    <p className="text-[10px] font-bold text-text-tertiary uppercase tracking-[0.2em] mb-1 group-hover:text-info transition-colors">Novos</p>
-                                    <h3 className="text-4xl font-extrabold text-primary tabular-nums">{newLeads}</h3>
+                                    <p className="text-[10px] font-bold text-slate/50 uppercase tracking-[0.2em] mb-1 group-hover:text-gold transition-colors">Novos</p>
+                                    <h3 className="text-4xl font-display font-medium text-navy tabular-nums">{newLeads}</h3>
                                 </div>
-                                <div className="h-10 w-10 rounded-lg bg-info/10 flex items-center justify-center text-info border border-info/20">
+                                <div className="h-10 w-10 rounded-sm bg-pearl flex items-center justify-center text-navy border border-marble shadow-sm">
                                     <AlertCircle className="h-5 w-5" />
                                 </div>
                             </div>
                         </div>
-                        <div className="luxury-card p-6 group hover:bg-surface">
+                        <div
+                            className="bg-white border border-marble p-6 group hover:shadow-md transition-all relative overflow-hidden"
+                            style={{ borderRadius: 'var(--radius-sm)' }}
+                        >
                             <div className="flex items-start justify-between">
                                 <div>
-                                    <p className="text-[10px] font-bold text-text-tertiary uppercase tracking-[0.2em] mb-1 group-hover:text-warning transition-colors">Em Negócio</p>
-                                    <h3 className="text-4xl font-extrabold text-primary tabular-nums">{activeLeads}</h3>
+                                    <p className="text-[10px] font-bold text-slate/50 uppercase tracking-[0.2em] mb-1 group-hover:text-navy transition-colors">Em Negócio</p>
+                                    <h3 className="text-4xl font-display font-medium text-navy tabular-nums">{activeLeads}</h3>
                                 </div>
-                                <div className="h-10 w-10 rounded-lg bg-warning/10 flex items-center justify-center text-warning border border-warning/20">
+                                <div className="h-10 w-10 rounded-sm bg-navy flex items-center justify-center text-gold border border-gold/20">
                                     <TrendingUp className="h-5 w-5" />
                                 </div>
                             </div>
                         </div>
-                        <div className="luxury-card p-6 group hover:bg-surface">
+                        <div
+                            className="bg-white border border-marble p-6 group hover:shadow-md transition-all relative overflow-hidden"
+                            style={{ borderRadius: 'var(--radius-sm)' }}
+                        >
                             <div className="flex items-start justify-between">
                                 <div>
-                                    <p className="text-[10px] font-bold text-text-tertiary uppercase tracking-[0.2em] mb-1 group-hover:text-success transition-colors">Clientes</p>
-                                    <h3 className="text-4xl font-extrabold text-primary tabular-nums">{totalClients}</h3>
+                                    <p className="text-[10px] font-bold text-slate/50 uppercase tracking-[0.2em] mb-1 group-hover:text-gold transition-colors">Clientes</p>
+                                    <h3 className="text-4xl font-display font-medium text-navy tabular-nums">{totalClients}</h3>
                                 </div>
-                                <div className="h-10 w-10 rounded-lg bg-success/10 flex items-center justify-center text-success border border-success/20">
+                                <div className="h-10 w-10 rounded-sm bg-pearl flex items-center justify-center text-navy border border-marble shadow-sm">
                                     <CheckCircle2 className="h-5 w-5" />
                                 </div>
                             </div>
@@ -225,10 +240,13 @@ export default async function DashboardPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Activity Feed */}
-                <div className="lg:col-span-2 luxury-card flex flex-col">
-                    <div className="p-6 border-b border-border flex items-center justify-between">
-                        <h3 className="sub-header flex items-center gap-2">
-                            <Clock className="h-4 w-4 text-primary" />
+                <div
+                    className="lg:col-span-2 bg-white border border-marble flex flex-col relative overflow-hidden"
+                    style={{ borderRadius: 'var(--radius-sm)' }}
+                >
+                    <div className="p-6 border-b border-marble/50 flex items-center justify-between bg-pearl/20">
+                        <h3 className="sub-header flex items-center gap-2 text-navy">
+                            <Clock3 className="h-4 w-4 text-gold" />
                             Atividade Recente
                         </h3>
                     </div>
@@ -297,22 +315,25 @@ export default async function DashboardPage() {
 
                     {/* Service Queue Card */}
                     {!isSuperAdmin && (
-                        <div className="p-1 rounded-[2rem] bg-gradient-to-b from-primary/30 to-transparent">
-                            <div className="p-8 rounded-[1.9rem] bg-[#0b1215] relative overflow-hidden group">
-                                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                                    <MessageSquare className="h-24 w-24 text-primary" />
+                        <div className="p-[2px] bg-marble" style={{ borderRadius: 'var(--radius-sm)' }}>
+                            <div
+                                className="p-8 bg-white relative overflow-hidden group border border-gold/10"
+                                style={{ borderRadius: 'calc(var(--radius-sm) - 2px)' }}
+                            >
+                                <div className="absolute top-0 right-0 p-4 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity">
+                                    <MessageSquare className="h-24 w-24 text-navy" />
                                 </div>
                                 <div className="relative z-10 text-center">
-                                    <div className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-primary/10 mb-4">
-                                        <MessageSquare className="h-6 w-6 text-primary" />
+                                    <div className="inline-flex items-center justify-center h-12 w-12 rounded-sm bg-navy mb-4 shadow-sm">
+                                        <MessageSquare className="h-5 w-5 text-gold" />
                                     </div>
-                                    <h3 className="sub-header mb-2 text-primary opacity-100">Fila de Atendimento</h3>
-                                    <p className="text-xs text-text-tertiary mb-6 leading-relaxed">
-                                        Verifique novas mensagens e mantenha sua taxa de resposta rápida.
+                                    <h3 className="font-display text-lg mb-2 text-navy leading-tight">Fila de Atendimento</h3>
+                                    <p className="text-[11px] text-slate/50 mb-6 leading-relaxed font-medium uppercase tracking-wider">
+                                        Mantenha sua taxa de resposta rápida.
                                     </p>
                                     <Link
                                         href="/dashboard/chat"
-                                        className="inline-block px-8 py-2.5 rounded-full bg-primary text-[#0b1215] text-[10px] font-bold uppercase tracking-widest hover:bg-primary-light transition-all"
+                                        className="inline-block px-10 py-3 bg-navy text-white text-[10px] font-bold uppercase tracking-widest hover:bg-gold hover:text-navy transition-all duration-300 rounded-sm shadow-md"
                                     >
                                         Acessar Chat
                                     </Link>

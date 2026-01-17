@@ -11,51 +11,53 @@ interface LeadsOverTimeProps {
 
 export function LeadsOverTime({ data }: LeadsOverTimeProps) {
     return (
-        <div className="luxury-card h-full">
-            <div className="p-6 border-b border-white/[0.05]">
-                <h3 className="sub-header">Evolução de Leads</h3>
+        <div className="bg-white border border-marble shadow-sm h-full" style={{ borderRadius: 'var(--radius-sm)' }}>
+            <div className="p-6 border-b border-marble">
+                <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-gold">Evolução de Leads</h3>
             </div>
             <div className="p-4">
                 <ResponsiveContainer width="100%" height={300}>
                     <LineChart data={data}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#2D3744" opacity={0.3} vertical={false} />
+                        <CartesianGrid strokeDasharray="0" stroke="var(--marble)" vertical={false} />
                         <XAxis
                             dataKey="date"
-                            stroke="#9AA4B2"
-                            fontSize={10}
+                            stroke="var(--muted)"
+                            fontSize={9}
+                            fontWeight={700}
                             tickLine={false}
                             axisLine={false}
                             dy={10}
-                            fontFamily="var(--font-mono)"
+                            style={{ textTransform: 'uppercase', letterSpacing: '0.05em' }}
                         />
                         <YAxis
-                            stroke="#9AA4B2"
-                            fontSize={10}
+                            stroke="var(--muted)"
+                            fontSize={9}
+                            fontWeight={700}
                             tickLine={false}
                             axisLine={false}
                             dx={-10}
-                            fontFamily="var(--font-mono)"
                         />
                         <Tooltip
                             contentStyle={{
-                                backgroundColor: '#1A2028',
-                                border: '1px solid rgba(255,255,255,0.05)',
-                                borderRadius: '12px',
-                                fontSize: '12px',
-                                color: '#E6EAF0',
-                                boxShadow: '0 8px 16px -4px rgba(0,0,0,0.5)'
+                                backgroundColor: 'var(--white)',
+                                border: '1px solid var(--marble)',
+                                borderRadius: 'var(--radius-sm)',
+                                fontSize: '11px',
+                                fontWeight: '600',
+                                color: 'var(--velvet-main)',
+                                boxShadow: 'var(--shadow-level2)'
                             }}
-                            itemStyle={{ color: '#E6EAF0' }}
-                            labelStyle={{ color: '#9AA4B2', marginBottom: '4px', fontSize: '10px', textTransform: 'uppercase' }}
-                            cursor={{ stroke: 'rgba(255,255,255,0.1)', strokeWidth: 1 }}
+                            itemStyle={{ color: 'var(--velvet-main)', textTransform: 'uppercase', letterSpacing: '0.05em' }}
+                            labelStyle={{ color: 'var(--gold)', marginBottom: '4px', fontSize: '9px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.1em' }}
+                            cursor={{ stroke: 'var(--marble)', strokeWidth: 1 }}
                         />
                         <Line
                             type="monotone"
                             dataKey="count"
-                            stroke="var(--gold)"
+                            stroke="var(--champagne-main)"
                             strokeWidth={3}
-                            dot={{ fill: '#0B1215', stroke: 'var(--gold)', strokeWidth: 2, r: 4 }}
-                            activeDot={{ r: 6, fill: 'var(--gold)', stroke: 'rgba(201,162,77,0.3)', strokeWidth: 8 }}
+                            dot={{ fill: 'var(--white)', stroke: 'var(--champagne-main)', strokeWidth: 2, r: 4 }}
+                            activeDot={{ r: 6, fill: 'var(--velvet-main)', stroke: 'var(--champagne-light)', strokeWidth: 6 }}
                         />
                     </LineChart>
                 </ResponsiveContainer>

@@ -20,63 +20,68 @@ export function ProblemSection() {
 
     return (
         <motion.section
-            className="relative py-20 bg-background"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            className="relative py-32 bg-navy overflow-hidden"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+            transition={{ duration: 1 }}
         >
-            {/* Top border accent */}
-            <div
-                className="absolute top-0 left-0 w-full h-px"
-                style={{ background: 'linear-gradient(to right, transparent, var(--border-gold), transparent)' }}
-            />
+            {/* Architectural Accent Detail */}
+            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 
-            <div className="mx-auto max-w-[1280px] px-6">
+            <div className="mx-auto max-w-[1400px] px-8">
                 <div className="flex flex-col items-center text-center">
                     {/* Header */}
-                    <h2
-                        style={{ marginBottom: 'var(--spacing-12)' }}
-                        className="font-display text-[clamp(2rem,5vw,3rem)] font-bold uppercase leading-[1.1] tracking-[-0.03em] text-text-primary"
-                    >
-                        Você reconhece <span className="text-gold">esse dia?</span>
-                    </h2>
+                    <div className="mb-16">
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            className="text-gold text-[10px] uppercase tracking-[0.3em] font-bold mb-6"
+                        >
+                            Diagnóstico de Mercado
+                        </motion.div>
+                        <h2 className="font-display text-[clamp(2.5rem,5vw,3.5rem)] font-normal leading-[1.1] tracking-[-0.02em] text-silk">
+                            Você reconhece <span className="italic font-serif text-gold">esse dia?</span>
+                        </h2>
+                        <p className="mt-8 text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
+                            O caos operacional é o teto que impede sua imobiliária de crescer.
+                        </p>
+                    </div>
 
-                    {/* Pain Points Grid */}
-                    <div
-                        className="grid gap-4 md:grid-cols-2 max-w-4xl w-full"
-                        style={{ marginBottom: 'var(--spacing-12)' }}
-                    >
+                    {/* Pain Points Grid - Architectural Style */}
+                    <div className="grid gap-6 md:grid-cols-2 max-w-5xl w-full mb-20">
                         {painPoints.map((point, index) => (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className="flex items-start gap-4 text-left bg-surface/60 border border-border"
-                                style={{
-                                    padding: 'var(--spacing-6)',
-                                    borderRadius: 'var(--radius-xl)'
-                                }}
+                                transition={{ duration: 0.6, delay: index * 0.15 }}
+                                className="flex items-center gap-6 text-left bg-white/[0.03] border border-white/5 p-8 transition-all duration-500 hover:bg-white/[0.05]"
+                                style={{ borderRadius: 'var(--radius-sm)' }}
                             >
-                                <span className="text-danger text-xl">✗</span>
-                                <p className="text-text-secondary leading-relaxed">
+                                <div className="h-10 w-10 flex-shrink-0 border border-gold/20 flex items-center justify-center font-display text-gold italic">
+                                    0{index + 1}
+                                </div>
+                                <p className="text-white/80 text-sm font-medium leading-relaxed uppercase tracking-wider">
                                     {point}
                                 </p>
                             </motion.div>
                         ))}
                     </div>
 
-                    {/* Transition Statement */}
-                    <div className="max-w-2xl">
-                        <p className="text-xl text-text-secondary leading-relaxed">
-                            Seu problema não é falta de organização.
+                    {/* Transition Statement - High Stakes */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.98 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        className="max-w-2xl border-t border-white/10 pt-16 flex flex-col items-center"
+                    >
+                        <p className="text-gold text-[10px] uppercase tracking-[0.3em] font-bold mb-4">A Verdade Inevitável</p>
+                        <p className="font-display text-2xl text-white leading-relaxed">
+                            "Seu problema não é falta de organização. <br />
+                            <span className="text-gold italic font-serif">É falta de sistema.</span>"
                         </p>
-                        <p className="mt-2 text-2xl text-text-primary font-bold">
-                            É falta de <span className="text-gold">sistema.</span>
-                        </p>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </motion.section>

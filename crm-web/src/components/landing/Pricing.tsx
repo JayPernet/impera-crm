@@ -75,19 +75,19 @@ export function Pricing() {
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.15,
+                staggerChildren: 0.2,
             },
         },
     };
 
     const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
+        hidden: { opacity: 0, scale: 0.98 },
         visible: {
             opacity: 1,
-            y: 0,
+            scale: 1,
             transition: {
-                duration: 0.6,
-                ease: [0.4, 0, 0.2, 1] as const,
+                duration: 0.8,
+                ease: [0.22, 1, 0.36, 1] as const,
             },
         },
     };
@@ -97,32 +97,38 @@ export function Pricing() {
     return (
         <motion.section
             id="pricing"
-            className="relative py-20"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            className="relative py-24 bg-pearl"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+            transition={{ duration: 0.8 }}
         >
-            <div className="mx-auto max-w-[1280px] px-6">
+            {/* Architectural Grid Background Overlay (Subtle) */}
+            <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
+                style={{ backgroundImage: 'radial-gradient(var(--navy) 1px, transparent 0)', backgroundSize: '40px 40px' }}
+            />
+
+            <div className="mx-auto max-w-[1400px] px-8">
                 {/* Section Header */}
-                <div
-                    style={{ marginBottom: 'var(--spacing-20)' }}
-                    className="flex flex-col items-center text-center"
-                >
-                    <h2
-                        style={{ marginBottom: 'var(--spacing-8)' }}
-                        className="font-display text-[clamp(2.5rem,5vw,3.5rem)] font-bold uppercase leading-[1.1] tracking-[-0.03em] text-white"
+                <div className="flex flex-col items-center text-center mb-20">
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="text-gold text-[10px] uppercase tracking-[0.3em] font-bold mb-6"
                     >
-                        Investimento <span className="text-gold">Estratégico.</span>
+                        Investimento Estratégico
+                    </motion.div>
+                    <h2 className="font-display text-[clamp(2.5rem,5vw,3.5rem)] font-normal leading-[1.1] tracking-[-0.02em] text-navy mb-8">
+                        Investimento <span className="italic font-serif">Estratégico.</span>
                     </h2>
-                    <p className="max-w-2xl text-center text-lg leading-relaxed text-[#9AA5B1]">
+                    <p className="max-w-2xl text-lg leading-relaxed text-slate/80">
                         Sem letras miúdas ou taxas surpresa. Selecione a potência necessária para escala e controle total da sua operação.
                     </p>
                 </div>
 
                 {/* Pricing Grid */}
                 <motion.div
-                    className="grid gap-8 md:grid-cols-3"
+                    className="grid gap-10 md:grid-cols-3"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -132,50 +138,55 @@ export function Pricing() {
                         <motion.div
                             key={index}
                             variants={itemVariants}
-                            className={`relative overflow-hidden rounded-lg border p-8 backdrop-blur-md transition-all duration-[400ms] ease-out hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)] ${tier.highlighted
-                                ? 'border-gold/50 bg-[#151A21]'
-                                : 'border-[rgba(255,255,255,0.05)] bg-[rgba(21,26,33,0.6)] hover:border-[rgba(201,162,77,0.5)] hover:bg-[#151A21]'
+                            className={`relative overflow-hidden group bg-white p-12 shadow-sm border border-marble transition-all duration-500 hover:shadow-xl hover:-translate-y-2 ${tier.highlighted ? 'border-gold/30 ring-1 ring-gold/10' : ''
                                 }`}
+                            style={{ borderRadius: 'var(--radius-sm)' }}
                         >
-                            {/* Highlighted Badge */}
+                            {/* Stationery Top Detail */}
+                            <div className={`absolute top-0 left-0 right-0 h-1.5 transition-all duration-500 ${tier.highlighted ? 'bg-gold' : 'bg-marble group-hover:bg-navy/20'
+                                }`} />
+
+                            {/* Highlighted Badge - Subtle Branding */}
                             {tier.highlighted && (
-                                <div className="absolute right-4 top-4 rounded-full bg-gradient-to-r from-[#C9A24D] to-[#E6C685] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-abyss">
+                                <div className="absolute right-0 top-6 bg-gold text-white text-[9px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-l-sm shadow-sm">
                                     Mais Popular
                                 </div>
                             )}
 
                             {/* Tier Name */}
-                            <h3 className="mb-2 text-xl font-semibold uppercase tracking-wide text-white">
+                            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-gold mb-12">
                                 {tier.name}
                             </h3>
 
-                            {/* Description */}
-                            <p className="mb-6 text-sm text-[#9AA5B1]">{tier.description}</p>
-
                             {/* Price */}
-                            <div className="mb-8">
-                                <span className="text-4xl font-bold text-white">{tier.price}</span>
-                                {tier.period && <span className="text-[#9AA5B1]">{tier.period}</span>}
+                            <div className="mb-8 flex items-baseline gap-1">
+                                <span className="text-5xl font-display font-medium text-navy tracking-tight">{tier.price}</span>
+                                {tier.period && <span className="text-xs font-bold text-muted uppercase tracking-widest">{tier.period}</span>}
                             </div>
 
+                            {/* Description */}
+                            <p className="mb-12 text-sm text-slate leading-relaxed font-medium">{tier.description}</p>
+
                             {/* Features List */}
-                            <ul className="mb-8 space-y-3">
+                            <ul className="mb-14 space-y-5">
                                 {tier.features.map((feature, idx) => (
-                                    <li key={idx} className="flex items-start gap-3">
-                                        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-gold" strokeWidth={2} />
-                                        <span className="text-sm text-neutral-300">{feature}</span>
+                                    <li key={idx} className="flex items-start gap-4">
+                                        <div className="mt-1 h-3.5 w-3.5 flex-shrink-0 border border-gold/40 flex items-center justify-center p-0.5">
+                                            <div className="h-full w-full bg-gold" />
+                                        </div>
+                                        <span className="text-[13px] text-slate/90 font-medium">{feature}</span>
                                     </li>
                                 ))}
                             </ul>
 
-                            {/* CTA Button - Verified Unified Link */}
+                            {/* CTA Button - Luxe Variation */}
                             <a
                                 href={whatsappLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`block w-full cursor-pointer rounded-lg px-6 py-3 text-center font-bold transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${tier.highlighted
-                                    ? 'bg-gradient-to-r from-[#C9A24D] to-[#E6C685] !text-[#060A0C] hover:from-[#E6C685] hover:to-[#F5DCAF] hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(201,162,77,0.3)]'
-                                    : 'border border-gold bg-transparent text-gold hover:bg-gold/10'
+                                className={`block w-full py-5 text-center text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 rounded-sm ${tier.highlighted
+                                    ? 'bg-navy text-white hover:bg-navy-dark shadow-lg hover:shadow-navy/20'
+                                    : 'bg-white border border-marble text-navy hover:border-navy hover:shadow-md'
                                     }`}
                             >
                                 {tier.cta}
@@ -185,12 +196,11 @@ export function Pricing() {
                 </motion.div>
 
                 {/* Bottom Note */}
-                <p
-                    style={{ marginTop: 'var(--spacing-12)' }}
-                    className="text-center text-sm text-neutral-500"
-                >
-                    Cancele quando quiser.
-                </p>
+                <div className="mt-16 text-center">
+                    <p className="text-[11px] text-muted uppercase tracking-[1.5px] font-bold">
+                        Resultados reais para imobiliárias de alto padrão
+                    </p>
+                </div>
             </div>
         </motion.section>
     );

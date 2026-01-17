@@ -13,24 +13,39 @@ import { Building2 } from 'lucide-react';
  */
 export function Navbar() {
     return (
-        <nav className="sticky top-0 z-50 w-full border-b border-luxury bg-abyss/80 backdrop-blur-md">
-            <div className="mx-auto max-w-[1280px] px-6">
-                <div className="flex h-16 items-center justify-between">
+        <nav className="sticky top-0 z-50 w-full border-b border-marble bg-navy/95 backdrop-blur-md">
+            <div className="mx-auto max-w-[1400px] px-8">
+                <div className="flex h-20 items-center justify-between">
                     {/* Logo */}
                     <Link
                         href="/"
-                        className="flex items-center gap-2 transition-opacity hover:opacity-80"
+                        className="flex items-center gap-3 transition-all hover:opacity-80 group"
                     >
-                        <Building2 className="h-6 w-6 text-gold" strokeWidth={1.5} />
-                        <span className="text-xl font-semibold leading-none tracking-tight text-gold">
-                            Impera
+                        <div className="h-10 w-10 border border-gold/30 flex items-center justify-center group-hover:border-gold transition-colors">
+                            <Building2 className="h-5 w-5 text-gold" strokeWidth={1} />
+                        </div>
+                        <span className="text-2xl font-display font-medium tracking-tight text-white group-hover:text-gold transition-colors">
+                            Impera<span className="italic font-serif text-gold">.</span>
                         </span>
                     </Link>
 
-                    {/* Login Link */}
+                    {/* Navigation - Strategic Links */}
+                    <div className="hidden md:flex items-center gap-10">
+                        {['Solução', 'Planos', 'Metodologia'].map((item) => (
+                            <Link
+                                key={item}
+                                href={`#${item.toLowerCase()}`}
+                                className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/60 hover:text-gold transition-colors"
+                            >
+                                {item}
+                            </Link>
+                        ))}
+                    </div>
+
+                    {/* Access Button - Luxe Style */}
                     <Link
                         href="/login"
-                        className="cursor-pointer rounded-md border border-gold/40 bg-transparent px-4 py-2 text-sm font-semibold text-gold transition-all hover:border-gold/60 hover:bg-gold/10"
+                        className="h-11 px-8 flex items-center justify-center text-[10px] font-bold uppercase tracking-[0.2em] bg-white text-navy border border-marble hover:bg-navy hover:text-white hover:border-navy transition-all duration-300 rounded-sm shadow-sm"
                     >
                         Acessar Sistema
                     </Link>

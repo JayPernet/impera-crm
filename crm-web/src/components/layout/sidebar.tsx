@@ -44,23 +44,23 @@ export function Sidebar({ role, fullName }: { role?: string; fullName?: string }
         : "??";
 
     return (
-        <aside className="w-64 h-screen bg-background border-r border-border flex flex-col fixed left-0 top-0">
+        <aside className="w-64 h-screen bg-navy border-r border-white/5 flex flex-col fixed left-0 top-0 z-50">
             {/* Brand */}
-            <div className="h-16 flex items-center justify-between px-6 border-b border-border">
+            <div className="h-16 flex items-center justify-between px-6 border-b border-white/5">
                 <div className="flex items-center gap-3">
-                    <div className="h-9 w-9 rounded-lg bg-surface-elevated border border-border flex items-center justify-center">
-                        <ShieldCheck className="h-6 w-6 text-primary" />
+                    <div className="h-9 w-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
+                        <ShieldCheck className="h-5 w-5 text-gold" />
                     </div>
                     <div>
-                        <span className="text-xl font-bold tracking-tight text-text-primary block leading-none">IMPERA</span>
-                        <span className="text-[10px] uppercase tracking-[0.2em] text-primary font-semibold">CRM</span>
+                        <span className="text-xl font-display font-semibold tracking-tight text-white block leading-none">IMPERA<span className="text-gold italic font-serif">.</span></span>
+                        <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-bold">CRM</span>
                     </div>
                 </div>
                 <NotificationBadge />
             </div>
 
             {/* Navigation */}
-            <nav className="flex-1 py-6 px-3 space-y-1">
+            <nav className="flex-1 py-8 px-4 space-y-1.5 overflow-y-auto">
                 {menuItems.map((item) => {
                     const isActive = item.href === "/dashboard"
                         ? pathname === "/dashboard"
@@ -70,13 +70,13 @@ export function Sidebar({ role, fullName }: { role?: string; fullName?: string }
                             key={item.href}
                             href={item.href}
                             className={cn(
-                                "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 group relative",
+                                "flex items-center gap-3 px-4 py-3 rounded-sm text-[13px] font-medium transition-all duration-300 group relative",
                                 isActive
-                                    ? "bg-white/[0.02] text-primary border-l-2 border-primary"
-                                    : "text-text-secondary hover:text-text-primary hover:bg-white/[0.01] border-l-2 border-transparent"
+                                    ? "bg-gold/10 text-gold border-l-2 border-gold shadow-[inset_4px_0_10px_rgba(210,182,138,0.05)]"
+                                    : "text-white/60 hover:text-white hover:bg-white/5 border-l-2 border-transparent"
                             )}
                         >
-                            <item.icon className={cn("h-5 w-5", isActive ? "text-primary" : "group-hover:text-primary")} />
+                            <item.icon className={cn("h-4.5 w-4.5 transition-colors duration-300", isActive ? "text-gold" : "text-white/40 group-hover:text-white")} />
                             {item.label}
                         </Link>
                     );
@@ -84,26 +84,29 @@ export function Sidebar({ role, fullName }: { role?: string; fullName?: string }
             </nav>
 
             {/* User / Footer */}
-            <div className="p-4 border-t border-border">
-                <div className="flex items-center justify-between p-4 bg-surface-elevated rounded-xl border border-border">
+            <div className="p-4 bg-navy-dark/50 border-t border-white/5">
+                <div className="flex items-center justify-between p-3 bg-white/5 rounded-md border border-white/5 backdrop-blur-sm">
                     <div className="flex items-center gap-3">
-                        <div className="h-9 w-9 rounded-full bg-background border border-primary/40 flex items-center justify-center text-xs font-bold text-primary">
+                        <div className="h-8 w-8 rounded-full bg-gold/20 border border-gold/30 flex items-center justify-center text-[11px] font-bold text-gold">
                             {initials}
                         </div>
-                        <div className="flex flex-col">
-                            <span className="text-sm font-semibold text-text-primary leading-none truncate max-w-[120px]">
+                        <div className="flex flex-col min-w-0">
+                            <span className="text-xs font-semibold text-white leading-none truncate">
                                 {fullName || "Usuário"}
                             </span>
-                            <span className="text-[10px] text-primary font-medium uppercase mt-1">
+                            <span className="text-[9px] text-gold/80 font-bold uppercase tracking-wider mt-1">
                                 {role === "super_admin" ? "Super Admin" : role === "admin" ? "Admin" : "Corretor"}
                             </span>
                         </div>
                     </div>
                     <form action="/auth/signout" method="post">
-                        <button title="Sair" className="p-2 hover:bg-background rounded-md text-text-secondary hover:text-danger transition-colors">
-                            <LogOut className="h-4 w-4" />
+                        <button title="Sair" className="p-2 hover:bg-white/5 rounded-sm text-white/40 hover:text-destructive transition-colors">
+                            <LogOut className="h-3.5 w-3.5" />
                         </button>
                     </form>
+                </div>
+                <div className="mt-4 text-[9px] text-center text-white/20 uppercase tracking-[0.2em] font-medium">
+                    v2.0 • Luxe Edition
                 </div>
             </div>
         </aside>
